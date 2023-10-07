@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {useNavigate }  from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import toast, { Toast } from "react-hot-toast"
 
 function Signin() {
   const navigate = useNavigate();
@@ -12,18 +13,33 @@ function Signin() {
     setUserData({ ...userData, [name]: value })
   }
 
-  const eventSubmit =  async (event) => {
+  const eventSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/user/login',userData);
-      if(response.data.success){
+      const response = await axios.post('/user/login', userData);
+      if (response.data.success) {
+        toast.success(response.data.message,{
+          style:{
+             background:'#333',
+             color:'#fff'
+            }
+        })
+        localStorage.setItem('token',response.data.data)
         navigate('/')
-      }else{
-         setUserStatus(response.data.message);
-
-         setTimeout(()=>{
+      } else {
+        setUserStatus(response.data.message);
+        toast.error(response.data.message,
+          {
+            style: {
+              borderRadius: '10px',
+              background: '#333',
+              color: '#fff',
+            },
+          }
+        );
+        setTimeout(() => {
           setUserStatus('')
-         },2000)
+        }, 2000)
       }
     } catch (error) {
       console.error("error...in signin");
@@ -32,7 +48,7 @@ function Signin() {
 
   return (
     <>
-      <div className='w-screen h-screen pt-[10%] bg-black  bg-cover ' style={{ backgroundImage: 'url("/photo.png")'}} >
+      <div className='w-screen h-screen pt-[10%] bg-black  bg-cover ' style={{ backgroundImage: 'url("/photo.png")' }} >
         <div className="w-[400px] rounded-md bg-black bg-opacity-10 shadow-custom text-center p-[20px] mx-auto ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <div className="items-center">
@@ -68,7 +84,7 @@ function Signin() {
               <div>
                 <button type="submit" className="mt-6 flex w-full justify-center rounded-full bg-[#FA2A55] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#BA0C2F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Sign in</button>
               </div>
-             
+
             </form>
             <p className="mt-7 text-sm text-[#C2C2C2]">
               Not a member?
