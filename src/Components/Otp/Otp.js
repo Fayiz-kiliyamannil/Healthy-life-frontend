@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 function Otp() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [otp, setOtp] = useState({ email: '' });
     const [otpStatus, setOtpStatus] = useState('')
@@ -12,17 +15,21 @@ function Otp() {
     const submitEvent = async (event) => {
         event.preventDefault();
         try {
+            dispatch(showLoading())
             const response = await axios.post('/user/otp', { Otp: otp });
             if (response.data.success) {
                 setOtpStatus(response.data.message)
+                dispatch(hideLoading());
                 navigate('/login')
             } else {
+                dispatch(hideLoading());
                 setOtpStatus(response.data.message);
                 setTimeout(() => {
                     setOtpStatus('')
                 }, 2000);
             }
         } catch (error) {
+            dispatch(hideLoading());
             console.error("otperro");
         }
     }
@@ -31,8 +38,10 @@ function Otp() {
         event.preventDefault();
         console.log("resend");
         try {
+            dispatch(showLoading());
             const response = await axios.post('/user/register', {});
             if (response.data.success) {
+                dispatch(hideLoading());
                 setOtpStatus(response.data.message)
                 setTimeout(() => {
                     setOtpStatus('')
@@ -40,6 +49,7 @@ function Otp() {
             }
 
         } catch (error) {
+            dispatch(hideLoading())
             console.error("resend error.......");
         }
     }

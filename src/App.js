@@ -1,26 +1,28 @@
-import {BrowserRouter,Route,Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Pages/User/Login";
 // import Signin from "./Components/Login/Signin";
 import Signup from "./Pages/User/Signup";
 import Home from './Pages/User/Home';
-import Otp from  './Components/Otp/Otp'
+import Otp from './Components/Otp/Otp'
+import { useSelector } from "react-redux";
+import ProtectedRoute from "./Components/ProtectedRoutes/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
+import Spinner from "./Components/Spinner/spinner"
 import './App.css';
 
 function App() {
+  const { loading } = useSelector(state => state.alerts);
   return (
     <BrowserRouter>
-    <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
-     <Routes>
-      <Route path='/login' element={<Login/>}/>
-      <Route  path='/register'element={<Signup/>}/>
-      <Route  path="/otp" element={<Otp/>}/>
-      <Route path='/' element={<Home/>}/>
-     </Routes>
-     </BrowserRouter>
+      {loading && (<div className="loader-parent"> <Spinner /> </div>)}
+      <Toaster position="top-center" reverseOrder={false} />
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Signup />} />
+        <Route path="/otp" element={<Otp />} />
+        <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

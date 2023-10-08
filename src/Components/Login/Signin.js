@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import toast, { Toast } from "react-hot-toast"
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 function Signin() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ email: '', password: '' });
   const [userStatus, setUserStatus] = useState('');
@@ -16,6 +19,7 @@ function Signin() {
   const eventSubmit = async (event) => {
     event.preventDefault();
     try {
+      dispatch(showLoading());
       const response = await axios.post('/user/login', userData);
       if (response.data.success) {
         toast.success(response.data.message,{
@@ -25,8 +29,10 @@ function Signin() {
             }
         })
         localStorage.setItem('token',response.data.data)
+        dispatch(hideLoading());
         navigate('/')
       } else {
+        dispatch(hideLoading());
         setUserStatus(response.data.message);
         toast.error(response.data.message,
           {
@@ -42,6 +48,7 @@ function Signin() {
         }, 2000)
       }
     } catch (error) {
+      dispatch(hideLoading());
       console.error("error...in signin");
     }
   }
