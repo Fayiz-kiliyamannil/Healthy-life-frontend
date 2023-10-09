@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
@@ -11,6 +11,10 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { useNavigate } from 'react-router-dom'
+
+
+
 
 
 const products = [
@@ -29,17 +33,32 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-function Navbar() {
+function Navbar(props) {
 
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const navigate = useNavigate();
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [log, setLog] = useState(Boolean);
+
+    const logOut = () => {
+        localStorage.removeItem('token');
+        navigate('/login')
+    }
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            setLog(true)
+        } else {
+            setLog(false)
+        }
+    }, [])
 
 
     return (
-        <header className=" bg-black bg-opacity-10 fixed top-0 left-0 w-full h-20 ">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 h-20 lg:px-8" aria-label="Global">
-                <div className="flex items-center lg:flex-1">  
-                        <img className="h-11 w-auto" src="/logo.png" alt="" />
-                        <span className="text-[#cfd1d1]">Healthy-Life</span>
+        <header className="h-3.6 bg-gradient-to-t  from-transparent via-rgba(37, 37, 37,) to-black  fixed top-0 left-0 w-full h-20 ">
+            <nav className="mx-auto container flex max-w-7xl items-center justify-between p-6 h-20 lg:px-8" aria-label="Global">
+                <div className="flex items-center lg:flex-1">
+                    <img className="h-11 w-auto" src="/logo.png" alt="" />
+                    <span className="text-[#fff]">Healthy-Life</span>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -52,20 +71,26 @@ function Navbar() {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                   
-                    <a href="/home" className="text-sm font-semibold leading-6 text-[#cfd1d1] hover:text-[#ffffff]">
+
+                    <a href="/home" className="text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]">
                         Home
                     </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-[#cfd1d1] hover:text-[#ffffff] ">
-                        Marketplace
+                    <a href="/trainers" className="text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55] ">
+                        Trainers
                     </a>
-                    <a href="#" className="text-sm font-semibold leading-6  text-[#cfd1d1] hover:text-[#ffffff] ">
-                        Company
+                    <a href="/classes" className="text-sm font-semibold leading-6  text-[#ffffff] hover:text-[#FA2A55] ">
+                        Classes
                     </a>
-                    <Popover className="relative">
-                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6  text-[#cfd1d1] hover:text-[#ffffff] ">
-                            Home
-                            {/* fdjdjdjdjjdjdjdjdjdjdjdjdjfffff------------------------------ */}
+                    <a href="/blog" className="text-sm font-semibold leading-6  text-[#ffffff] hover:text-[#FA2A55] ">
+                        Blog
+                    </a>
+                    <a href="/contact" className="text-sm font-semibold leading-6  text-[#ffffff] hover:text-[#FA2A55] ">
+                        Contact
+                    </a>
+                    {/* <Popover className="relative">  
+                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6  text-[#ffffff] hover:text-[#FA2A55] ">
+                            Setting
+                           
                             <ChevronDownIcon className="h-5 w-5 flex-none  text-[#cfd1d1]" aria-hidden="true" />
                         </Popover.Button>
 
@@ -92,7 +117,7 @@ function Navbar() {
                                                 <a href={item.href} className="block font-semibold text-gray-900">
                                                     {item.name}
                                                     <span className="absolute inset-0" />
-                                                </a>
+                                                </a> \
                                                 <p className="mt-1 text-gray-600">{item.description}</p>
                                             </div>
                                         </div>
@@ -112,20 +137,23 @@ function Navbar() {
                                 </div>
                             </Popover.Panel>
                         </Transition>
-                    </Popover>
+                    </Popover >   */}
                 </Popover.Group>
 
 
 
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="/login" className="text-sm font-semibold leading-6 text-[#cfd1d1] hover:text-[#ffffff]">
-                        Log in <span aria-hidden="true">&rarr;</span>
-                    </a>
+                    {/* <a href="/login" className="text-sm font-semibold leading-6 text-[#ffff] hover:text-[#FA2A55]"> */}
+                    {(log) ? <a onClick={logOut} className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">logout</a>
+                        : <a href='/login' className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">login</a>}
+
+
+                    {/* </a> */}
                 </div>
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
-                <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-[#030712] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-black bg-opacity-80 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
                         <a href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
@@ -147,11 +175,45 @@ function Navbar() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                <Disclosure as="div" className="-mx-3">
+
+                                <a
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"
+                                >
+                                    Home
+                                </a>
+                                <a
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"
+                                >
+                                    Trainers
+                                </a>
+
+                                <a
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"
+                                >
+                                    Classes
+                                </a>
+                                <a
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"
+                                >
+                                    Blog
+                                </a>
+                                <a
+                                    href="#"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"
+                                >
+                                    Contact
+                                </a>
+                            </div>
+                            {/* _________________________________________________________________________________ */}
+                            {/* <Disclosure as="div" className="-mx-3">
                                     {({ open }) => (
                                         <>
-                                            <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#ffffff]">
-                                                Product
+                                            <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]">
+                                             Setting
                                                 <ChevronDownIcon
                                                     className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
                                                     aria-hidden="true"
@@ -171,33 +233,26 @@ function Navbar() {
                                             </Disclosure.Panel>
                                         </>
                                     )}
-                                </Disclosure>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#ffffff]"
-                                >
-                                    Features
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#ffffff]"
-                                >
-                                    Marketplace
-                                </a>
-                                <a
-                                    href="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#ffffff]"
-                                >
-                                    Company
-                                </a>
-                            </div>
+                                </Disclosure> */}
+                            {/* --------------------------------------------------------------------- */}
                             <div className="py-6">
-                                <a
-                                    href="/login"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#ffffff]"
-                                >
-                                    Log in
-                                </a>
+
+                                {
+                                    log ? <a
+                                        onClick={logOut}
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]"
+                                    >
+                                        Logout
+                                    </a> : <a
+                                        href="/login"
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]"
+                                    >
+                                        Log in
+                                    </a>
+                                }
+
+
+
                             </div>
                         </div>
                     </div>
