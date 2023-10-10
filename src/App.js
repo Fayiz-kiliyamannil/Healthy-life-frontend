@@ -8,9 +8,10 @@ import { useSelector } from "react-redux";
 import ProtectedRoute from "./Components/ProtectedRoutes/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
 import Spinner from "./Components/Spinner/spinner"
-import AdminLogin from "./Pages/Admin/AdminLogin.js/AdminLogin";
+import AdminLogin from "./Pages/Admin/AdminLogin/AdminLogin";
 import AdminHome from "./Pages/Admin/AdminHome/adminHome";
 import AdminProtectedRoute from "./Components/ProtectedRoutes/AdminProtectedRoute";
+import AdminTrainee from "./Pages/Admin/AdminTrainees/AdminTrainee";
 
 
 
@@ -30,6 +31,7 @@ function App() {
 
         <Route path="/admin/login" element={<AdminLogin/>}/>
         <Route path="/admin/" element={<AdminProtectedRoute> <AdminHome/> </AdminProtectedRoute>}/>
+        <Route path="/admin/trainees" element={<AdminProtectedRoute> <AdminTrainee/> </AdminProtectedRoute>} /> 
       </Routes>
     </BrowserRouter>
   );

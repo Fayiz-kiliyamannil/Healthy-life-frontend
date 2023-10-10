@@ -1,4 +1,5 @@
 import React from 'react';
+import Admin_Navbar from '../../../Components/Admin/Admin_Navbar';
 
 function adminHome() {
 
@@ -6,7 +7,10 @@ function adminHome() {
 
 
   return (
-    <div className='text-white'>adminHome</div>
+  <>
+  <Admin_Navbar home={true} />
+
+  </>
   )
 }
 
