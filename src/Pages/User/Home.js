@@ -5,6 +5,7 @@ import axios from 'axios'
 import { LockClosedIcon } from '@heroicons/react/24/outline';
 import Card from '../../Components/Card/card';
 import PricingSection from '../../Components/PricingSection/PricingSection';
+import Footer from '../../Components/Footer/Footer';
 function Home() {
 
   const [userData, setUserData] = useState([])
@@ -51,6 +52,7 @@ function Home() {
       </div>
       <Card product={product} tittle={"Healthy-Life Coaches at your Service"} />
       <PricingSection/>
+      <Footer/>
 
 
 

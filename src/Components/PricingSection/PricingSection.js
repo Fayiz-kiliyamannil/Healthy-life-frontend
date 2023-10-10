@@ -2,165 +2,142 @@ import React from 'react';
 
 function PricingSection() {
   return (
-    <div className="container my-24 mx-auto md:px-6">
-      {/* Section: Design Block */}
-      <section className="mb-32">
-        <div className="background-radial-gradient text-center text-white lg:h-[400px] h-[300px] lg:pt-[80px] pt-[55px]">
-          <h2 className="mb-12 text-center text-3xl font-bold">Pricing</h2>
-        </div>
+   
 
-        <div className="grid px-6 md:px-12 lg:grid-cols-3 xl:px-32" style={{ marginTop: '-200px' }}>
-          <div className="p-0 py-12">
-            <div className="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 lg:rounded-tr-none lg:rounded-br-none">
-              <div className="border-b-2 border-neutral-100 border-opacity-100 p-6 text-center dark:border-opacity-10">
-                <p className="mb-4 text-sm uppercase">
-                  <strong>Basic</strong>
-                </p>
-                <h3 className="mb-6 text-3xl">
-                  <strong>$ 129</strong>
-                  <small className="text-base text-neutral-500 dark:text-neutral-300">/year</small>
-                </h3>
+    <>
 
-                <button
-                  type="button"
-                  className="inline-block w-full rounded bg-primary-100 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Buy
-                </button>
+  <div className=" mx-auto max-w-screen-xl border border-gray-500 rounded-lg lg:py-16 lg:px-6">
+      <div className="mx-auto   max-w-screen-md  text-center mb-8 lg:mb-6">
+      <h1 className='text-[#898989] text-sm text-center font-sans '>Pro</h1>
+      <h1 className='text-[#898989] text-4xl text-center font-sans font-bold '>Best option for personal use </h1>
+      </div>
+      <div className="  space-y-8  lg:grid lg:grid-cols-3 mx-10 sm:gap-6 xl:gap-20 lg:space-y-0 ">
+
+
+
+          <div className="flex flex-col p-6 mx-auto max-w-md text-center  rounded-lg border border-gray-100  dark:border-gray-600 xl:p-8 bg-[#202124] dark:text-white">
+              <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
+              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for your next project.</p>
+
+              <div className="flex justify-center items-baseline my-8">
+                  <span className="mr-2 text-5xl font-extrabold">$29</span>
+                  <span className="text-gray-500 dark:text-gray-400">/month</span>
               </div>
-              <div className="p-6">
-                <ol className="list-inside">
-                  <li className="mb-4 flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="mr-3 h-5 w-5 text-primary dark:text-primary-400"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                    Unlimited updates
+            
+              <ul role="list" className="mb-8 space-y-4 text-left">
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Individual configuration</span>
                   </li>
-                  <li className="mb-4 flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="mr-3 h-5 w-5 text-primary dark:text-primary-400"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                    Git repository
+                  <li className="flex items-center space-x-3">
+                                          <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>No setup, or hidden fees</span>
                   </li>
-                  <li className="mb-4 flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="mr-3 h-5 w-5 text-primary dark:text-primary-400"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                    npm installation
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Team size: <span className="font-semibold">1 developer</span></span>
                   </li>
-                </ol>
+                  <li className="flex items-center space-x-3">
+                  
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Premium support: <span className="font-semibold">6 months</span></span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Free updates: <span className="font-semibold">6 months</span></span>
+                  </li>
+              </ul>
+              <a href="#" className="text-white bg-[#FA2A55]  hover:bg-white hover:text-black focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a>
+          </div>
+  
+
+   {/* ----------------------------------------------------------CUT-------------------------------------- */}
+
+
+   <div className="flex flex-col p-6 mx-auto max-w-md text-center  rounded-lg border border-gray-100  dark:border-gray-600 xl:p-8 bg-[#202124] dark:text-white">
+              <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
+              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for your next project.</p>
+
+              <div className="flex justify-center items-baseline my-8">
+                  <span className="mr-2 text-5xl font-extrabold">$29</span>
+                  <span className="text-gray-500 dark:text-gray-400">/month</span>
               </div>
-            </div>
+            
+              <ul role="list" className="mb-8 space-y-4 text-left">
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Individual configuration</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                                          <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>No setup, or hidden fees</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Team size: <span className="font-semibold">1 developer</span></span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                  
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Premium support: <span className="font-semibold">6 months</span></span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Free updates: <span className="font-semibold">6 months</span></span>
+                  </li>
+              </ul>
+              <a href="#" className="text-white bg-[#FA2A55]  hover:bg-white hover:text-black focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">BUY</a>
+          </div>
+          <div className="flex flex-col p-6 mx-auto max-w-md text-center  rounded-lg border border-gray-100  dark:border-gray-600 xl:p-8 bg-[#202124] dark:text-white">
+              <h3 className="mb-4 text-2xl font-semibold">Starter</h3>
+              <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for your next project.</p>
+
+              <div className="flex justify-center items-baseline my-8">
+                  <span className="mr-2 text-5xl font-extrabold">$29</span>
+                  <span className="text-gray-500 dark:text-gray-400">/month</span>
+              </div>
+            
+              <ul role="list" className="mb-8 space-y-4 text-left">
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Individual configuration</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                                          <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>No setup, or hidden fees</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Team size: <span className="font-semibold">1 developer</span></span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                  
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Premium support: <span className="font-semibold">6 months</span></span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                      <svg className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path></svg>
+                      <span>Free updates: <span className="font-semibold">6 months</span></span>
+                  </li>
+              </ul>
+              <a href="#" className="text-white bg-[#FA2A55]  hover:bg-white hover:text-black focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Get started</a>
           </div>
 
-          <div>
-            <div className="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700" style={{ zIndex: 1 }}>
-              <div className="border-b-2 border-neutral-100 border-opacity-100 p-6 text-center dark:border-opacity-10">
-                <p className="mb-4 text-sm uppercase">
-                  <strong>Enterprise</strong>
-                </p>
-                <h3 className="mb-6 text-3xl">
-                  <strong>$ 499</strong>
-                  <small className="text-base text-neutral-500 dark:text-neutral-300">/year</small>
-                </h3>
 
-                <button
-                  type="button"
-                  className="inline-block w-full rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Buy
-                </button>
-              </div>
-              <div className="p-6">
-                <ol className="list-inside">
-                  <li className="mb-4 flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="mr-3 h-5 w-5 text-primary dark:text-primary-400"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                    Unlimited updates
-                  </li>
-                  {/* Additional list items here */}
-                </ol>
-              </div>
-            </div>
-          </div>
 
-          <div className="py-12">
-            <div className="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 lg:rounded-tl-none lg:rounded-bl-none">
-              <div className="border-b-2 border-neutral-100 border-opacity-100 p-6 text-center dark:border-opacity-10">
-                <p className="mb-4 text-sm uppercase">
-                  <strong>Advanced</strong>
-                </p>
-                <h3 className="mb-6 text-3xl">
-                  <strong>$ 299</strong>
-                  <small className="text-base text-neutral-500 dark:text-neutral-300">/year</small>
-                </h3>
+          {/* -----------------------------------------------CUT--------------------------------------------------------------- */}
 
-                <button
-                  type="button"
-                  className="inline-block w-full rounded bg-primary-100 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-                  data-te-ripple-init
-                  data-te-ripple-color="light"
-                >
-                  Buy
-                </button>
-              </div>
-              <div className="p-6">
-                <ol className="list-inside">
-                  <li className="mb-4 flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="mr-3 h-5 w-5 text-primary dark:text-primary-400"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
-                    Unlimited updates
-                  </li>
-                  {/* Additional list items here */}
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Section: Design Block */}
-    </div>
+        
+        
+        
+          
+      </div>
+  </div>
+
+    </>
+
+
+
   );
 }
 
