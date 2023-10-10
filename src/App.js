@@ -8,6 +8,12 @@ import { useSelector } from "react-redux";
 import ProtectedRoute from "./Components/ProtectedRoutes/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
 import Spinner from "./Components/Spinner/spinner"
+import AdminLogin from "./Pages/Admin/AdminLogin.js/AdminLogin";
+import AdminHome from "./Pages/Admin/AdminHome/adminHome";
+import AdminProtectedRoute from "./Components/ProtectedRoutes/AdminProtectedRoute";
+
+
+
 import './App.css';
 
 function App() {
@@ -21,6 +27,9 @@ function App() {
         <Route path='/register' element={<Signup />} />
         <Route path="/otp" element={<Otp />} />
         <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+
+        <Route path="/admin/login" element={<AdminLogin/>}/>
+        <Route path="/admin/" element={<AdminProtectedRoute> <AdminHome/> </AdminProtectedRoute>}/>
       </Routes>
     </BrowserRouter>
   );

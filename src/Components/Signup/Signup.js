@@ -5,37 +5,17 @@ import axios from 'axios';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 
-function Signup() {
-  const dispatch = useDispatch(); 
-  const Navigate = useNavigate();
-  const [UserData, SetUserData] = useState({ name: '', email: '', password: '',  })
-  const [userInfo,setuserInfo] = useState('')
+function Signup(props) {
+
+  const [data,setData] = useState({name:'',email:'',password:''})
+
 
   const eventHandle = (event) => {
     const { name, value } = event.target;
-    SetUserData({ ...UserData, [name]: value });
+    setData({ ...data, [name]: value });
+    props.setData(data)
   }
 
-  const eventSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      dispatch(showLoading())
-      const response = await axios.post('/user/register',UserData); 
-     if(response.data.success){
-      Navigate("/otp")
-      dispatch(hideLoading())
-     }else{
-      dispatch(hideLoading())
-      setuserInfo(response.data.message)
-      setTimeout(()=>{
-        setuserInfo('')
-      },2000)
-     
-     }
-    } catch (error) {
-      console.log("error......");
-    }
-  }
 
   return (
     <div className='w-screen h-screen bg-cover pt-[10%] ' style={{ backgroundImage: 'url("/photo.png")'}}  >
@@ -48,17 +28,17 @@ function Signup() {
         </div>
 
         <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-2" onSubmit={eventSubmit} >
+          <form className="space-y-2" onSubmit={props.eventSubmit} >
             <div>
               <label htmlFor="name" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Name</label>
               <div className="mt-1">
-                <input id="name" name="name" type="name" value={UserData.name} onChange={eventHandle} required className="block w-full rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
+                <input id="name" name="name" type="name" value={data.name} onChange={eventHandle} required className="block w-full rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
               </div>
             </div>
             <div>
               <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Email address</label>
               <div className="mt-1">
-                <input id="email" name="email" type="email" value={UserData.email} onChange={eventHandle} autoComplete="email" required className="block w-full rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
+                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle} autoComplete="email" required className="block w-full rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
                
               </div>
             </div>
@@ -69,7 +49,7 @@ function Signup() {
                 
               </div>
               <div className="mt-1">
-                <input id="password" name="password" type="password" value={UserData.password} onChange={eventHandle}  required className="block w-full  rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
+                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}  required className="block w-full  rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
               </div>
               <div className="text-sm text-right mt-1">
                   <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>
@@ -77,7 +57,7 @@ function Signup() {
               
       
               <p className="text-sm text-[#FA2A55]">
-                {userInfo}
+                {props.userStatus}
               </p>
 
             </div>
