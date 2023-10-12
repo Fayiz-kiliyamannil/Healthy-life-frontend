@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../../Components/Admin/Admin_Navbar'
+import Navbar from '../../Components/Navbar/Admin_Navbar'
 
 function TrainerHome() {
   return (

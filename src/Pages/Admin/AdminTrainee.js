@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Admin_Navbar from '../../../Components/Admin/Admin_Navbar';
-import Tables from '../../../Components/Tables/Tables';
+import Admin_Navbar from '../../Components/Navbar/Admin_Navbar';
+import Tables from '../../Components/Tables/Tables';
 import axios from 'axios';
 
 function AdminTrainee() {
@@ -29,7 +29,7 @@ function AdminTrainee() {
 
     return (
         <>
-            <Admin_Navbar trainee={true} />
+           <Admin_Navbar/>
             <Tables data={userData} />
     
         </>

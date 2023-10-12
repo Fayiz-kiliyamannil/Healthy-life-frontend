@@ -1,5 +1,5 @@
 import React from 'react';
-import Admin_Navbar from '../../../Components/Admin/Admin_Navbar';
+import Admin_Navbar from '../../Components/Navbar/Admin_Navbar';
 
 function adminHome() {
 
@@ -8,7 +8,7 @@ function adminHome() {
 
   return (
   <>
-  <Admin_Navbar home={true} />
+   <Admin_Navbar/>
 
   </>
   )
