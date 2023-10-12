@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Login from '../../../Components/Login/Signin';
+import Login from '../../../Components/Login/Login';
 import axios from 'axios';
 import toast, { Toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';

@@ -18,8 +18,8 @@ function Signup(props) {
 
 
   return (
-    <div className='w-screen h-screen bg-cover pt-[10%] ' style={{ backgroundImage: 'url("/photo.png")'}}  >
-      <div className="w-[400px] rounded-md bg-black bg-opacity-10 shadow-custom text-center p-[20px] mx-auto ">
+    <div className='w-screen h-screen bg-cover pt-[10%] ' style={{ backgroundImage: 'url("/gym-with-treadmills-light-wall.jpg")'}}  >
+      <div className="w-[400px] rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex items-center ">
             <img className="h-12 pl-[40%]" src="/logo.png" alt="Your Logo" />
@@ -32,13 +32,13 @@ function Signup(props) {
             <div>
               <label htmlFor="name" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Name</label>
               <div className="mt-1">
-                <input id="name" name="name" type="name" value={data.name} onChange={eventHandle} required className="block w-full rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
+                <input id="name" name="name" type="name" value={data.name} onChange={eventHandle} required className="block w-full  rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
               </div>
             </div>
             <div>
               <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Email address</label>
               <div className="mt-1">
-                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle} autoComplete="email" required className="block w-full rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
+                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle} autoComplete="email" required className="block w-full  rounded-full py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5" />
                
               </div>
             </div>
@@ -49,7 +49,7 @@ function Signup(props) {
                 
               </div>
               <div className="mt-1">
-                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}  required className="block w-full  rounded-full py-2 bg-black bg-opacity-30 text-[#C2C2C2] pl-5" />
+                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}  required className="block w-full   rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
               </div>
               <div className="text-sm text-right mt-1">
                   <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>

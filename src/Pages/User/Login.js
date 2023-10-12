@@ -1,6 +1,6 @@
 
 import { redirect } from 'react-router-dom';
-import Signin from '../../Components/Login/Signin';
+import Signin from '../../Components/Login/Login';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';

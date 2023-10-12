@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Tables(props) {
-
+const navigate = useNavigate();
     const moreOpt=(d)=>{
         console.log(d);
     }
@@ -47,8 +49,9 @@ function Tables(props) {
                         <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
                     </div>
                 </td>
-                <td onClick={()=>moreOpt(obj._id)} className="px-6 py-4 hover:text-[#FA2A55]">
-                   More...
+                <td  className="px-6 py-4 hover:text-[#FA2A55]">
+                    <Link to={`${obj._id}`} >  More... </Link>
+                 
                 </td>
             </tr>
             ))
