@@ -1,10 +1,14 @@
 import React from 'react'
-import { Routes,Route } from 'react-router-dom';
+import { Routes,Route, Router } from 'react-router-dom';
 import Login from '../Pages/User/Login';
 import Signup from '../Pages/User/Signup'
 import Otp from '../Pages/User/Otp'
 import Home from '../Pages/User/Home'
 import ProtectedRoute from '../Components/ProtectedRoutes/ProtectedRoute';
+import Trainers from '../Pages/User/Trainers';
+import Profile from '../Components/Profile/Profile';
+import EditProfile from '../Components/Profile/EditProfile';
+import Contact from '../Pages/User/Contact';
 
 
 function UserRoute() {
@@ -14,6 +18,10 @@ function UserRoute() {
             <Route path='/register' element={<Signup />} />
             <Route path="/otp" element={<Otp />} />
             <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path='/Trainers' element={<ProtectedRoute><Trainers/></ProtectedRoute>} />
+            <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+            <Route path='/profile/edit/:userId'  element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
+            <Route path='/contact' element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
         </Routes>
     )
 }

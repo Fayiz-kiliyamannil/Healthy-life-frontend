@@ -6,11 +6,11 @@ function Card_2(props) {
             <div className=" grid grid-cols-1 p-4 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                 {
                     props.data.map((obj) => (
-                        <div className="max-w-sm bg-white border border-gray-200  rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <div key={obj._id} className="max-w-sm bg-white border border-gray-200  rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                             {
-                                (obj.profile) ? <img className="rounded-t-lg" src="/logo.png" alt="" />
-                                    : <img className="rounded-t-lg" src="/logo.png" alt="" />
+                                (obj.profile) ? <img className="rounded-t-lg" src="/empty.jpg" alt="" />
+                                    : <img className=" rounded-lg" src="/empty1.jpeg" alt="" />
                             }
 
                             <div className="p-5">
@@ -56,6 +56,10 @@ function Card_2(props) {
                     ))
                 }
             </div>
+
+          {
+            (props.data.length === 0)?   <h1 className='text-white'> Empty........</h1>:''
+          }
         </>
     );
 }

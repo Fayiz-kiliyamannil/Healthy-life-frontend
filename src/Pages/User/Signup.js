@@ -9,7 +9,7 @@ function Signup() {
 
   const dispatch = useDispatch(); 
   const Navigate = useNavigate();
-  const [UserData, SetUserData] = useState({ name: '', email: '', password: '',  })
+  const [UserData, SetUserData] = useState({ name: '', email: '', password: '',repassword:''  })
   const [userInfo,setuserInfo] = useState('')
 
   
