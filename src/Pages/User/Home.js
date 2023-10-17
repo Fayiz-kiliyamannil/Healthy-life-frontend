@@ -4,12 +4,13 @@ import Banner from '../../Components/Banner/Banner';
 import axios from 'axios'
 import { LockClosedIcon } from '@heroicons/react/24/outline';
 import Card from '../../Components/Card/card';
+import CardTrainer from '../../Components/Card/CardTrainer';
 import PricingSection from '../../Components/PricingSection/PricingSection';
 import Footer from '../../Components/Footer/Footer';
 function Home() {
 
   const [userData, setUserData] = useState([])
-
+  const [trainers,setTrainers] =  useState([])
   const product = [
     { id: 1, progress: '1.2 kg', pros: "Average weight loss per week", image: "/istockphoto-1169486621-612x612.jpg" },
     { id: 2, progress: '80 %', pros: "Decline in lifestyle  diseases", image: "/food.jpg" },
@@ -30,23 +31,34 @@ function Home() {
     }
   }
 
+  const getTrainer = async () =>{
+    try {
+      
+      const response = await axios.get('/user/get-trainers');
+      setTrainers(response.data.trainer)
+      console.log(response.data.trainers);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
     getData();
     localStorage.getItem('token');
+    getTrainer();
 
   }, [])
 
   return (
     <>
    
-      <Navbar userData={userData} />
+      <Navbar />
       <Banner />
       <Card product={product} tittle={'How Healthy-Life Works'} />
       <div className='w-[80%] mx-auto '>
         <iframe className='w-full aspect-video border border-gray-500 rounded-lg' src="https://www.youtube.com/embed/LGBxJqT_CUI?si=YGBumVu22np829Ep" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       </div>
-      <Card product={product} tittle={"Healthy-Life Coaches at your Service"} />
+      <CardTrainer product={trainers}  tittle={"Healthy-Life Coaches at your Service"} />
       <PricingSection />
       <Footer />
 

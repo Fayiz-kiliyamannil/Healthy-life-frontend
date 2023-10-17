@@ -18,7 +18,7 @@ function TrainerLogin() {
                 toast.success(response.data.message, { style: { borderRadius: '10px', background: '#333', color: '#fff' }, });
                 console.log(response.data.data);
                 localStorage.setItem('trainerToken',response.data.data)
-                navigate('/trainer/home')
+                navigate('/trainer')
             }else{
               setstatus(response.data.message);
               setTimeout(()=>{

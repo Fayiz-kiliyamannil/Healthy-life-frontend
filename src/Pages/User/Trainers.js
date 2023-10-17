@@ -3,8 +3,7 @@ import Nav_Bar from '../../Components/Navbar/Navbar'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import Card_2 from '../../Components/Card/Card_2';
-import Card from '../../Components/Card/card'
+import CardTrainer from '../../Components/Card/CardTrainer';
 function Trainers() {
 
     const dispatch = useDispatch();
@@ -34,7 +33,8 @@ function Trainers() {
 
         <>
             <Nav_Bar />
-
+            <CardTrainer product={trainers}/> 
+           
         </>
 
     )

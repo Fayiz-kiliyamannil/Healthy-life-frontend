@@ -6,8 +6,8 @@ import Otp from '../Pages/User/Otp'
 import Home from '../Pages/User/Home'
 import ProtectedRoute from '../Components/ProtectedRoutes/ProtectedRoute';
 import Trainers from '../Pages/User/Trainers';
-import Profile from '../Components/Profile/Profile';
-import EditProfile from '../Components/Profile/EditProfile';
+import Profile from '../Pages/User/Profile';
+import EditProfile from '../Pages/User/EditProfile';
 import Contact from '../Pages/User/Contact';
 
 

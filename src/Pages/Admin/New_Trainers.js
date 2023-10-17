@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Admin_Navbar from '../../Components/Navbar/Admin_Navbar'
-import Card_2 from '../../Components/Card/Card_2'
+import Card_2 from '../../Components/Card/Card_Trainer'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'

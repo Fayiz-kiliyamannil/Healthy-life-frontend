@@ -19,7 +19,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-function Admin_Banner(props) {
+function Admin_Navbar(props) {
  const navigate = useNavigate();
 
   const navigation = [
@@ -220,4 +220,4 @@ function Admin_Banner(props) {
   )
 }
 
-export default Admin_Banner
+export default Admin_Navbar ;

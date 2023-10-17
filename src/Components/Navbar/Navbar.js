@@ -12,6 +12,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { Link, useNavigate, NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 
 
@@ -19,12 +20,30 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-function Navbar(props) {
+function Navbar() {
     
     const [userId,setuserId] = useState([])
      const navigate = useNavigate();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [log, setLog] = useState(Boolean);
+
+
+    const getData = async () => {
+        try {
+          const response = await axios.post('/user/get-user-into-by-id', {}, {
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+          })
+          setuserId(response.data.data)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    
+    
+
+
 
     const logOut = () => {
         localStorage.removeItem('token');
@@ -33,12 +52,11 @@ function Navbar(props) {
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
-            setLog(true);
-            setuserId(props.userData);
-            console.log(props.userData,'ddddddddd');
+           getData()
+           setLog(true)
         } else {
             setLog(false)
-            setuserId(props.userData);
+            // setuserId(props.userData);
           
             
         }
@@ -82,20 +100,17 @@ function Navbar(props) {
 
 
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-
-                    {/* <a href="/login" className="text-sm font-semibold leading-6 text-[#ffff] hover:text-[#FA2A55]"> */}
                     {(log) ? <a onClick={logOut} className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">logout</a>
                         : <a href='/login' className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">login</a>}
-
-
-                    {/* </a> */}
                 </div>
                 <div className='text-white top-0 hidden lg:flex ml-6 '>
-                    <NavLink to={`/profile/${userId}`} >
-                        <img class="w-6 h-6  hover:border border-grey-400  rounded-full" src="/empty.jpg" alt="Rounded avatar" />
+                    <NavLink to={`/profile`} >
+                        {
+                            userId.profile  ?   <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src={`http://127.0.0.1:5001/profileImage/${userId.profile}`} alt="Rounded avatar" />
+                            :    <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src="/empty.jpg" alt="Rounded avatar" />
+                        }
                     </NavLink>
                 </div>
-
             </nav>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />

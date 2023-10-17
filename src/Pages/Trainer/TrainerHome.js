@@ -1,10 +1,11 @@
 import React from 'react'
-import Navbar from '../../Components/Navbar/Admin_Navbar'
+import Trainer_Navbar from '../../Components/Navbar/Trainer_Navbar'
 
 function TrainerHome() {
   return (
     <div>
-      <Navbar/>
+     <Trainer_Navbar/>
+     <h1 className='text-white'> home.............</h1>
     </div>
   )
 }
