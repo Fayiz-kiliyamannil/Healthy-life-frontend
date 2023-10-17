@@ -33,7 +33,7 @@ function Trainers() {
 
         <>
             <Nav_Bar />
-            <CardTrainer product={trainers}/> 
+            <CardTrainer data={trainers}/> 
            
         </>
 

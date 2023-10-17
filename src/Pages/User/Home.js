@@ -58,7 +58,7 @@ function Home() {
       <div className='w-[80%] mx-auto '>
         <iframe className='w-full aspect-video border border-gray-500 rounded-lg' src="https://www.youtube.com/embed/LGBxJqT_CUI?si=YGBumVu22np829Ep" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       </div>
-      <CardTrainer product={trainers}  tittle={"Healthy-Life Coaches at your Service"} />
+      <CardTrainer data={trainers}  tittle={"Healthy-Life Coaches at your Service"} />
       <PricingSection />
       <Footer />
 
