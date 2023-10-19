@@ -45,7 +45,7 @@ function RegisterForm(props) {
             <div>
               <label htmlFor="phone" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Phone No:</label>
               <div className="mt-1">
-                <input id="phone" name="phone" type="phone" value={data.phone} onChange={eventHandle} required className="block w-full  rounded-full py-2 bg-[#898989] border-b bg-opacity-20  text-[#C2C2C2] pl-5" />
+                <input id="phone" name="phone" type="phone" value={data.phone} maxLength='10' onChange={eventHandle} required className="block w-full  rounded-full py-2 bg-[#898989] border-b bg-opacity-20  text-[#C2C2C2] pl-5" />
                
               </div>
             </div>
@@ -56,7 +56,7 @@ function RegisterForm(props) {
                 
               </div>
               <div className="mt-1">
-                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}  required className="block w-full   rounded-full py-2 bg-[#898989] border-b  bg-opacity-20 text-[#C2C2C2] pl-5" />
+                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}   required className="block w-full   rounded-full py-2 bg-[#898989] border-b  bg-opacity-20 text-[#C2C2C2] pl-5" />
               </div>
               <div className="text-sm text-right mt-1">
                   <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>

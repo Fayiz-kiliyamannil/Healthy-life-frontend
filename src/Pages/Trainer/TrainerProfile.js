@@ -41,14 +41,14 @@ function TrainerProfile() {
     }
 
     useEffect(()=>{
-    getTrainer();
+    getTrainer(); 
     },[])
 
 
     return (
         <>
             <Trainer_Navbar />
-            <Profile data={trainer} />
+            <Profile data={trainer} trainer={true} />
         </>
 
     )

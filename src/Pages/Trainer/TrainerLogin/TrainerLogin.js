@@ -3,9 +3,10 @@ import Signin from '../../../Components/Login/Login';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast,{Toast} from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 
 function TrainerLogin() {
-    
+    const dispatch = useDispatch()
     const navigate = useNavigate();
     const [trainerData,setTrainerData] = useState({name:'',email:''});
     const [status,setstatus] = useState('');

@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 function TrainerProfileEdit() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ firstname: '', lastname: '', profile: null, phone: '', trainer: '', about: '', gender: '', age: '', weight: '', height: '' });
+    const [formData, setFormData] = useState({ firstname: '', lastname: '', profile: null, specilized:'', phone: '', trainer: '', about: '', gender: '', age: '', weight: '', height: '' });
     const { Id } = useParams();
 
     const submitChange = async (e) => {
@@ -68,7 +68,7 @@ function TrainerProfileEdit() {
 
     return (
         <>
-            <div className="col-span-4  sm:col-span-9">
+            <div className="col-span-4  p-20 sm:col-span-9">
                 <div className="bg-[#202123] h-200px  shadow   rounded-lg p-6">
                     <form onSubmit={submitChange}>
                         <div className="grid gap-6 mb-6 p-5 md:grid-cols-2">
@@ -89,20 +89,17 @@ function TrainerProfileEdit() {
                             </div>
                             <div>
                                 <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
-                                <input type="phone" id="phone" name='phone' value={formData.phone} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[9-0]" required />
+                                <input type="phone" id="phone" name='phone' maxLength='10' value={formData.phone} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[9-0]" required />
                             </div>
                             <div>
 
-                                <label htmlFor="trainers" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose your Trainer </label>
-                                <select id="trainers" value={formData.trainer} name='trainer' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option>Select</option>
-                                    {/* <option  value={obj.name}>{obj.name}</option> */}
-                                </select>
+                            <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Trainer Specialization</label>
+                                <input type="text" id="specilized " name='specilized ' value={formData.specilized} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required placeholder='eg: yoga instructor' />
 
                             </div>
                             <div>
                                 <label htmlFor="about" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About Me</label>
-                                <input type="text" id="last_name" name='about' value={formData.about} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write some thing" required />
+                                <input type="text" id="last_name" name='about' value={formData.about} onChange={handlechange} maxLength='150' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write some thing" required />
                             </div>
                             <div>
                                 <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
@@ -115,19 +112,18 @@ function TrainerProfileEdit() {
                             </div>
                             <div>
                                 <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                                <input type="number" id="age" value={formData.age} name='age' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                                <input type="number" id="age" value={formData.age} name='age' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age" required />
                             </div>
                             <div>
                                 <label htmlFor="weight" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Weight (Kg) </label>
-                                <input type="number" id="weight" value={formData.weight} name='weight' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                                <input type="number" id="weight" value={formData.weight} name='weight' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="weight" required />
                             </div>
                             <div>
                                 <label htmlFor="height" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Height (Cm) </label>
-                                <input type="number" id="height" value={formData.height} name='height' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age" required />
+                                <input type="number" id="height" value={formData.height} name='height' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="height" required />
                             </div>
                         </div>
-
-                        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        <button type="submit" className="text-white bg-blue-700 ml-5 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
 
 
