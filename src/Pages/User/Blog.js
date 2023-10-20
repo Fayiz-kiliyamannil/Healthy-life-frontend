@@ -18,7 +18,7 @@ function Blog() {
       const response = await axios.get('/user/get-user-blog-info')
       if (response.data.success) {
         setBolg(response.data.blog)
-        console.log(response.data.blog);
+       
         dispatch(hideLoading())
       }
     } catch (error) {

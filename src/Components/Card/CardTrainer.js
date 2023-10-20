@@ -1,29 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function CardTrainer(props) {
+
   return (
     <>
-      <div className="mx-auto max-w-2xl px-3 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h1 className="text-[#898989] text-4xl text-center font-sans font-bold">{props.tittle}</h1>
-        <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {props.data.map((obj, index) => (
-            <div key={index} className="group">
-              {obj.profile ? (
-                <div className="overflow-hidden hover:border border-black rounded-md lg:h-80" style={{ background: `url(http://127.0.0.1:5001/profileImage/${obj.profile})`, backgroundSize: 'cover' }}>
-                  <div className="h-56 p-3 mt-[70%] bottom-0 bg-gradient-to-b from-transparent via-rgba(37, 37, 37,) to-black">
-                    <h1 className="text-xl font-bold font-sans mt-[10%] text-white">{obj.firstname}</h1>
-                    <h6 className="text-md  font-sans text-gray-300">{obj.email}</h6>
-                  </div>
+
+      <div className="mx-auto max-w-2xl  px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <h2 className="text-2xl text-center  border-b border-gray-700 pb-5 font-bold tracking-tight text-gray-500">{props.tittle}</h2>
+
+        <div className="mt-8 grid grid-cols-1  gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {props.data.map((obj) => (
+            <div key={obj._id} className="group border bg-[#15171C] border-gray-900 rounded-lg ">
+              <div className="aspect-h-1 aspect-w-1 w-full  overflow-hidden rounded-lg bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <NavLink to={`/trainer/${obj._id}`} >
+                  <img
+                    src={obj.profile ? `http://127.0.0.1:5001/profileImage/${obj.profile}` : 'empty.jpg'}
+                    alt={obj.profile}
+                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                  />
+                </NavLink>
+              </div>
+              <div className="mt-4 p-2 flex justify-between">
+                <div>
+                  <NavLink to={`/trainer/${obj._id}`} >
+
+                    <h3 className="text-lg font-bold   text-gray-100">
+                      {obj.firstname} {obj.lastname}
+
+                    </h3>
+                    <h4 className="mt-1 text-sm  text-gray-200">{obj.specilized}</h4>
+                  </NavLink>
                 </div>
-              ) : (
-                <div className="overflow-hidden rounded-md hover:border border-black lg:h-80" style={{ background: `url(/yoga.png)`, backgroundSize: 'cover' }}>
-                  <div className="h-56 p-3 mt-[40%] bottom-0 bg-gradient-to-b from-transparent via-rgba(37, 37, 37,) to-black">
-                    <h1 className="text-xl font-bold font-sans mt-[40%] text-white">{obj.name}</h1>
-                    <h6 className="text-md  font-sans text-gray-300">{obj.email}</h6>
-                  </div>
-                </div>
-              )}
+                <p className="text-sm font-medium text-gray-300">{obj.gender}</p>
+              </div>
             </div>
           ))}
         </div>

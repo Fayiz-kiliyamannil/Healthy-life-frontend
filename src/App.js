@@ -1,12 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Toaster } from "react-hot-toast";
-import Spinner from "./Components/Spinner/spinner";
-import AdminRoute from "./Routes/AdminRoute";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+import Spinner from './Components/Spinner/spinner';
+import AdminRoute from './Routes/AdminRoute';
 import './App.css';
-import UserRoute from "./Routes/UserRoute";
-import TrainerRoute from "./Routes/TrainerRoute";
-import NotFound from "./Components/NotFound/NotFound";
+import UserRoute from './Routes/UserRoute';
+import TrainerRoute from './Routes/TrainerRoute';
 
 function App() {
   const { loading } = useSelector(state => state.alerts);

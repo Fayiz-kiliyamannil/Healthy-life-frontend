@@ -10,7 +10,8 @@ import Profile from '../Pages/User/Profile';
 import EditProfile from '../Pages/User/EditProfile';
 import Contact from '../Pages/User/Contact';
 import Blog from '../Pages/User/Blog';
-
+import BlogDetails from '../Pages/User/BlogDetails';
+   
 
 function UserRoute() {
     return (
@@ -24,6 +25,7 @@ function UserRoute() {
             <Route path='/profile/edit/:userId'  element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
             <Route path='/contact' element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
             <Route path='/blog' element={<ProtectedRoute><Blog/></ProtectedRoute>}/>
+            <Route path='/blog/:blogId'  element={<ProtectedRoute><BlogDetails/></ProtectedRoute>}/>
         </Routes>
     )
 }

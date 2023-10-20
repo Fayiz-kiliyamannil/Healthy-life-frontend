@@ -33,8 +33,8 @@ function Trainers() {
 
         <>
             <Nav_Bar />
-            <CardTrainer data={trainers}/> 
-           
+            <CardTrainer tittle={'our team'} data={trainers}/> 
+          
         </>
 
     )
