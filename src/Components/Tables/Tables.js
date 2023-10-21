@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Tables(props) {
-const navigate = useNavigate();
-    const moreOpt=(d)=>{
-        console.log(d);
-    }
 
   return (
   <>
@@ -39,7 +35,7 @@ const navigate = useNavigate();
                   {index+1}
                 </th>
                 <td className="px-6 py-4">
-                  {obj.name}
+                  {obj.firstname} {obj.lastname}
                 </td>
                 <td className="px-6 py-4">
                     {obj.email}

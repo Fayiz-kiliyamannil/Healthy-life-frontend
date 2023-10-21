@@ -90,7 +90,7 @@ function EditProfile() {
     useEffect(() => {
         profileinfo()
         trainerinfo()
-    }, [])
+    },[])
 
     return (
         <>
@@ -125,7 +125,7 @@ function EditProfile() {
 
                                     {
                                         trainerInfo.map((obj) => (
-                                            <option key={obj._id} value={obj.name}>{obj.name}</option>
+                                            <option key={obj._id} value={obj.firstname} >{obj.firstname} {obj.lastname} ( { obj.specilized } )</option>
                                         ))
                                     }
 

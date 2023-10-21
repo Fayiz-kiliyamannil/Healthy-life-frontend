@@ -11,6 +11,7 @@ import EditProfile from '../Pages/User/EditProfile';
 import Contact from '../Pages/User/Contact';
 import Blog from '../Pages/User/Blog';
 import BlogDetails from '../Pages/User/BlogDetails';
+import TrainerDetails from '../Pages/User/TrainerDetails';
    
 
 function UserRoute() {
@@ -20,7 +21,8 @@ function UserRoute() {
             <Route path='/register' element={<Signup />} />
             <Route path="/otp" element={<Otp />} />
             <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path='/Trainers' element={<ProtectedRoute><Trainers/></ProtectedRoute>} />
+            <Route path='/trainers' element={<ProtectedRoute><Trainers/></ProtectedRoute>} />
+            <Route path='/trainers/:id' element={<ProtectedRoute><TrainerDetails/></ProtectedRoute>}/>
             <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
             <Route path='/profile/edit/:userId'  element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
             <Route path='/contact' element={<ProtectedRoute><Contact/></ProtectedRoute>}/>

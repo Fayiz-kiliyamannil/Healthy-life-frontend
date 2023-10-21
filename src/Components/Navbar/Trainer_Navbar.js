@@ -16,38 +16,38 @@ function classNames(...classes) {
 
 function Trainer_Navbar(props) {
 
-    const [trainer,setTrainer] = useState([]);
+    const [trainer, setTrainer] = useState([]);
     const navigate = useNavigate();
 
 
     const user = {
         name: trainer.firstname,
         email: trainer.email,
-        imageUrl:  trainer.profile ? `http://127.0.0.1:5001/profileImage/${trainer.profile}` : '/empty.jpg'
+        imageUrl: trainer.profile ? `http://127.0.0.1:5001/profileImage/${trainer.profile}` : '/empty.jpg'
     }
 
-    const getTrainer = async(e)=>{
+    const getTrainer = async (e) => {
         try {
-            const response = await axios.post('/trainer/get-trainer-info',{},{
-                headers:{
+            const response = await axios.post('/trainer/get-trainer-info', {}, {
+                headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('trainerToken')
                 }
             })
-            if(response.data.success) setTrainer(response.data.trainer)
+            if (response.data.success) setTrainer(response.data.trainer)
             console.log(response.data.trainer);
         } catch (error) {
             console.error(error);
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getTrainer();
-    },[])
+    }, [])
 
     const navigation = [
         { name: 'Dashboard', to: '/trainer', current: props.dashboard },
         { name: 'Trainees', to: '/trainer/trainees', current: props.trainees },
-          { name: 'Upload', to: `/trainer/upload/${trainer._id}`, current: props.upload },
+        { name: 'Upload', to: `/trainer/upload/${trainer._id}`, current: props.upload },
         { name: 'Media', to: '/media', current: props.media },
     ];
 
@@ -59,11 +59,12 @@ function Trainer_Navbar(props) {
     }
 
     const userNavigation = [
-        { 
+        {
             name: 'Your Profile', onClick: () => {
-                navigate('/trainer/profile');  }
+                navigate('/trainer/profile');
+            }
         },
-        { 
+        {
             name: 'Sign out',
             onClick: logOut
         }
@@ -132,17 +133,15 @@ function Trainer_Navbar(props) {
                                                             {userNavigation.map((item) => (
                                                                 <Menu.Item key={item.name}>
                                                                     {({ active }) => (
-                                                                        <a
-                                                                            onClick={(e) => {
-                                                                                e.preventDefault(); // Prevent the default link behavior
-                                                                                if (item.onClick) {
-                                                                                    item.onClick();
-                                                                                }
-                                                                            }}
-                                                                            className={classNames(
-                                                                                active ? 'bg-gray-100' : '',
-                                                                                'block px-4 py-2 text-sm text-gray-700'
-                                                                            )}
+                                                                        <a onClick={(e) => {
+                                                                            e.preventDefault(); // Prevent the default link behavior
+                                                                            if (item.onClick) {
+                                                                                item.onClick();
+                                                                            }
+                                                                        }} className={classNames(
+                                                                            active ? 'bg-gray-100' : '',
+                                                                            'block px-4 py-2 text-sm text-gray-700'
+                                                                        )}
                                                                         >
                                                                             {item.name}
                                                                         </a>
@@ -207,7 +206,7 @@ function Trainer_Navbar(props) {
                                         <div className="mt-3 space-y-1 px-2">
 
                                             <NavLink to={'/trainer/profile'}>
-                                            <Disclosure.Button as="a" className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white" >Your Profile </Disclosure.Button>
+                                                <Disclosure.Button as="a" className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white" >Your Profile </Disclosure.Button>
                                             </NavLink>
 
 

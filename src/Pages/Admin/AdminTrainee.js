@@ -5,6 +5,7 @@ import axios from 'axios';
 import Tabs from '../../Components/Navbar/Tabs';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import CardTrainerTrainee  from '../../Components/Card/CardTrainerTrainee'
 
 function AdminTrainee() {
     const dispatch = useDispatch()
@@ -17,8 +18,8 @@ function AdminTrainee() {
           const response = await axios.get('/admin/trainees');
             setUserData(response.data.userData);
             setSearch(response.data.userData);
+            console.log(response.data.userData);
             dispatch(hideLoading())
-        
         } catch (error) {
           console.error('Error:', error);
         }
@@ -33,7 +34,8 @@ function AdminTrainee() {
         <>
            <Admin_Navbar/>
            <Tabs trainees={true} all={true} searchValue={search} searchData={setUserData} />
-            <Tables data={userData} />
+            <CardTrainerTrainee admin data={userData} />
+           
     
         </>
     )

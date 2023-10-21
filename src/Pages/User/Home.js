@@ -4,7 +4,7 @@ import Banner from '../../Components/Banner/Banner';
 import axios from 'axios'
 import { LockClosedIcon } from '@heroicons/react/24/outline';
 import Card from '../../Components/Card/card';
-import CardTrainer from '../../Components/Card/CardTrainer';
+import CardTrainer from '../../Components/Card/CardTrainerTrainee';
 import PricingSection from '../../Components/PricingSection/PricingSection';
 import Footer from '../../Components/Footer/Footer';
 function Home() {

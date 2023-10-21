@@ -3,7 +3,7 @@ import Nav_Bar from '../../Components/Navbar/Navbar'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import CardTrainer from '../../Components/Card/CardTrainer';
+import CardTrainer from '../../Components/Card/CardTrainerTrainee';
 function Trainers() {
 
     const dispatch = useDispatch();

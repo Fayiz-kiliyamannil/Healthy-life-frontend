@@ -48,7 +48,7 @@ function TrainerProfile() {
     return (
         <>
             <Trainer_Navbar />
-            <Profile data={trainer} trainer={true} />
+            <Profile data={trainer} edit trainer />
         </>
 
     )
