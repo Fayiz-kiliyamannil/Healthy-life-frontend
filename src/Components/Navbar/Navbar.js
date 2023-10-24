@@ -1,18 +1,11 @@
 import React, { useEffect } from 'react'
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
-import {
-    ArrowPathIcon,
-    Bars3Icon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import { Link, useNavigate, NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { Dialog,  Popover,  } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
+import {  useNavigate, NavLink } from 'react-router-dom'
 import axios from 'axios'
+import { hideLoading, showLoading } from '../../Redux/alertSlice'
+import { useDispatch } from 'react-redux'
 
 
 
@@ -21,7 +14,7 @@ function classNames(...classes) {
 }
 
 function Navbar() {
-    
+    const dispatch = useDispatch()
     const [userId,setuserId] = useState([])
      const navigate = useNavigate();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,19 +28,28 @@ function Navbar() {
               Authorization: 'Bearer ' + localStorage.getItem('token')
             }
           })
+          if(response.data.success){
           setuserId(response.data.data)
+          }else{
+            if(response.data.message === 'user blocked'){
+                logOut();
+            }
+          }
         } catch (error) {
-          console.error(error);
+          console.error(error); 
         }
       }
     
-    
-
-
 
     const logOut = () => {
+        dispatch(showLoading())
         localStorage.removeItem('token');
         navigate('/login')
+        setTimeout(() => {
+           window.location.reload();
+           dispatch(hideLoading())
+        }, 1000);
+           
     }
 
     useEffect(() => {
@@ -56,9 +58,6 @@ function Navbar() {
            setLog(true)
         } else {
             setLog(false)
-            // setuserId(props.userData);
-          
-            
         }
     }, [])
 

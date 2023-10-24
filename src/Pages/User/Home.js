@@ -1,76 +1,82 @@
-import React, { useEffect, useState } from 'react'
-import Navbar from '../../Components/Navbar/Navbar';
-import Banner from '../../Components/Banner/Banner';
-import axios from 'axios'
-import { LockClosedIcon } from '@heroicons/react/24/outline';
-import Card from '../../Components/Card/card';
-import CardTrainer from '../../Components/Card/CardTrainerTrainee';
-import PricingSection from '../../Components/PricingSection/PricingSection';
-import Footer from '../../Components/Footer/Footer';
-function Home() {
+import React, { useEffect, useState } from "react";
+import Banner from "../../Components/Banner/Banner";
+import axios from "axios";
+import Card from "../../Components/Card/card";
+import CardTrainer from "../../Components/Card/CardTrainerTrainee";
+import PricingSection from "../../Components/PricingSection/PricingSection";
+import { useDispatch } from "react-redux";
+import { hideLoading, showLoading } from "../../Redux/alertSlice";
 
-  const [userData, setUserData] = useState([])
-  const [trainers,setTrainers] =  useState([])
+
+function Home() {
+  const dispatch = useDispatch();
+  const [trainers, setTrainers] = useState([]);
   const product = [
-    { id: 1, progress: '1.2 kg', pros: "Average weight loss per week", image: "/istockphoto-1169486621-612x612.jpg" },
-    { id: 2, progress: '80 %', pros: "Decline in lifestyle  diseases", image: "/food.jpg" },
-    { id: 3, progress: '45 %', pros: "Increases in steps taken", image: "/foot.jpg" },
-    { id: 4, progress: '>15 %', pros: "Avg.drop in Hbic levels", image: "yoga.png" },
-  ]
+    {
+      id: 1,
+      progress: "1.2 kg",
+      pros: "Average weight loss per week",
+      image: "/istockphoto-1169486621-612x612.jpg",
+    },
+    {
+      id: 2,
+      progress: "80 %",
+      pros: "Decline in lifestyle  diseases",
+      image: "/food.jpg",
+    },
+    {
+      id: 3,
+      progress: "45 %",
+      pros: "Increases in steps taken",
+      image: "/foot.jpg",
+    },
+    {
+      id: 4,
+      progress: ">15 %",
+      pros: "Avg.drop in Hbic levels",
+      image: "yoga.png",
+    },
+  ];
 
   const getData = async () => {
+    dispatch(showLoading());
     try {
-      const response = await axios.post('/user/get-user-into-by-id', {}, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
-      })
-      setUserData(response.data.data)
+      const response = await axios.get("/user/get-home-info");
+     if(response.data.success){
+      setTrainers(response.data.trainer);
+      dispatch(hideLoading())
+     }
     } catch (error) {
+      dispatch(hideLoading());
       console.error(error);
     }
-  }
-
-  const getTrainer = async () =>{
-    try {
-      
-      const response = await axios.get('/user/get-trainers');
-      setTrainers(response.data.trainer)
-      console.log(response.data.trainers);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  };
 
   useEffect(() => {
     getData();
-    localStorage.getItem('token');
-    getTrainer();
-
-  }, [])
+  }, []);
 
   return (
     <>
-   
-      <Navbar />
       <Banner />
-      <Card product={product} tittle={'How Healthy-Life Works'} />
-      <div className='w-[80%] mx-auto '>
-        <iframe className='w-full aspect-video border border-gray-500 rounded-lg' src="https://www.youtube.com/embed/LGBxJqT_CUI?si=YGBumVu22np829Ep" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+      <Card product={product} tittle={"How Healthy-Life Works"} />
+      <div className="w-[80%] mx-auto ">
+        <iframe
+          className="w-full aspect-video border border-gray-500 rounded-lg"
+          src="https://www.youtube.com/embed/LGBxJqT_CUI?si=YGBumVu22np829Ep"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        ></iframe>
       </div>
-      <CardTrainer data={trainers}  tittle={"Healthy-Life Coaches at your Service"} />
+      <CardTrainer
+         home
+        data={trainers} 
+        tittle={"Healthy-Life Coaches at your Service"}
+      />
       <PricingSection />
-      <Footer />
-
-
-
-
-
-
 
     </>
-  )
+  );
 }
-
 
 export default Home;

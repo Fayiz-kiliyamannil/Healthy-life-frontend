@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Admin_Navbar from "../../Components/Navbar/Admin_Navbar";
 import Profile from "../../Components/Profile/Profile";
-import { Params, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import toast from "react-hot-toast";
+import  adminApi from '../../Utils/admin-axios';
+
 
 function User_Details() {
   const { userId } = useParams();
@@ -15,14 +15,15 @@ function User_Details() {
   const getTraineeDetails = async () => {
     dispatch(showLoading());
     try {
-      const response = await axios.post("/admin/trainee-details", {
-        userId: userId,
+      const response = await adminApi.post("/admin/trainee-details", {
+        id: userId,
       });
       if (response.data.success) {
         setTrainer(response.data.trainee);
         dispatch(hideLoading());
       }
     } catch (error) {
+      dispatch(hideLoading());
       console.error(error);
     }
   };
@@ -30,13 +31,12 @@ function User_Details() {
   const action = async () => {
     dispatch(showLoading());
     try {
-      const response = await axios.post("/admin/trainee-action", {
-        userId: userId,
+      const response = await adminApi.post("/admin/trainee-action", {
+        id: userId,
       });
       if (response.data.success) {
         toast.success(response.data.message)
         setTrainer(response.data.trainee);
-        console.log(response.data.trainee);
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -52,7 +52,6 @@ function User_Details() {
 
   return (
     <div>
-      <Admin_Navbar />
       <Profile admin action={action} data={trainer} />
     </div>
   );

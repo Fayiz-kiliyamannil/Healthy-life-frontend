@@ -5,3 +5,12 @@
 body{
    background-color:rgb(11, 11, 11);
 }
+
+::-webkit-scrollbar {
+   width: 3px;
+   height: 4px;
+ }
+
+ ::-webkit-scrollbar-thumb {
+   background: #494646;
+ }

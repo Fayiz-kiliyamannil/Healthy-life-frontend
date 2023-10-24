@@ -2,11 +2,12 @@
 
    function SpinnerColors() {
   return (
+    
 
-
-      <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-    <div className="border-t-transparent   border-solid animate-spin  rounded-full border-red-400 border-4 w-[40px] h-[40px] "></div>
+<div className="absolute h-screen w-full bg-black  justify-center flex items-center bg-opacity-[60%] ">
+    <div className="border-t-transparent   border-solid animate-spin  rounded-full  border-[#FA2A55]  border-4 w-[40px] h-[40px] "></div>
   </div>
+   
   
   );
 }

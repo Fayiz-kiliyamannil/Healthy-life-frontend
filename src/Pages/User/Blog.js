@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../Components/Navbar/Navbar'
 import BlogCard from '../../Components/Card/BlogCard';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import Login from './Login';
+import client from '../../Utils/axios-utils';
+
 
 function Blog() {
 
@@ -13,12 +13,11 @@ function Blog() {
   
 
   const getBlogInfo = async () => {
+    dispatch(showLoading())
     try {
-      dispatch(showLoading())
-      const response = await axios.get('/user/get-user-blog-info')
+      const response = await  client.get('/user/get-user-blog-info')
       if (response.data.success) {
         setBolg(response.data.blog)
-       
         dispatch(hideLoading())
       }
     } catch (error) {
@@ -34,7 +33,6 @@ function Blog() {
 
   return (
     <>
-      <Navbar />
       <BlogCard  blog={blog} />
     </>
   )

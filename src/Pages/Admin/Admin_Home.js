@@ -1,5 +1,6 @@
 import React from 'react';
-import Admin_Navbar from '../../Components/Navbar/Admin_Navbar';
+
+
 
 function adminHome() {
 
@@ -8,7 +9,7 @@ function adminHome() {
 
   return (
   <>
-   <Admin_Navbar/>
+   <h1 className='text-white' >Admin paage.......</h1>
 
   </>
   )

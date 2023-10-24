@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
-import axios from 'axios';
-import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 
 function Signup(props) {
@@ -24,8 +20,13 @@ function Signup(props) {
 
   const eventHandle = (event) => {
     const { name, value } = event.target;
-    setData({ ...data,[name]: value});
-    props.setData(data)
+    // setData({ ...data,[name]: value});
+    setData((data)=>{
+      const udpdateData = {...data,[name]:value}
+      props.setData(udpdateData);
+      return udpdateData;
+    })
+   
   }
 
 
@@ -69,7 +70,7 @@ function Signup(props) {
               </div>
               <div className="mt-1">
                 <input id="repassword" name="repassword" type="password" value={data.repassword} onChange={eventHandle}  required className="block w-full   rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
-                <div className="text-xs text-right mr-3 ">
+                <div className="text-xs text-right mt-1 mr-3 ">
                   <label className='text-[#C2C2C2]' > Show password </label>
                 
                  <input onClick={()=>hidePassword()} type='checkbox'/>

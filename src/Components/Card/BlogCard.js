@@ -21,7 +21,7 @@ import { NavLink } from "react-router-dom";
               <article key={post._id}  className="flex  max-w-xl transition-transform  t p-3   hover:scale-105   bg-[#15171C]  rounded-lg   flex-col items-start justify-between">
 
                 <div className="   rounded-xl mb-3 ">
-                <NavLink to={`/blog/${post._id}`}>
+                <NavLink to={`${post._id}`}>
                 <img className="rounded-lg " src={`http://127.0.0.1:5001/profileImage/${post.blogImg}`} alt="img" />
                 </NavLink>
                 </div>
@@ -39,7 +39,7 @@ import { NavLink } from "react-router-dom";
                   <img src={`http://127.0.0.1:5001/profileImage/${post.trainerId.profile}`} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
                   <div className="text-sm leading-6">
                     <p className="font-semibold text-gray-900">
-                      <NavLink to={`/blog/${post._id}`}>
+                      <NavLink to={`${post._id}`}>
                         <span className=" inset-0" />
                       <p className="text-gray-400">{post.trainerId.firstname} {post.trainerId.lastname} </p>
                       </NavLink>

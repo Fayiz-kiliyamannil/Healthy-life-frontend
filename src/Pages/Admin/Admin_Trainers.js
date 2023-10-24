@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Admin_Navbar from '../../Components/Navbar/Admin_Navbar'
-import axios from 'axios'
-import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
 import Tab from '../../Components/Navbar/Tabs'
 import CardTrainerTrainee from '../../Components/Card/CardTrainerTrainee'
-
+import adminApi from '../../Utils/admin-axios'
 
 function Admin_Trainers() {
   const dispatch = useDispatch();
@@ -16,46 +13,16 @@ function Admin_Trainers() {
 
 
   const allTainerDetails = async () => {
+    dispatch(showLoading())
     try {
-      dispatch(showLoading())
-      const response = await axios.get('/admin/trainers');
+
+      const response = await adminApi.get('/admin/trainers');
       setAllTrainer(response.data.trainer);
       setSearch(response.data.trainer);
       dispatch(hideLoading())
     } catch (error) {
+      dispatch(hideLoading())
       console.log(error);
-    }
-  }
-
-
-  const block = async (id) => {
-    try {
-      dispatch(showLoading());
-      const response = await axios.post('/admin/trainer-block', { trainerId: id });
-      dispatch(hideLoading());
-      if (response.data.success) {
-        toast.success(response.data.message, { style: { background: '#333', color: '#fff' } })
-        setAllTrainer(response.data.trainer)
-      }
-
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  const unBlock = async (id) => {
-    try {
-      dispatch(showLoading());
-      const response = await axios.post('/admin/trainer-unblock', { trainerId: id });
-      dispatch(hideLoading());
-      if (response.data.success) {
-        toast.success(response.data.message, { style: { background: '#333', color: '#fff' } })
-        setAllTrainer(response.data.trainer)
-
-      }
-
-    } catch (error) {
-      console.error(error);
     }
   }
 
@@ -65,10 +32,8 @@ function Admin_Trainers() {
 
   return (
     <>
-
-      <Admin_Navbar />
       <Tab trainer={true} all={true} searchValue={search} searchData={setAllTrainer} />
-      <CardTrainerTrainee data={allTrainer} block={block} admin unBlock={unBlock} />
+      <CardTrainerTrainee data={allTrainer}  admin />
     </>
 
   )

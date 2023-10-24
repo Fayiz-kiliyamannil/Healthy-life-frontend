@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import { toast } from "react-hot-toast";
+import adminApi from '../../Utils/admin-axios';
 
 function New_Trainerdetails() {
   const { id } = useParams();
@@ -16,7 +17,7 @@ function New_Trainerdetails() {
   const getNewTrainerInfo = async () => {
     dispatch(showLoading());
     try {
-      const response = await axios.post("/admin/get-new-trainer-info", {id:id});
+      const response = await adminApi.post("/admin/get-trainer-info", {id:id});
       if (response.data.success) {
         setNewTrainer(response.data.trainer);
         dispatch(hideLoading());
@@ -30,7 +31,7 @@ function New_Trainerdetails() {
   const deleteNewTrainer = async (id) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post("/admin/delete-trainer", {
+      const response = await adminApi.post("/admin/delete-trainer", {
         trainerId: id,
       });
       dispatch(hideLoading());
@@ -49,7 +50,7 @@ function New_Trainerdetails() {
   const confirm = async (id) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post("/admin/confirm-trainer", {
+      const response = await adminApi.post("/admin/confirm-trainer", {
         trainerId: id,
       });
       dispatch(hideLoading());
@@ -73,7 +74,6 @@ function New_Trainerdetails() {
 
   return (
     <>
-      <Admin_Navbar />
       <Profile data={trainer} delete={deleteNewTrainer} dele confirm={confirm}  />
     </>
   );

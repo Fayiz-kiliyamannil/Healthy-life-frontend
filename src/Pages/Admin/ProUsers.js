@@ -9,7 +9,6 @@ function ProUsers() {
 
   return (
     <>
-    <Admin_Navbar/>
     <Tabs trainees={true} pro={true}/>
     <h1 className='text-white'>pro...! </h1>
 

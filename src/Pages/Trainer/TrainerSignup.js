@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import Signup from '../../Components/Signup/Signup'
 import RegisterForm from '../../Components/Trainer/RegisterForm'
 import axios from 'axios';
-import toast,{Toast} from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';

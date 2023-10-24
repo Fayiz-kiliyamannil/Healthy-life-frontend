@@ -30,7 +30,8 @@ function UploadBlog() {
             });
            if(response.data.success){
             dispatch(hideLoading())
-            toast.success(response.data.message)
+            toast.success(response.data.message);
+             window.location.reload()
            }
             
         } catch (error) {

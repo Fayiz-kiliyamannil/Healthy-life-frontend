@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import Admin_Navbar from '../../Components/Navbar/Admin_Navbar'
 import Profile from '../../Components/Profile/Profile'
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { showLoading, hideLoading } from '../../Redux/alertSlice';
 import toast from 'react-hot-toast';
+import adminApi from '../../Utils/admin-axios'
 
 function TrainersDetails() {
 
     const { id } = useParams();
     const dispatch = useDispatch();
     const [trainer, setTrainer] = useState([]);
-    const navigate = useNavigate()
 
 
     const getTrainerInfo = async () => {
         dispatch(showLoading());
         try {
-            const response = await axios.post("/admin/get-trainer-info", { id: id });
+            const response = await  adminApi.post("/admin/get-trainer-info", { id: id });
             if (response.data.success) {
                 setTrainer(response.data.trainer);
                 dispatch(hideLoading());
@@ -38,7 +36,7 @@ function TrainersDetails() {
     const action = async () => {
         dispatch(showLoading());
         try {
-          const response = await axios.post("/admin/trainer-action", {
+          const response = await adminApi.post("/admin/trainer-action", {
            id:id
           });
           if (response.data.success) {
@@ -57,7 +55,7 @@ function TrainersDetails() {
 
     return (
         <>
-            <Admin_Navbar />
+
             <Profile data={trainer}  action={action}  trainer admin  />
         </>
     )

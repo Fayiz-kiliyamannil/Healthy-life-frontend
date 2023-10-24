@@ -1,26 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import Trainer_Navbar from '../../Components/Navbar/Trainer_Navbar';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import axios from 'axios';
 import CardTrainerTrainee from '../../Components/Card/CardTrainerTrainee';
-
+import trainerApi from '../../Utils/trainer-axio';
 
 
 function TrainerTrainees() {
   const [trainee, setTrainee] = useState([]);
   const dispatch = useDispatch();
 
-
-
   const getTrainee = async (e) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post('/trainer/get-trainee-info',{}, {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('trainerToken'),
-      }
-      })
+      const response = await trainerApi.post('/trainer/get-trainee-info')
       if (response.data.success) {
         dispatch(hideLoading())
         setTrainee((response.data.trainee))
@@ -42,7 +34,6 @@ function TrainerTrainees() {
 
   return (
     <>
-      <Trainer_Navbar />
        <CardTrainerTrainee  data={trainee} tittle={'Trainees'} />
     </>
   )

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import toast from 'react-hot-toast';
+import client from '../../Utils/axios-utils';
 
 
 function EditProfile() {
@@ -17,12 +18,12 @@ function EditProfile() {
         lastname: '',
         profile: null,
         phone: '',
-        trainer: '',
-        about: '',
+       about: '',
         gender: '',
         age: '',
         weight: '',
-        height: ''
+        height: '',
+        trainer:''
     }
 
     )
@@ -34,22 +35,21 @@ function EditProfile() {
     const handleImage = (e) => {
         const file = e.target.files[0];
         setFormData({ ...formData, profile: file })
-        console.log(file);
     }
 
     const submitChange = async (e) => {
         e.preventDefault();
         try {
             dispatch(showLoading())
-            const reponse = await axios.post('/user/user-profile-update-info', formData,{
+            const reponse = await axios.post('/user/user-profile-update-info', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                  },
+                },
             });
             if (reponse.data.success) {
                 dispatch(hideLoading());
                 navigate('/profile')
-            }else{
+            } else {
                 toast.error(reponse.data.message)
             }
         } catch (error) {
@@ -58,11 +58,11 @@ function EditProfile() {
         }
     }
 
-
+   
     const profileinfo = async () => {
         try {
             dispatch(showLoading());
-            const response = await axios.post('/user/get-user-info', { userId: userId });
+            const response = await client.post('/user/get-user-info', { userId: userId })
             if (response.data.success) {
                 setFormData(response.data.user);
                 dispatch(hideLoading())
@@ -76,7 +76,7 @@ function EditProfile() {
     const trainerinfo = async () => {
         try {
             dispatch(showLoading());
-            const response = await axios.get('/user/get-trainer-info');
+            const response = await client.get('/user/get-trainer-info')
             if (response.data.success) {
                 setTrainerInfo(response.data.trainer)
                 dispatch(hideLoading())
@@ -90,7 +90,7 @@ function EditProfile() {
     useEffect(() => {
         profileinfo()
         trainerinfo()
-    },[])
+    }, [])
 
     return (
         <>
@@ -100,16 +100,16 @@ function EditProfile() {
                         <div className="grid gap-6 mb-6 p-5 md:grid-cols-2">
                             <div>
                                 <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-                                <input type="text" id="firstName" name='firstname' value={formData.firstname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
+                                <input type="text" id="firstName" name='firstname' value={formData.firstname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                             </div>
                             <div>
                                 <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
-                                <input type="text" id="last_name" name='lastname' value={formData.lastname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='last name'  />
+                                <input type="text" id="last_name" name='lastname' value={formData.lastname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder='last name' />
                             </div>
                             <div>
 
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">Upload file</label>
-                                <input  name='profile'   onChange={handleImage} className="block w-full  text-sm text-gray-900 border p-1.5 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
+                                <input name='profile' onChange={handleImage} className="block w-full  text-sm text-gray-900 border p-1.5 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
                                 <p className="mt-1 text-sm text-gray-500 dark:text-gray-600" id="file_input_help">SVG, PNG, JPG.</p>
 
                             </div>
@@ -120,16 +120,14 @@ function EditProfile() {
                             <div>
 
                                 <label htmlFor="trainers" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose your Trainer </label>
-                                <select id="trainers" value={formData.trainer} name='trainer' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <select id="trainers"  value={formData.trainer}  name='trainer' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option>Select</option>
 
                                     {
                                         trainerInfo.map((obj) => (
-                                            <option key={obj._id} value={obj.firstname} >{obj.firstname} {obj.lastname} ( { obj.specilized } )</option>
+                                            <option key={obj.firstname} value={obj.firstname} >{obj.firstname} {obj.lastname} ( {obj.specilized} )</option>
                                         ))
                                     }
-
-
                                 </select>
 
                             </div>
@@ -166,13 +164,7 @@ function EditProfile() {
 
                 </div>
             </div>
-
-
-
         </>
-
-
-
     )
 }
 

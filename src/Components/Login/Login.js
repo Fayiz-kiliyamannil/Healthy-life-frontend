@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
-import toast, { Toast } from "react-hot-toast"
-import { useDispatch } from 'react-redux';
-import { hideLoading, showLoading } from '../../Redux/alertSlice';
+
 
 function Signin(props) {
  
@@ -12,8 +8,21 @@ function Signin(props) {
 
   const handleEvent = (event) => {
     const { name, value } = event.target
-    setData({ ...data, [name]: value })
-    props.setData(data);
+    setData((data)=>{
+      const updatedData = {...data,[name]:value}
+      props.setData(updatedData)
+      return updatedData
+    })
+  }
+
+  const hidePassword=()=>{
+
+    const password = document.getElementById('password')
+    if(password.type === 'password'){
+       password.type = 'text'    
+    }else{
+      password.type = 'password'
+    }
   }
 
   return (
@@ -53,7 +62,12 @@ function Signin(props) {
                   </div>
                 </div>
                 <div className="mt-1">
-                  <input id="password" name="password" type="password" value={data.name} onChange={handleEvent} autoComplete="current-password" required className="block w-full rounded-full  py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5 " />
+                  <input id="password" name="password" type="password" value={data.password} onChange={handleEvent} autoComplete="current-password" required className="block w-full rounded-full  py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5 " />
+                  <div className="text-xs text-right mt-1 mr-3 ">
+                  <label  className='text-[#C2C2C2]' > Show password </label>
+                
+                 <input  onClick={()=>hidePassword()} type='checkbox'/>
+                </div>
                 </div>
               </div>
               <p className="text-sm text-[#FA2A55]">

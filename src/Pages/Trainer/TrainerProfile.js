@@ -1,12 +1,10 @@
 import React, { useEffect,useState } from 'react'
-import Trainer_Navbar from '../../Components/Navbar/Trainer_Navbar'
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import Profile from '../../Components/Profile/Profile';
-import { Outlet } from 'react-router-dom';
-
+import trainerApi from '../../Utils/trainer-axio';
 
 function TrainerProfile() {
     const dispatch = useDispatch();
@@ -15,13 +13,8 @@ function TrainerProfile() {
     const getTrainer = async () => {
         try {
             dispatch(showLoading())
-            const response = await axios.post('/trainer/get-trainer-info', {}, {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('trainerToken')
-                }
-            })
+            const response = await trainerApi.post('/trainer/get-trainer-info')
             if (!response.data.success) { 
-                dispatch(hideLoading());      
                 toast.error(response.data.message, {
                     style: {
                         borderRadius: '10px',
@@ -30,9 +23,10 @@ function TrainerProfile() {
                     },
                 }
                 );
+                dispatch(hideLoading());      
             }else{
-                dispatch(hideLoading());
                 setTrainer(response.data.trainer)
+                dispatch(hideLoading());
             }
         } catch (error) {
             dispatch(hideLoading());
@@ -47,8 +41,7 @@ function TrainerProfile() {
 
     return (
         <>
-            <Trainer_Navbar />
-            <Profile data={trainer} edit trainer />
+        <Profile data={trainer} edit trainer />
         </>
 
     )

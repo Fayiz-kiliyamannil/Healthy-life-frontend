@@ -1,10 +1,9 @@
 
-import { redirect } from 'react-router-dom';
 import Signin from '../../Components/Login/Login';
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
-import toast, { Toast } from "react-hot-toast"
+import toast from "react-hot-toast"
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
@@ -15,6 +14,7 @@ function Login() {
   const [userData, setUserData] = useState({ email: '', password: '' });
   const [userStatus, setUserStatus] = useState('');
 
+
   
 
   const eventSubmit = async (event) => {
@@ -24,14 +24,13 @@ function Login() {
       const response = await axios.post('/user/login', userData);
       if (response.data.success) {
         toast.success(response.data.message,{
-          style:{
-             background:'#333',
-             color:'#fff'
-            }
-        })
-        localStorage.setItem('token',response.data.data)
-        dispatch(hideLoading());
-        navigate('/')
+          style:{ background:'#333',color:'#fff'}})
+          localStorage.setItem('token',response.data.data)
+          navigate('/')
+          setTimeout(() => {
+          window.location.reload()
+          dispatch(hideLoading());
+        }, 1000);
       } else {
         dispatch(hideLoading());
         setUserStatus(response.data.message);

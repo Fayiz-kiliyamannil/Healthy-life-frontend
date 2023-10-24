@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import Register from '../../Components/Signup/Signup'
+
+
 
 function Signup() {
 

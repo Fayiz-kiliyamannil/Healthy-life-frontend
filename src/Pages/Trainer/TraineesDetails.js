@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Params, useParams } from "react-router-dom";
-import Trainer_Navbar from "../../Components/Navbar/Trainer_Navbar";
+import { useParams } from "react-router-dom";
 import Profile from "../../Components/Profile/Profile";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
+import trainerApi from "../../Utils/trainer-axio";
 
 function TraineesDetails() {
   const { traineeId } = useParams();
@@ -14,9 +14,9 @@ function TraineesDetails() {
   const getTraineeDetails = async () => {
     dispatch(showLoading());
     try {
-      const response = await axios.post("/trainer/trainee-details", {
+      const response = await trainerApi.post("/trainer/trainee-details",{
         traineeId: traineeId,
-      });
+      })
       if (response.data.success) {
         setTrainee(response.data.trainee);
         console.log(response.data.trainee);
@@ -33,7 +33,6 @@ function TraineesDetails() {
 
   return (
     <>
-      <Trainer_Navbar />
       <Profile  data={trainee} />
     </>
   );

@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
-import axios from 'axios';
-import { hideLoading, showLoading } from '../../Redux/alertSlice';
+
 
 
 function RegisterForm(props) {
@@ -14,6 +11,16 @@ function RegisterForm(props) {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
     props.setData(data)
+  }
+
+  const hidePassword=()=>{
+
+    const password = document.getElementById('password')
+    if(password.type === 'password'){
+       password.type = 'text'    
+    }else{
+      password.type = 'password'
+    }
   }
 
 
@@ -57,6 +64,11 @@ function RegisterForm(props) {
               </div>
               <div className="mt-1">
                 <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}   required className="block w-full   rounded-full py-2 bg-[#898989] border-b  bg-opacity-20 text-[#C2C2C2] pl-5" />
+                <div className="text-xs text-right mt-1 mr-3 ">
+                  <label  className='text-[#C2C2C2]' > Show password </label>
+                
+                 <input  onClick={()=>hidePassword()} type='checkbox'/>
+                </div>
               </div>
               <div className="text-sm text-right mt-1">
                   <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>

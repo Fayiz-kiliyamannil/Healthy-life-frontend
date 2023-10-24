@@ -1,17 +1,8 @@
-
 import { Link } from "react-router-dom";
 
-function NotFound() {
+function NotFoundAd() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
       <main className="grid min-h-full place-items-center  px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <p className="text-base font-semibold text-[#FA2A55]">404 Error</p>
@@ -22,11 +13,6 @@ function NotFound() {
              className="rounded-md bg-[#FA2A55]  px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm  hover:text-black hover:bg-white ">
               Go back 
             </Link>
-            <Link to='contact'
-            className="text-sm p-2 hover:border-b  border-gray-700 font-semibold text-gray-100">
-              Contact support <span aria-hidden="true">&rarr;</span> 
-            </Link>
-           
           </div>
         </div>
       </main>
@@ -34,4 +20,4 @@ function NotFound() {
   )
 }
 
-export default NotFound;
+export default NotFoundAd;

@@ -2,9 +2,8 @@ import { useParams } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
-
+import client from "../../Utils/axios-utils";
 
 
 function BlogDetails() {
@@ -13,17 +12,12 @@ function BlogDetails() {
     const [blog, setBlog] = useState();
 
     const getBlog = async () => {
+        dispatch(showLoading());
         try {
-            dispatch(showLoading());
-            const response = await axios.post('/user/get-blog-details', { blogId: blogId }, {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
-                }
-            });
+            const response = await client.post('/user/get-blog-details',{blogId:blogId})
             if (response.data.success) {
-                setBlog(response.data.blog);
+                setBlog(response.data.blog)
                 dispatch(hideLoading());
-            
             }
 
         } catch (error) {
@@ -43,7 +37,6 @@ function BlogDetails() {
 
     return (
         <>
-            <Navbar />
            
                 <div className="mx-auto mt-20 pt-7 max-w-7xl bg-[#15171C] border-x rounded-2xl border-gray-800 lg:px-8">
                     <div className="mx-auto grid max-w-2xl gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none ">

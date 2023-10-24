@@ -8,11 +8,7 @@ function TrainerUpload() {
 
   return (
  <>
- <Trainer_Navbar upload={true}/>
  <Tab upload={true}  />
- 
-
-
  </>
   )
 }

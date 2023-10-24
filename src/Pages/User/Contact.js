@@ -58,7 +58,6 @@ function Contact() {
 
   return (
     <>
-    <Navbar/>
     <div className="container my-24 mx-auto md:px-6">
       <h1 className='text-center pb-4 text-lg font-bold border-b border-gray-500 text-white' >contact us</h1>
   <section className="mb-32">
