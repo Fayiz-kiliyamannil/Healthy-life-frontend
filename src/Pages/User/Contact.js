@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 function Contact() {
   const navigate = useNavigate()
   const dispatch = useDispatch()   
+  const [error,setError]= useState([]);
   const [form,setForm] = useState({
     name:'',
     email:'',
@@ -25,7 +26,29 @@ function Contact() {
 
   const submitEvent = async (e)=>{
     e.preventDefault()
+    const newError ={}
     try {
+    if(!form.name.trim()){
+      newError.name = 'Name is Required'
+    }
+    const valiedEmail =(email)=>{
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email)
+    }
+
+    if(!form.email.trim()){
+      newError.email = 'Email is Required'
+    } else if(!valiedEmail){
+      newError.email = 'Email is not valid';
+    }
+
+    if(!form.message.trim()){
+      newError.message = 'Message is Required'
+    }else if(form.message.length < 10){
+      newError.message = 'Message contain atleast 10 words'
+    }
+    setError(newError)
+     if(newError.length === 0){
       dispatch(showLoading())
       const response = await axios.post('/user/contact-info',form);
       if(response.data.success){
@@ -41,7 +64,10 @@ function Contact() {
 
       }
 
-     
+    }
+    setTimeout(()=>{
+         setError('')
+    },3000)
     } catch (error) {
       dispatch(hideLoading())
       toast.error('errpr',{
@@ -56,6 +82,12 @@ function Contact() {
     }
   }
 
+
+
+
+
+
+
   return (
     <>
     <div className="container my-24 mx-auto md:px-6">
@@ -68,12 +100,13 @@ function Contact() {
         <div className="flex flex-wrap">
           <div className="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
 
-            <form onSubmit={submitEvent} >
+            <form name='trainerProfile' onSubmit={submitEvent} >
 
               <div className="relative mb-6" data-te-input-wrapper-init>
                 <input type="text"
                   className="peer block min-h-[auto] w-full rounded  bg-transparent border border-gray-800 py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInput90" onChange={handleEvent} value={form.name}  name='name' required />
+                  id="name" onChange={handleEvent} value={form.name}  name='name'  />
+                  <span className='text-xs text-[#FA2A55]' >{error.name}</span>
                 <label
                   className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   htmlFor="exampleInput90">Name
@@ -83,7 +116,8 @@ function Contact() {
               <div className="relative mb-6" data-te-input-wrapper-init>
                 <input type="email"
                   className="peer block min-h-[auto] w-full rounded  border border-gray-800 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInput91" onChange={handleEvent} value={form.email} name='email' placeholder="Email" />
+                  id="email" onChange={handleEvent} value={form.email} name='email' placeholder="Email" />
+                  <span className=' text-xs  text-[#FA2A55]' >{error.email}</span>
                 <label
                   className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   htmlFor="exampleInput91">Email 
@@ -93,7 +127,8 @@ function Contact() {
               <div className="relative mb-6" data-te-input-wrapper-init>
                 <textarea
                   className="peer block min-h-[auto] w-full rounded  border border-gray-800 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleFormControlTextarea1" rows="3" onChange={handleEvent} value={form.message} required  maxLength={50}  name='message' placeholder="Your message"></textarea>
+                  id="message" rows="3" onChange={handleEvent} value={form.message}  maxLength={50}  name='message' placeholder="Your message"></textarea>
+                  <span className='text-xs text-[#FA2A55]' >{error.message}</span>
                 <label htmlFor="exampleFormControlTextarea1"
                   className="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Message</label>
               </div>

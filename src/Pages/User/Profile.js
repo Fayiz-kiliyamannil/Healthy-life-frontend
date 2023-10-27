@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
-
+import client from "../../Utils/axios-utils";
 function Profile() {
   const [userData, setUserData] = useState([]);
   const [image, setImage] = useState(null);
@@ -13,20 +11,11 @@ function Profile() {
   const getProfile = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.post(
-        "/user/profile",
-        {},
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+      const response  = await client.post('/user/profile')
       if (response.data.success) {
         setUserData(response.data.user);
         setImage(response.data.user.profile);
         dispatch(hideLoading());
-        console.log(image, "ddd");
       }
     } catch (error) {
       dispatch(hideLoading());
@@ -40,7 +29,6 @@ function Profile() {
 
   return (
     <>
-      <Navbar />
       <div className="mt-20">
         <div className="container mx-auto py-8">
           <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
@@ -70,7 +58,7 @@ function Profile() {
                 <h2 className="text-xl border-b p-3 border-gray-700  text-white  font-bold  ml- mt-4 mb-4">
                   Basic information
                 </h2>
-                <div class="grid gap-6 p-3  md:grid-cols-2">
+                <div className="grid gap-6 p-3  md:grid-cols-2">
                   <div>
                     <label
                       htmlFor="phone"
@@ -78,51 +66,51 @@ function Profile() {
                     >
                       Phone Number
                     </label>
-                    <p class="bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  dark:">
+                    <p className="bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  dark:">
                       {userData.phone ? userData.phone : "phone"}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="last_name"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Gender
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {userData.gender ? userData.gender : "gender"}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="company"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Height (cm){" "}
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {userData.height ? userData.height : "height"}{" "}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="phone"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Weigh (kg){" "}
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {userData.weight ? userData.weight : "weight"}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="website"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Age
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700   dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700   dark:placeholder-gray-400 dark:text-white  ">
                       {" "}
                       {userData.age ? userData.age : "age"}{" "}
                     </p>
@@ -130,12 +118,12 @@ function Profile() {
                   <div>
                     <label
                       htmlFor="visitors"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       {" "}
                       Name of Trainer{" "}
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {userData.trainer
                         ? userData.trainer.firstname
                         : "trainer"}{" "}

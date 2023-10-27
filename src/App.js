@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import {QueryClientProvider,QueryClient} from 'react-query'
 import { Toaster } from 'react-hot-toast';
 import Spinner from './Components/Spinner/spinner';
 import AdminRoute from './Routes/AdminRoute';
@@ -10,11 +11,13 @@ import TrainerSignup from './Pages/Trainer/TrainerSignup';
 import TrainerLogin from './Pages/Trainer/TrainerLogin/TrainerLogin';
 import AdminLogin from './Pages/Admin/AdminLogin';
 
+const queryClient = new QueryClient()
 function App() {
   const { loading } = useSelector(state => state.alerts);
 
   return (
-    <BrowserRouter>
+   <QueryClientProvider client={queryClient} >
+     <BrowserRouter>
       {loading && (<div className="loader-parent"> <Spinner /> </div>)}
       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
@@ -28,6 +31,7 @@ function App() {
        <Route path="trainer/register" element={<TrainerSignup />} />
       </Routes>
     </BrowserRouter>
+   </QueryClientProvider>
   );
 }
 
