@@ -102,30 +102,43 @@ function Tab(props) {
 
             <NavLink
               to="blog"
-              className={`inline-block p-4 border-b-2 border-transparent ${
-                props.blog
-                  ? "border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                  : "active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              }  `}
-            >
+              className={({ isActive }) => ( isActive ? " inline-block p-4 border-b-2 border-transparent border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500" 
+              : "inline-block p-4 border-b-2 border-transparent active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300") }  >
               Blog
             </NavLink>
 
             <NavLink
               to="video"
-              className={`inline-block p-4 border-b-2 border-transparent ${
-                props.video
-                  ? "border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                  : "active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-              }  `}
-            >
+              className={({ isActive }) => ( isActive ? " inline-block p-4 border-b-2 border-transparent border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500" 
+              : "inline-block p-4 border-b-2 border-transparent active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300") }  >
               Video
             </NavLink>
           </nav>
-        ) : (
-          ""
+        ) :   props.media ? (  // ------------------Trainer Media Tab-----------------------
+          <nav className="flex flex-wrap ">
+            <h6 className="inline-block p-4 text-md border-transparent text-white">
+             Media
+            </h6>
+
+            <NavLink
+              to="blog"
+              className={({ isActive }) => ( isActive ? " inline-block p-4 border-b-2 border-transparent border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500" 
+              : "inline-block p-4 border-b-2 border-transparent active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300") }  >
+              Blog
+            </NavLink>
+
+            <NavLink
+              to="video"
+              className={({ isActive }) => ( isActive ? " inline-block p-4 border-b-2 border-transparent border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500" 
+              : "inline-block p-4 border-b-2 border-transparent active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300") }  >
+              Video
+            </NavLink>
+          </nav>
+        ) :
+         (
+          " "
         )}
-        {!props.upload ? (
+        {!props.upload && !props.media ? (
           <div className="flex mr-6">
             <input 
               onChange={handleSearch}

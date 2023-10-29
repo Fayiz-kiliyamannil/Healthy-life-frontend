@@ -12,6 +12,10 @@ import TraineesDetails from '../Pages/Trainer/TraineesDetails';
 import TrainerNavbar from '../Components/Navbar/Trainer_Navbar';
 import Footer from '../Components/Footer/Footer';
 import NotFoundAd from '../Components/NotFound/NotfoundAd';
+import TrainerMedia from '../Pages/Trainer/TrainerMedia';
+import TrainerBlog from '../Pages/Trainer/TrainerBlog';
+import TrainerVideo from '../Pages/Trainer/TrainerVideo';
+import EditBlog from '../Pages/Trainer/EditBlog';
 
 
 function TrainerRoute() {
@@ -29,7 +33,13 @@ function TrainerRoute() {
                     <Route path='blog' element={<UploadBlog />} />
                     <Route path='video' element={<UploadVideo />} />
                 </Route>
-                <Route path='/*' element={<NotFoundAd/>}/>
+                <Route path='/media/:id' element={<TrainerProtectedRoute><TrainerMedia /></TrainerProtectedRoute>}>
+                    <Route index element={<TrainerBlog />} />
+                    <Route path='blog' element={<TrainerBlog />} />
+                    <Route path='video' element={<TrainerVideo />} />
+                </Route>
+                 <Route path='/blog/edit/:blogId' element={<EditBlog/>}/>
+                <Route path='/*' element={<NotFoundAd />} />
             </Routes>
             <Footer />
 

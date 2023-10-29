@@ -7,7 +7,7 @@ import NotFound from '../../Components/NotFound/NotFound';
 
 
 const fetchBlog = async(page)=>{
-  return await client.get(`/user/get-user-blog-info?_limit=3&_page=${page}`)
+  return await client.get(`/user/get-user-blog-info?_limit=6&_page=${page}`)
 }
 
 function Blog() {
@@ -16,7 +16,7 @@ function Blog() {
   keepPreviousData:true
   });
 
-if(isLoading || isFetching){
+if(isLoading || isFetching  ){
   return <SpinnerColors/>
 }
 
