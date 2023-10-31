@@ -8,7 +8,7 @@ import trainerApi from '../../Utils/trainer-axio';
 function TrainerProfileEdit() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [error, setError] = useState([])
+    const [error, setError] = useState([]);
     const [formData, setFormData] = useState({ firstname: '', lastname: '', profile: null, specilized: '', phone: '', trainer: '', about: '', gender: '', age: '', weight: '', height: '' });
     const { Id } = useParams();
 
@@ -16,7 +16,6 @@ function TrainerProfileEdit() {
         e.preventDefault();
         const newError = {};
         try {
-
             if (!formData.firstname.trim()) {
                 newError.firstname = 'Name Required'
             }

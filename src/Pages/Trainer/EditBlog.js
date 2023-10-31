@@ -47,7 +47,12 @@ function EditBlog() {
           if (Object.keys(newError).length === 0) {
                 console.log(blog);
             dispatch(showLoading());
-            const response = await trainerApi.post( "/trainer/trainer-Edit-blog",blog,);
+            const response = await trainerApi.post( "/trainer/trainer-Edit-blog",blog,{
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                
+              },
+            });
             if (response.data.success) {
               dispatch(hideLoading());
               toast.success(response.data.message);

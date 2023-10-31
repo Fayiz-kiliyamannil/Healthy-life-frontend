@@ -1,7 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Profile(props) {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const openForm = () => {
+    setIsFormOpen(true);
+  };
+
+  const closeForm = () => {
+    setIsFormOpen(false);
+  };
+
+
+
+  const handleDietPlan = (e) => {
+    const { name, value } = e.target
+    props.setData({ ...props.data, [name]: value});
+  }
+
+
   return (
     <>
       <div className="mt-20">
@@ -30,8 +49,94 @@ function Profile(props) {
               </div>
             </div>
             <div className="col-span-4  sm:col-span-9">
-              <div className="bg-[#202123] h-200px shadow   rounded-lg p-6">
-                <h2 className="text-xl font-bold text-white  mb-4">About Me</h2>
+              <div className="bg-[#202123] h-200px shadow  rounded-lg p-6">
+                <div className="text-lg font-medium  text-white mb-4 flex items-center justify-between">
+                  About Me
+                  {
+                    props.trainer ? (
+                      <div className="relative">
+                        <button
+                          className=" border-b  text-gray-400 hover:text-gray-100 mr-2 "
+                          onClick={openForm}
+                        >
+                          Diet plan
+                        </button>
+
+                        {isFormOpen && (
+                          <div className="fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-black bg-opacity-30">
+                            <div className="bg-[#121111]   px- p-4 rounded-lg">
+                              <button
+                                className="text-gray-500     hover:text-gray-700"
+                                onClick={closeForm}
+                              >
+                                <svg className="w-5  h-5 text-gray-800 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                              </button>
+                              <h2 className="text-2xl text-center mb-6  font-semibold text-gray-400 ">NutriFit Tracker</h2>
+                              <form  onSubmit={props.submitDietPlan} >
+
+                                <div className="grid   sm:grid-cols-3   mx-6  md:gap-6">
+                                  <div className="relative z-0 w-full mb-6  group">
+                                    <input type="text" name="targetWeight"  value={props.data.targetWeight}   onChange={handleDietPlan} id="targetWeight" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer" />
+                                    <label htmlFor="targetWeight" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Target Weight</label>
+                                  </div>
+                                  <div className="relative z-0 w-full mb-6   group">
+                                  <input type="text" name="dailyCaloriegoal" value={props.data.dailyCaloriegoal}  onChange={handleDietPlan} id="dailyCaloriegoal" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer" />
+                                    <label htmlFor="dailyCaloriegoal" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Daily Calorie Goal</label>
+                                  </div>
+                                  <div className="relative z-0 w-full mb-6  group">
+                                    <input type="text" name="proteinIntake"  value={props.data.proteinIntake}  onChange={handleDietPlan}  id="proteinIntake" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="proteinIntake" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Protein Intake</label>
+                                  </div>
+                                </div>
+
+                                <div className="grid  sm:grid-cols-3 mx-6  md:gap-6">
+                                  <div className="relative z-0 w-full mb-6  group">
+                                    <input type="text" name="waterIntake" id="waterIntake" value={props.data.waterIntake}  onChange={handleDietPlan} className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="waterIntake" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Water Intake</label>
+                                  </div>
+                                  <div className="relative z-0 w-full mb-6   group">
+                                  <input type="text" name="carbohydrateAndTatintake" value={props.data.carbohydrateAndTatintake}  onChange={handleDietPlan} id="carbohydrateAndTatintake" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="carbohydrateAndTatintake" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Carbo & Fat Intake</label>
+                                  </div>
+                                  <div className="relative z-0 w-full mb-6   group">
+                                    <input type="text" name="mealPlanCreation" value={props.data.mealPlanCreation}  onChange={handleDietPlan} id="mealPlanCreation" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="mealPlanCreation" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Meal Plan Creation</label>
+                                  </div>
+                                </div>
+
+                                <div className="grid sm:grid-cols-3 mx-6   md:gap-6">
+                                  <div className="relative z-0 w-full mb-6  group">
+                                    <input type="text" name="dietaryGoals" id="dietaryGoals" value={props.data.dietaryGoals}  onChange={handleDietPlan} className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="dietaryGoals" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Dietary Goals</label>
+                                  </div>
+                                  <div className="relative z-0 w-full mb-6  group">
+                                  <input type="text" name="nutritionalAnalysis" value={props.data.nutritionalAnalysis}  onChange={handleDietPlan} id="nutritionalAnalysis" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="nutritionalAnalysis" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Nutritional Analysis</label>
+                                  </div>
+                                  <div className="relative z-0 w-full mb-6  group">
+                                    <input type="text" name="supplementTracking"  value={props.data.supplementTracking} onChange={handleDietPlan} id="supplementTracking" className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer"  />
+                                    <label htmlFor="supplementTracking" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Supplement Tracking</label>
+                                  </div>
+                                </div>
+                                <div className="text-center  ">
+                                  <button
+                                    type="submit"
+                                    className="bg-blue-500 hover:bg-blue-700 text-white w- font-semibold py-2 px-4 rounded-full"
+                                  >
+                                    Submit
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    ) : ''
+                  }
+
+                </div>
                 {props.data.about ? (
                   <p className="text-gray-400 text-sm  ">
                     {" "}
@@ -45,7 +150,7 @@ function Profile(props) {
                 <h2 className="text-xl border-b p-3 border-gray-700  text-white  font-bold  ml- mt-4 mb-4">
                   Basic information
                 </h2>
-                <div class="grid gap-6 p-3  md:grid-cols-2">
+                <div className="grid gap-6 p-3   md:grid-cols-2">
                   <div>
                     <label
                       htmlFor="phone"
@@ -53,51 +158,51 @@ function Profile(props) {
                     >
                       Phone Number
                     </label>
-                    <p class="bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  dark:">
+                    <p className="bg-gray-50  text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  dark:">
                       {props.data.phone ? props.data.phone : "phone"}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="last_name"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Gender
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {props.data.gender ? props.data.gender : "gender"}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="company"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Height (cm){" "}
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {props.data.height ? props.data.height : "height"}{" "}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="phone"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Weigh (kg){" "}
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                       {props.data.weight ? props.data.weight : "weight"}
                     </p>
                   </div>
                   <div>
                     <label
                       htmlFor="website"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Age
                     </label>
-                    <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700   dark:placeholder-gray-400 dark:text-white  ">
+                    <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700   dark:placeholder-gray-400 dark:text-white  ">
                       {" "}
                       {props.data.age ? props.data.age : "age"}{" "}
                     </p>
@@ -106,12 +211,12 @@ function Profile(props) {
                     <div>
                       <label
                         htmlFor="visitors"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         {" "}
                         Trainer Specialization{" "}
                       </label>
-                      <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                      <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                         {props.data.specilized
                           ? props.data.specilized
                           : "eg : yoga instructor "}
@@ -121,12 +226,12 @@ function Profile(props) {
                     <div>
                       <label
                         htmlFor="visitors"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         {" "}
                         Name of Trainer{" "}
                       </label>
-                      <p class="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
+                      <p className="bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 dark:bg-gray-700  dark:placeholder-gray-400 dark:text-white  ">
                         {props.data.trainer
                           ? props.data.trainer.firstname
                           : "trainer"}{" "}
@@ -172,21 +277,21 @@ function Profile(props) {
                       )
                     ) : props.confirm ? (
                       <a
-                      onClick={() => props.confirm(props.data._id)}
-                      className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                      Confirm
-                  </a>
-                    ): ''
+                        onClick={() => props.confirm(props.data._id)}
+                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      >
+                        Confirm
+                      </a>
+                    ) : ''
                     }
-                   {
-                    props.delete ? (
-                      <a onClick={()=>props.delete(props.data._id)} className="inline-flex ml-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#FA2A55] rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  dark:hover:bg-red-700 dark:focus:ring-red-800">
-                      Delete
+                    {
+                      props.delete ? (
+                        <a onClick={() => props.delete(props.data._id)} className="inline-flex ml-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#FA2A55] rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  dark:hover:bg-red-700 dark:focus:ring-red-800">
+                          Delete
 
-                  </a>
-                    ):''
-                   }
+                        </a>
+                      ) : ''
+                    }
                   </div>
                 </div>
               </div>
