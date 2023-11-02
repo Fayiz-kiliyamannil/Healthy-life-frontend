@@ -2,7 +2,7 @@ import React from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 
 const user = {
@@ -20,30 +20,30 @@ function classNames(...classes) {
 }
 
 function Admin_Navbar(props) {
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const navigation = [
-    { name: 'Dashboard', href: '/admin/', current: props.home },
-    { name: 'Trainees', href: '/admin/trainees', current: props.trainee },
-    { name: 'Trainers', href: '/admin/trainers', current: props.trainer },
-    { name: 'Media', href: '/media', current: props.media },
+    { name: 'Dashboard', to: 'home', },
+    { name: 'Trainees', to: 'trainees' },
+    { name: 'Trainers', to: 'trainers' },
+    { name: 'Media', to: 'media' },
   ];
 
   const logOut = () => {
-   localStorage.removeItem('adminToken');
-   console.log("log");
-   navigate('/admin/login')
-   
+    localStorage.removeItem('adminToken');
+    console.log("log");
+    navigate('/admin/login')
+
   }
 
   const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
-    { name: 'Sign out', href:'', onClick:logOut },
+    { name: 'Sign out', href: '', onClick: logOut },
   ]
 
 
-  
+
 
 
 
@@ -69,19 +69,17 @@ function Admin_Navbar(props) {
                       <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                           {navigation.map((item) => (
-                            <a
+                            <NavLink
                               key={item.name}
-                              href={item.href}
-                              className={classNames(
-                                item.current
-                                  ? 'bg-gray-900 text-white'
-                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'rounded-md px-3 py-2 text-sm font-medium'
-                              )}
-                              aria-current={item.current ? 'page' : undefined}
+                              to={item.to}
+                              className={({ isActive }) =>
+                                isActive
+                                  ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium'
+                                  : 'text-gray-300 hover:bg-gray-700 hover-text-white rounded-md px-3 py-2 text-sm font-medium'
+                              }
                             >
                               {item.name}
-                            </a>
+                            </NavLink>
                           ))}
                         </div>
                       </div>
@@ -152,18 +150,19 @@ function Admin_Navbar(props) {
                 <Disclosure.Panel className="md:hidden">
                   <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     {navigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'block rounded-md px-3 py-2 text-base font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </Disclosure.Button>
+                      <Link to={item.to} >
+                        <Disclosure.Button
+                          as="a"
+                          className={classNames(
+                            'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block rounded-md px-3 py-2 text-base font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                      </Link>
+
                     ))}
                   </div>
                   <div className="border-t border-gray-700 pb-3 pt-4">
@@ -185,18 +184,16 @@ function Admin_Navbar(props) {
                       </button>
                     </div>
                     <div className="mt-3 space-y-1 px-2">
-                      {userNavigation.map((item) => (
+                      {navigation.map((item) => (
                         <Disclosure.Button
                           key={item.name}
                           as="a"
                           href={item.href}
-                          onClick={(e) => {
-                            e.preventDefault(); // Prevent the default link behavior
-                            if (item.onClick) {
-                              item.onClick();
-                            }
-                          }}
-                          className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block rounded-md px-3 py-2 text-base font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
                         </Disclosure.Button>
@@ -220,4 +217,4 @@ function Admin_Navbar(props) {
   )
 }
 
-export default Admin_Navbar ;
+export default Admin_Navbar;

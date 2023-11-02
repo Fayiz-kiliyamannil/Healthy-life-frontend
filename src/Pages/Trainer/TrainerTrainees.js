@@ -39,4 +39,4 @@ function TrainerTrainees() {
   )
 }
 
-export default TrainerTrainees
+export default TrainerTrainees;

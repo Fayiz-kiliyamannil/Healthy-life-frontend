@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Dialog,  Popover,  } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
-import {  useNavigate, NavLink } from 'react-router-dom'
+import {  useNavigate, NavLink, Link } from 'react-router-dom'
 import axios from 'axios'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
 import { useDispatch } from 'react-redux'
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux'
 
 
 function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+     return classes.filter(Boolean).join(' ')
 }
 
 function Navbar() {
@@ -80,26 +80,26 @@ function Navbar() {
                     </button>
                 </div>
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    <NavLink to='/' className="text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" >
+                    <NavLink to='/' className={({isActive}) => isActive ? "text-[#FA2A55]" :"text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" } >
                         Home
                     </NavLink>
-                    <NavLink to='/trainers' className="text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" >
+                    <NavLink to='/trainers' className={({isActive}) => isActive ? "text-[#FA2A55]" :"text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" } >
                         Trainers
                     </NavLink>
-                    <NavLink to='/classes' className="text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" >
+                    <NavLink to='/classes' className={({isActive}) => isActive ? "text-[#FA2A55]" :"text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" } >
                         Classes
                     </NavLink>
-                    <NavLink to='/blog' className="text-sm font-semibold leading-6  text-[#ffffff] hover:text-[#FA2A55] "  >
+                    <NavLink to='/blog' className={({isActive}) => isActive ? "text-[#FA2A55]" :"text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" } >
                         Blog
                     </NavLink>
-                    <NavLink to='/contact' className="text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" >
+                    <NavLink to='/contact' className={({isActive}) => isActive ? "text-[#FA2A55]" :"text-sm font-semibold leading-6 text-[#ffffff] hover:text-[#FA2A55]" } >
                         Contact
                     </NavLink>
                 </Popover.Group>
 
 
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    {(log) ? <a onClick={logOut} className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">logout</a>
+                    {(log) ? <Link onClick={logOut} className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">logout</Link>
                         : <a href='/login' className="bg-[#FA2A55]  py-1  px-3 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">login</a>}
                 </div>
                 <div className='text-white top-0 hidden lg:flex ml-6 '>
@@ -115,17 +115,16 @@ function Navbar() {
                 <div className="fixed inset-0 z-10" />
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-black bg-opacity-80 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <img
                                 className="h-12 w-auto"
                                 src="/logo.png"
                                 alt=""
                             />
-                        </a>
+                        
                         <button
                             type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                            className="-m-2.5 rounded-md p-2.5 text-gray-100"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             <span className="sr-only">Close menu</span>
@@ -136,26 +135,26 @@ function Navbar() {
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
 
-                                <NavLink to='/' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]" >
+                                <NavLink to='/' onClick={() => setMobileMenuOpen(false)} className={({isActive})=> isActive ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#FA2A55]" :"-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"} >
                                     Home
                                 </NavLink>
-                                <NavLink to='/trainers' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]" >
+                                <NavLink to='/trainers' onClick={() => setMobileMenuOpen(false)} className={({isActive})=> isActive ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#FA2A55]" :"-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"} >
                                     Trianers
                                 </NavLink>
 
-                                <NavLink to='/classes' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]" >
+                                <NavLink to='/classes' onClick={() => setMobileMenuOpen(false)} className={({isActive})=> isActive ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#FA2A55]" :"-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"} >
                                     Classes
                                 </NavLink>
 
-                                <NavLink to='/blog' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]" >
+                                <NavLink to='/blog' onClick={() => setMobileMenuOpen(false)} className={({isActive})=> isActive ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#FA2A55]" :"-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"} >
                                     Blog
                                 </NavLink>
 
-                                <NavLink to='/contact' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]" >
+                                <NavLink to='/contact' onClick={() => setMobileMenuOpen(false)} className={({isActive})=> isActive ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#FA2A55]" :"-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"} >
                                     Contact
                                 </NavLink>
 
-                                <NavLink to='/profile' className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]" >
+                                <NavLink to='/profile' onClick={() => setMobileMenuOpen(false)} className={({isActive})=> isActive ? "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#FA2A55]" :"-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ffff] hover:text-[#FA2A55]"} >
                                     Profile
                                 </NavLink>
                             </div>
@@ -165,17 +164,17 @@ function Navbar() {
                             <div className="py-6">
 
                                 {
-                                    log ? <a
+                                    log ? <Link
                                         onClick={logOut}
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]"
                                     >
                                         Logout
-                                    </a> : <a
+                                    </Link> : <Link
                                         href="/login"
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]"
                                     >
                                         Log in
-                                    </a>
+                                    </Link>
                                 }
 
 
