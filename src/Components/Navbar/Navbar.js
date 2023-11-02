@@ -105,7 +105,7 @@ function Navbar() {
                 <div className='text-white top-0 hidden lg:flex ml-6 '>
                     <NavLink to={`/profile`} >
                         {
-                            userId.profile  ?   <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src={`http://127.0.0.1:5001/profileImage/${userId.profile}`} alt="Rounded avatar" />
+                            userId.profile  ?   <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src={`http://127.0.0.1:5001/image/${userId.profile}`} alt="Rounded avatar" />
                             :    <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src="/empty.jpg" alt="Rounded avatar" />
                         }
                     </NavLink>

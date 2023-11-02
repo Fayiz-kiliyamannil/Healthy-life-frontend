@@ -23,7 +23,7 @@ function Trainer_Navbar(props) {
     const user = {
         name: trainer.firstname,
         email: trainer.email,
-        imageUrl: trainer.profile ? `http://127.0.0.1:5001/profileImage/${trainer.profile}` : '/empty.jpg'
+        imageUrl: trainer.profile ? `http://127.0.0.1:5001/image/${trainer.profile}` : '/empty.jpg'
     }
 
     const getTrainer = async (e) => {

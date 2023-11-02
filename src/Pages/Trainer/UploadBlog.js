@@ -12,12 +12,14 @@ function UploadBlog() {
     header: "",
     note: "",
   });
+
   const [error, setError] = useState([]);
   const dispatch = useDispatch();
   const handleEvent = (e) => {
     const { name, value } = e.target;
     setBlog({ ...blog, [name]: value, id: id });
   };
+
   const handleImage = (e) => {
     const file = e.target.files[0];
     setBlog({ ...blog, blogImg: file });
@@ -35,7 +37,6 @@ function UploadBlog() {
       }
       setError(newError);
       if (Object.keys(newError).length === 0) {
-        console.log(blog);
         dispatch(showLoading());
         const response = await axios.post(
           "/trainer/trainer-upload-blog",

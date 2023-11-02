@@ -1,26 +1,16 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import trainerApi from '../../Utils/trainer-axio'
-
 
 
 
 
 function BlogCard(props) {
-
-
-
-  const [isOpen, setIsOpen] = useState({});
+ const [isOpen, setIsOpen] = useState({});
 
   const toggleMenu = (id) => {
       setIsOpen((prev)=> ({
         [id]:!prev[id]}))
   }
-
-
-
-
-
   return (
     <div className=" py-20   sm:py-20">
       <div className="mx-auto  max-w-7xl px-6 lg:px-8">
@@ -40,7 +30,7 @@ function BlogCard(props) {
 
               <div className="   rounded-xl mb-3 ">
                 <NavLink to={`${post._id}`}>
-                  <img className="rounded-lg " src={`http://127.0.0.1:5001/profileImage/${post.blogImg}`} alt="img" />
+                  <img className="rounded-lg " src={`http://127.0.0.1:5001/image/${post.blogImg}`} alt="img" />
                 </NavLink>
               </div>
 

@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import TrainerHome from '../Pages/Trainer/TrainerHome'
@@ -16,6 +17,7 @@ import TrainerMedia from '../Pages/Trainer/TrainerMedia';
 import TrainerBlog from '../Pages/Trainer/TrainerBlog';
 import TrainerVideo from '../Pages/Trainer/TrainerVideo';
 import EditBlog from '../Pages/Trainer/EditBlog';
+import EditVideo from '../Pages/Trainer/EditVideo';
 
 
 function TrainerRoute() {
@@ -39,7 +41,9 @@ function TrainerRoute() {
                     <Route path='video' element={<TrainerVideo />} />
                 </Route>
                  <Route path='/blog/edit/:blogId' element={<EditBlog/>}/>
+                 <Route path='/video/edit/:videoId' element={<EditVideo/>}/>
                 <Route path='/*' element={<NotFoundAd />} />
+                
             </Routes>
             <Footer />
 

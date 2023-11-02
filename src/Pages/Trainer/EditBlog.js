@@ -70,7 +70,6 @@ function EditBlog() {
       };
 //--------------------------------------------------------------------------
 
-
     const fetchBlogDetails = async () => {
         dispatch(showLoading())
         try {
