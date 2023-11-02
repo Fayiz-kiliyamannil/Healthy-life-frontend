@@ -34,7 +34,7 @@ function TrainerBlog() {
     const fetchTrainerBlog = async ()=>{
         dispatch(showLoading())
         try {
-            const response = await trainerApi.post('/trainer/trainer-blog',{trainerId:id})
+            const response = await trainerApi.post('/trainer/trainer-blog')
             if(response.data.success){
                 setBlog(response.data.trainerBlog)
                 dispatch(hideLoading());

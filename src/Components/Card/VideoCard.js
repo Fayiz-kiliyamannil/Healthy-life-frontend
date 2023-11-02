@@ -10,6 +10,10 @@ function VideoCard(props) {
     }))
   }
 
+  if(props.data.length === 0 ){
+    return  <h1 className='text-white' > emty ................</h1>
+  }
+
 
   return (
     <>
@@ -18,22 +22,22 @@ function VideoCard(props) {
           <div className="mx-auto  grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10  sm:max-w-none lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
             {props.data.map((post) => (
               <article key={post._id} className="flex  max-w-xl transition-transform flex-col items-start justify-between">
-              <Link to={`/trainer/media/video${post._id}`} >
+              <Link to={`${post._id}`} >
               <video className='rounded-lg' muted  onMouseOut={(e)=>e.target.pause()} 
                 onMouseOver={(e)=>e.target.play()} >
                   <source src={`http://127.0.0.1:5001/video/${post.video}`} />
                 </video>
               </Link>
                 <div className="group  ">
-                  <h3 className="mt-3 line-clamp-1 text-lg font-semibold leading-6 text-gray-200 ">
-                    <NavLink to={`/trainer/media/video${post._id}`}>
+                  <h3 className=" mt-2 line-clamp-2  font-semibold leading-6 text-gray-300 ">
+                    <NavLink to={`${post._id}`}>
                       <span className=" inset-0" />
                       {post.header}
                     </NavLink>
                   </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-6  text-gray-400">{post.note}</p>
+                  <p className=" line-clamp-1 text-xs leading-6  text-gray-400">{post.note}</p>
                 </div>
-                    <div className="flex  items-center gap-x-2 text-xs">
+                    <div className="flex mt-1  items-center gap-x-2 text-xs">
                       <time className="text-gray-500">
                         {post.uploadDate}
                       </time>

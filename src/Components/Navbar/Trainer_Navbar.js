@@ -47,8 +47,8 @@ function Trainer_Navbar(props) {
     const navigation = [
         { name: 'Dashboard', to: '/trainer', current: props.dashboard },
         { name: 'Trainees', to: '/trainer/trainees', current: props.trainees },
-        { name: 'Upload', to: `/trainer/upload/${trainer._id}`, current: props.upload },
-        { name: 'Media', to: `/trainer/media/${trainer._id}`, current: props.media },
+        { name: 'Upload', to: `upload/blog`, current: props.upload },
+        { name: 'Media', to: `media/blog`, current: props.media },
     ];
 
     const logOut = () => {

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import VideoUpload from '../../Components/UploadFile/VideoUpload';
-import axios from 'axios';
 import toast from 'react-hot-toast';
+import trainerApi from '../../Utils/trainer-axio';
 
 function UploadVideo() {
-  const { id } = useParams();
   const navigate = useNavigate();
   const [error,setError] = useState([])
   const [videoUpload, setVideoUpload] = useState({
@@ -17,7 +16,7 @@ function UploadVideo() {
   
   const handleChange = (e) => { // to  handle header and note in to upload video
     const { name, value } = e.target;
-    setVideoUpload({ ...videoUpload, [name]: value, id: id })
+    setVideoUpload({ ...videoUpload, [name]: value})
   }
 
   const handleVideo = (e) => {  // to handle  file here 
@@ -42,7 +41,7 @@ function UploadVideo() {
      }
 
       if(Object.keys(newError).length === 0){
-      const response = await axios.post('/trainer/trainer-upload-video',
+      const response = await trainerApi.post('/trainer/trainer-upload-video',
         videoUpload,
         {
         headers: {
@@ -58,7 +57,7 @@ function UploadVideo() {
           },
         })
       }
-        navigate(`/trainer/media/${id}/video`)
+        navigate(`/trainer/media/video`)
     }
     setError(newError)
     setTimeout(() => {

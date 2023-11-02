@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import BlogUpload from "../../Components/UploadFile/BlogUpload";
+import trainerApi from "../../Utils/trainer-axio";
 
 function UploadBlog() {
-  const { id } = useParams();
   const [blog, setBlog] = useState({
     header: "",
     note: "",
   });
-
+  const navigate = useNavigate()
   const [error, setError] = useState([]);
   const dispatch = useDispatch();
   const handleEvent = (e) => {
     const { name, value } = e.target;
-    setBlog({ ...blog, [name]: value, id: id });
+    setBlog({ ...blog, [name]: value,});
   };
 
   const handleImage = (e) => {
     const file = e.target.files[0];
-    setBlog({ ...blog, blogImg: file });
+    setBlog({ ...blog, blogImg: file});
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ function UploadBlog() {
       setError(newError);
       if (Object.keys(newError).length === 0) {
         dispatch(showLoading());
-        const response = await axios.post(
+        const response = await trainerApi.post(
           "/trainer/trainer-upload-blog",
           blog,
           {
@@ -50,7 +50,7 @@ function UploadBlog() {
         if (response.data.success) {
           dispatch(hideLoading());
           toast.success(response.data.message);
-          window.location.reload();
+         navigate('/trainer/media/blog')
         }
       }
       setTimeout(() => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes,Route, Router } from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
 import Login from '../Pages/User/Login';
 import Signup from '../Pages/User/Signup'
 import Otp from '../Pages/User/Otp'
@@ -15,6 +15,8 @@ import TrainerDetails from '../Pages/User/TrainerDetails';
 import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/Footer';
 import NotFound from '../Components/NotFound/NotFound'
+import Classes from '../Pages/User/Classes';
+import VideoDetails from '../Pages/User/VideoDetails';
 
 function UserRoute() {
     return (
@@ -32,6 +34,8 @@ function UserRoute() {
             <Route path='/contact' element={<Contact/>}/>
             <Route path='/blog' element={<ProtectedRoute><Blog/></ProtectedRoute>}/>
             <Route path='/blog/:blogId'  element={<ProtectedRoute><BlogDetails/></ProtectedRoute>}/>
+            <Route path='/classes' element={<ProtectedRoute> <Classes/> </ProtectedRoute>}/>
+            <Route path='/classes/:videoId' element={<ProtectedRoute><VideoDetails/></ProtectedRoute>}/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
         <Footer/>

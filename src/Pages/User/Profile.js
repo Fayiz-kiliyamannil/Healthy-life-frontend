@@ -45,7 +45,7 @@ function Profile() {
               <div className="bg-[#202123] shadow rounded-lg p-6">
                 <div className="flex flex-col items-center">
                   <img
-                    src={`http://127.0.0.1:5001/profileImage/${image}`}
+                    src={`http://127.0.0.1:5001/image/${image}`}
                     className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                     alt="User Avatar"
                   />

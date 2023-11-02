@@ -18,6 +18,8 @@ import TrainerBlog from '../Pages/Trainer/TrainerBlog';
 import TrainerVideo from '../Pages/Trainer/TrainerVideo';
 import EditBlog from '../Pages/Trainer/EditBlog';
 import EditVideo from '../Pages/Trainer/EditVideo';
+import TrainerBlogDetails from '../Pages/Trainer/TrainerBlogDetails';
+import TrainerVideoDetails from '../Pages/Trainer/TrainerVideoDetails';
 
 
 function TrainerRoute() {
@@ -30,18 +32,21 @@ function TrainerRoute() {
                 <Route path='/profile/edit/:Id' element={<TrainerProtectedRoute><TrainerProfileEdit /></TrainerProtectedRoute>} />
                 <Route path='/trainees' element={<TrainerProtectedRoute><TrainerTrainees /></TrainerProtectedRoute>} />
                 <Route path='/trainees/:traineeId' element={<TraineesDetails />} />
-                <Route path='/upload/:id' element={<TrainerProtectedRoute><TrainerUpload /></TrainerProtectedRoute>}>
+                <Route path='/upload' element={<TrainerProtectedRoute><TrainerUpload /></TrainerProtectedRoute>}>
                     <Route index element={<UploadBlog />} />
                     <Route path='blog' element={<UploadBlog />} />
                     <Route path='video' element={<UploadVideo />} />
                 </Route>
-                <Route path='/media/:id' element={<TrainerProtectedRoute><TrainerMedia /></TrainerProtectedRoute>}>
+                <Route path='/media' element={<TrainerProtectedRoute><TrainerMedia /></TrainerProtectedRoute>}>
                     <Route index element={<TrainerBlog />} />
                     <Route path='blog' element={<TrainerBlog />} />
                     <Route path='video' element={<TrainerVideo />} />
                 </Route>
-                 <Route path='/blog/edit/:blogId' element={<EditBlog/>}/>
-                 <Route path='/video/edit/:videoId' element={<EditVideo/>}/>
+                 <Route path='/blog/edit/:blogId' element={<TrainerProtectedRoute> <EditBlog/> </TrainerProtectedRoute>}/>
+                 <Route path='/video/edit/:videoId' element={<TrainerProtectedRoute><EditVideo/></TrainerProtectedRoute>}/>
+                 <Route path='/media/blog/:blogId' element={<TrainerProtectedRoute><TrainerBlogDetails/></TrainerProtectedRoute>}/>
+                 <Route path='/media/video/:videoId' element={<TrainerProtectedRoute><TrainerVideoDetails/></TrainerProtectedRoute>}/>
+
                 <Route path='/*' element={<NotFoundAd />} />
                 
             </Routes>
