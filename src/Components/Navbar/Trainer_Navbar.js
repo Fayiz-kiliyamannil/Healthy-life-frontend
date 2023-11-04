@@ -49,6 +49,8 @@ function Trainer_Navbar(props) {
         { name: 'Trainees', to: 'trainees', current: props.trainees },
         { name: 'Upload', to: `upload/blog`, current: props.upload },
         { name: 'Media', to: `media/blog`, current: props.media },
+        { name: 'Message', to: `message`, current: '' },
+        { name: 'Video Call', to: `videocall`, current: '' },
     ];
 
     const logOut = () => {

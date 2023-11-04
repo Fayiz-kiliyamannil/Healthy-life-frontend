@@ -14,7 +14,6 @@ import AdminLogin from './Pages/Admin/AdminLogin';
 const queryClient = new QueryClient()
 function App() {
   const { loading } = useSelector(state => state.alerts);
-
   return (
    <QueryClientProvider client={queryClient} >
      <BrowserRouter>

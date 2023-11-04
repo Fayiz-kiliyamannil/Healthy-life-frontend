@@ -16,9 +16,9 @@ import Footer from '../Components/Footer/Footer';
 function AdminRoute() {
   return (
     <>
-    <Admin_Navbar/>
+     <Admin_Navbar/>
         <Routes>
-            <Route path="/" element={<AdminProtectedRoute> <AdminHome /> </AdminProtectedRoute>} />
+            <Route path="/home" element={<AdminProtectedRoute> <AdminHome /> </AdminProtectedRoute>} />
             <Route path="/trainees" element={<AdminProtectedRoute> <AdminTrainee /> </AdminProtectedRoute>} />
             <Route path="/trainees/:userId" element={<AdminProtectedRoute> <User_Details /> </AdminProtectedRoute>} />
             <Route path='/trainees/pro' element={<AdminProtectedRoute> <ProUsers/> </AdminProtectedRoute>}/>

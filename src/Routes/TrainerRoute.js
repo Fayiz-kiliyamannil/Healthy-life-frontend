@@ -20,14 +20,18 @@ import EditBlog from '../Pages/Trainer/EditBlog';
 import EditVideo from '../Pages/Trainer/EditVideo';
 import TrainerBlogDetails from '../Pages/Trainer/TrainerBlogDetails';
 import TrainerVideoDetails from '../Pages/Trainer/TrainerVideoDetails';
+import TrainerChat from '../Pages/Trainer/TrainerChat';
+import TrainerVideoCall from '../Pages/Trainer/TrainerVideoCall';
+
 
 
 function TrainerRoute() {
+
     return (
         <>
             <TrainerNavbar />
             <Routes>
-                <Route path="/" element={<TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute>} />
+                <Route path="/home" element={<TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute>} />
                 <Route path='/profile' element={<TrainerProtectedRoute> <TrainerProfile /></TrainerProtectedRoute>} />
                 <Route path='/profile/edit/:Id' element={<TrainerProtectedRoute><TrainerProfileEdit /></TrainerProtectedRoute>} />
                 <Route path='/trainees' element={<TrainerProtectedRoute><TrainerTrainees /></TrainerProtectedRoute>} />
@@ -46,6 +50,10 @@ function TrainerRoute() {
                  <Route path='/video/edit/:videoId' element={<TrainerProtectedRoute><EditVideo/></TrainerProtectedRoute>}/>
                  <Route path='/media/blog/:blogId' element={<TrainerProtectedRoute><TrainerBlogDetails/></TrainerProtectedRoute>}/>
                  <Route path='/media/video/:videoId' element={<TrainerProtectedRoute><TrainerVideoDetails/></TrainerProtectedRoute>}/>
+                 <Route path='/message' element={<TrainerProtectedRoute> <TrainerChat/> </TrainerProtectedRoute>}>
+                    <Route path=':userId' element={<TrainerProtectedRoute> <TrainerChat/> </TrainerProtectedRoute>}/>
+                 </Route>
+                 <Route path='/videocall' element={<TrainerProtectedRoute> <TrainerVideoCall/> </TrainerProtectedRoute>}/>
 
                 <Route path='/*' element={<NotFoundAd />} />
                 

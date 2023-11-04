@@ -17,6 +17,7 @@ import Footer from '../Components/Footer/Footer';
 import NotFound from '../Components/NotFound/NotFound'
 import Classes from '../Pages/User/Classes';
 import VideoDetails from '../Pages/User/VideoDetails';
+import Chat from '../Pages/User/Chat';
 
 function UserRoute() {
     return (
@@ -36,6 +37,7 @@ function UserRoute() {
             <Route path='/blog/:blogId'  element={<ProtectedRoute><BlogDetails/></ProtectedRoute>}/>
             <Route path='/classes' element={<ProtectedRoute> <Classes/> </ProtectedRoute>}/>
             <Route path='/classes/:videoId' element={<ProtectedRoute><VideoDetails/></ProtectedRoute>}/>
+            <Route path='classes/chat' element={<ProtectedRoute> <Chat/> </ProtectedRoute>}/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
         <Footer/>

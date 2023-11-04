@@ -1,5 +1,4 @@
 import React, { useEffect,useState } from 'react'
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
@@ -26,7 +25,7 @@ function TrainerProfile() {
                 dispatch(hideLoading());      
             }else{
                 setTrainer(response.data.trainer)
-                dispatch(hideLoading());
+                 dispatch(hideLoading());
             }
         } catch (error) {
             dispatch(hideLoading());

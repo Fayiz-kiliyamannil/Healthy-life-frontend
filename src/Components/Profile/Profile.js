@@ -259,7 +259,7 @@ function Profile(props) {
                     {props.admin ? (
 
                       props.data.is_block ? (
-                        <a
+                        <a 
                           onClick={() => props.action(props.data._id)}
                           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-md hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover-bg-green-700 dark:focus:ring-blue-800"
                         >
