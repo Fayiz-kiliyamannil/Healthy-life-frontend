@@ -53,10 +53,12 @@ function TrainerChat() {
 
     const fetchChatById = async () => {
         try {
+           if(userId){
             const response = await trainerApi.get(`/trainer/trainer-fetch-chat/${userId}`)
             if (response.data.success) {
                 setChatInfo(response.data.fetchChatById);
             }
+           }
         } catch (error) {
             console.error(error);
             setIsError(error.message)
