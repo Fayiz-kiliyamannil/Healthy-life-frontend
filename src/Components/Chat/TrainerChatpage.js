@@ -19,8 +19,8 @@ function TrainerChatpage(props) {
 
                                     {
                                         props.data?.map((obj) => (
-                                            <Link to={obj._id} onClick={ ()=> setUserInfo(obj) }  >
-                                            <div key={obj._id} className="bg-gray-200 border border-gray-400 rounded px-3 flex items-center hover:bg-gray-300 cursor-pointer">
+                                            <Link key={obj._id} to={obj._id} onClick={ ()=> setUserInfo(obj) }  >
+                                            <div className="bg-gray-200 border border-gray-400 rounded px-3 flex items-center hover:bg-gray-300 cursor-pointer">
                                                 <div>
                                                     <img className="h-12 w-12 rounded-full"
                                                         src={`http://127.0.0.1:5001/image/${obj.profile}`} />
@@ -81,10 +81,10 @@ function TrainerChatpage(props) {
                                      
                                            
                                         {
-                                            props.chatInfo?.map((obj)=>(
+                                            props.chatInfo?.map((obj,index)=>(
                                                obj.sender === 'trainer' ? (
-                                                <div className="flex justify-end mb-2">
-                                                <div className="rounded py-2 px-3" style={{ backgroundColor: '#E2F7CB' }}>
+                                                <div key={obj._id} className="flex justify-end mb-2">
+                                                <div  className="rounded py-2 px-3" style={{ backgroundColor: '#E2F7CB' }}>
                                                     <p className="text-sm w-64 mt-1">
                                                         {obj.text}
                                                     </p>
@@ -94,7 +94,7 @@ function TrainerChatpage(props) {
                                                 </div>
                                             </div>
                                                ):(
-                                                <div className="flex mb-2">
+                                                <div  key={obj._id} className="flex mb-2">
                                                 <div className="rounded-lg py-2  px-3" style={{ backgroundColor: '#F2F2F2' }} >
                                                     <p className="text-sm  text-purple-700 ">
                                                        {obj.userId.firstname} {obj.userId.lastname}

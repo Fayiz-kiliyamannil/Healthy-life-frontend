@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { Dialog,  Popover,  } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
 import {  useNavigate, NavLink, Link } from 'react-router-dom'
 import axios from 'axios'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import { usersContext } from '../../App'
 
 
 
@@ -19,6 +20,7 @@ function Navbar() {
      const navigate = useNavigate();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [log, setLog] = useState(Boolean);
+    const {userInfo,setUserInfo} = useContext(usersContext);
 
 
     const getData = async () => {
@@ -30,6 +32,7 @@ function Navbar() {
           })
           if(response.data.success){
           setuserId(response.data.data)
+          setUserInfo(response.data.data);
           }else{
             if(response.data.message === 'user blocked'){
                 logOut();
@@ -60,7 +63,6 @@ function Navbar() {
             setLog(false)
         }
     }, [])
-
 
     return (
         <header className="h-3.6 bg-gradient-to-t  from-transparent via-rgba(37, 37, 37,) to-black  fixed top-0 left-0 w-full h-20 ">
