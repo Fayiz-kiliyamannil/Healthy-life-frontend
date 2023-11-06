@@ -65,11 +65,13 @@ function Chat() {
   const submitChat = async (event) => {
     event.preventDefault()
     try {
-      const response = await client.post('/user/create-new-chat', { text: text })
+      if(text.trim()){
+        const response = await client.post('/user/create-new-chat', { text: text })
       if (response.data.success) {
         setUserChat(response.data.fetchChatById);
         socket.emit('newChat', response.data.fetchChatById[response.data.fetchChatById.length - 1])
         setText('')
+      }
       }
     } catch (error) {
       console.error(error.message);

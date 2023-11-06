@@ -11,7 +11,7 @@ import { trainerContext } from '../../App';
 
 import io from 'socket.io-client';
 const ENDPOINT = 'http://localhost:5000';
-var socket, selectedChatCompare;
+var socket;
 
 
 function TrainerChat() {
@@ -23,6 +23,7 @@ function TrainerChat() {
     const { userId } = useParams();
     const dispatch = useDispatch();
     const [userInfo, setUserInfo] = useState([]);
+    const [search, setSearch] = useState([]);
     const [text, setText] = useState('');
     const [isError, setIsError] = useState('');
     const [socketConnected, setSocketConnected] = useState(false)
@@ -35,6 +36,7 @@ function TrainerChat() {
             const response = await trainerApi.post('/trainer/get-trainee-info')
             if (response.data.success) {
                 setUserInfo(response.data.trainee);
+                setSearch(response.data.trainee);
                 dispatch(hideLoading());
             }
         } catch (error) {
@@ -71,12 +73,14 @@ function TrainerChat() {
     const submitChat = async (e) => {
         e.preventDefault();
         try {
+           if(text.trim()){
             const response = await trainerApi.post(`/trainer/trainer-create-chat/${userId}`, { text: text })
             if (response.data.success) {
                 setTrainerChat(response.data.fetchChatById);
                 socket.emit('newChat', response.data.fetchChatById[response.data.fetchChatById.length - 1])
                 setText('')
             }
+           }
         } catch (error) {
             setIsError(error.message)
             console.error(error);
@@ -114,7 +118,16 @@ function TrainerChat() {
     }
 
     return (
-        <TrainerChatpage fetchChatById={fetchChatById} text={text} chatInfo={trainerChat} setText={setText} submitChat={submitChat} data={userInfo} />
+        <TrainerChatpage 
+        fetchChatById={fetchChatById} 
+        text={text} 
+        chatInfo={trainerChat} 
+        setText={setText} 
+        submitChat={submitChat} 
+        data={userInfo}
+        searchValue={search} 
+        searchData={setUserInfo}
+        />
     )
 }
 

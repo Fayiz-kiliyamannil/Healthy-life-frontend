@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
@@ -11,6 +10,7 @@ function BlogDetails() {
     const dispatch = useDispatch();
     const { blogId } = useParams();
     const [blog, setBlog] = useState();
+  
 
     const getBlog = async () => {
         dispatch(showLoading());

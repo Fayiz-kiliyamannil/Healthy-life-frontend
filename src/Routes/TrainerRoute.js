@@ -46,17 +46,17 @@ function TrainerRoute() {
                     <Route path='blog' element={<TrainerBlog />} />
                     <Route path='video' element={<TrainerVideo />} />
                 </Route>
-                 <Route path='/blog/edit/:blogId' element={<TrainerProtectedRoute> <EditBlog/> </TrainerProtectedRoute>}/>
-                 <Route path='/video/edit/:videoId' element={<TrainerProtectedRoute><EditVideo/></TrainerProtectedRoute>}/>
-                 <Route path='/media/blog/:blogId' element={<TrainerProtectedRoute><TrainerBlogDetails/></TrainerProtectedRoute>}/>
-                 <Route path='/media/video/:videoId' element={<TrainerProtectedRoute><TrainerVideoDetails/></TrainerProtectedRoute>}/>
-                 <Route path='/message' element={<TrainerProtectedRoute> <TrainerChat/> </TrainerProtectedRoute>}>
-                    <Route path=':userId' element={<TrainerProtectedRoute> <TrainerChat/> </TrainerProtectedRoute>}/>
-                 </Route>
-                 <Route path='/videocall' element={<TrainerProtectedRoute> <TrainerVideoCall/> </TrainerProtectedRoute>}/>
+                <Route path='/blog/edit/:blogId' element={<TrainerProtectedRoute> <EditBlog /> </TrainerProtectedRoute>} />
+                <Route path='/video/edit/:videoId' element={<TrainerProtectedRoute><EditVideo /></TrainerProtectedRoute>} />
+                <Route path='/media/blog/:blogId' element={<TrainerProtectedRoute><TrainerBlogDetails /></TrainerProtectedRoute>} />
+                <Route path='/media/video/:videoId' element={<TrainerProtectedRoute><TrainerVideoDetails /></TrainerProtectedRoute>} />
+                <Route path='/message' element={<TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute>}>
+                    <Route path=':userId' element={<TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute>} />
+                </Route>
+                <Route path='/videocall' element={<TrainerProtectedRoute> <TrainerVideoCall /> </TrainerProtectedRoute>} />
 
                 <Route path='/*' element={<NotFoundAd />} />
-                
+
             </Routes>
             <Footer />
 
