@@ -35,7 +35,7 @@ function Chatpage(props) {
                             </div>
 
 
-                            <div className="flex-1 bg-cover overflow-auto" style={{ backgroundColor: '#0a1617' }}>
+                            <div className="flex-1 bg-cover     overflow-y-auto" style={{ backgroundColor: '#0a1617' }}>
                                 <div className="py-2 px-3">
 
 

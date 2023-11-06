@@ -7,16 +7,17 @@ import NotFound from '../../Components/NotFound/NotFound'
 import io from 'socket.io-client';
 import { userContext } from '../../App';
 import { trainerChatinfo } from '../../App';
+import { usersContext } from '../../App';
 
 const ENDPOINT = 'http://localhost:5000';
 var socket, selectedChatCompare;
 
 function Chat() {
+  const { userInfo, setUserInfo } = useContext(usersContext) //-------
+  const { userChat, setUserChat } = useContext(userContext)//---------    USECONTEXT
+  const { trainerChat, setTrainerChat } = useContext(trainerChatinfo);//------
 
-  const { userChat, setUserChat } = useContext(userContext)
-  const { setTrainerChat } = useContext(trainerChatinfo);
   const dispatch = useDispatch();
-  const [userInfo, setUserInfo] = useState();
   const [isError, setIsError] = useState('');
   const [text, setText] = useState('')
   const [socketConnected, setSocketConnected] = useState(false)
@@ -36,13 +37,28 @@ function Chat() {
       setIsError(error.message)
     }
   }
-
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   useEffect(() => {
     socket = io.apply(ENDPOINT)
-    socket.emit('user-setup', userInfo)
+    socket.emit('setup', userInfo)
+    socket.emit('joinChat', userInfo?._id)
     socket.on('connection', () => setSocketConnected(true));
-  }, [userInfo])
+  }, [])
+
+  useEffect(() => {
+    socket.on('messageRecivedTrainer', (newChat) => {
+      if (!trainerChat.includes(newChat)) {
+        setTrainerChat((prevTrainerChat) => [...prevTrainerChat, newChat]);
+      }
+    });
+  });
+
+  useEffect(() => {
+    fetchChatById();
+  }, [userChat])
 
 
 
@@ -52,6 +68,7 @@ function Chat() {
       const response = await client.post('/user/create-new-chat', { text: text })
       if (response.data.success) {
         setUserChat(response.data.fetchChatById);
+        socket.emit('newChat', response.data.fetchChatById[response.data.fetchChatById.length - 1])
         setText('')
       }
     } catch (error) {
@@ -72,10 +89,7 @@ function Chat() {
       setIsError(error.message)
     }
   }
-  useEffect(() => {
-    fetchData();
-    fetchChatById();
-  }, [])
+
 
 
 

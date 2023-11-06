@@ -14,6 +14,7 @@ import React, { useState } from 'react';
 export const userContext = React.createContext();
 export const trainerChatinfo = React.createContext();
 export const usersContext = React.createContext();
+export const trainerContext = React.createContext();
 const queryClient = new QueryClient()
 
 function App() {
@@ -21,9 +22,8 @@ function App() {
   const [trainerChat, setTrainerChat] = useState([]);
   const [userChat, setUserChat] = useState([])
   const [userInfo, setUserInfo] = useState();
+  const [trainerInfo,setTrainerInfo] = useState();
   const { loading } = useSelector(state => state.alerts);
-
-
 
   return (
 
@@ -33,8 +33,9 @@ function App() {
         <trainerChatinfo.Provider value={{ trainerChat, setTrainerChat }} >
           <userContext.Provider value={{ userChat, setUserChat }} >
            <usersContext.Provider value={{userInfo,setUserInfo}} >
+            <trainerContext.Provider value={{trainerInfo,setTrainerInfo}} >
 
-           {loading && (<div className="loader-parent"> <Spinner /> </div>)}
+            {loading && (<div className="loader-parent"> <Spinner /> </div>)}
             <Toaster position="top-center" reverseOrder={false} />
             <Routes>
               <Route path="/*" element={<UserRoute />} />
@@ -46,7 +47,8 @@ function App() {
               <Route path="trainer/login" element={<TrainerLogin />} />
               <Route path="trainer/register" element={<TrainerSignup />} />
             </Routes>
-
+              
+            </trainerContext.Provider>
            </usersContext.Provider>
           </userContext.Provider>
         </trainerChatinfo.Provider>

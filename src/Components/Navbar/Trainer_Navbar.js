@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from 'react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { trainerContext } from '../../App';
 
 
 
@@ -16,14 +17,14 @@ function classNames(...classes) {
 
 function Trainer_Navbar(props) {
 
-    const [trainer, setTrainer] = useState([]);
+    const { trainerInfo, setTrainerInfo } = useContext(trainerContext);
     const navigate = useNavigate();
 
 
     const user = {
-        name: trainer.firstname,
-        email: trainer.email,
-        imageUrl: trainer.profile ? `http://127.0.0.1:5001/image/${trainer.profile}` : '/empty.jpg'
+        name: trainerInfo?.firstname,
+        email: trainerInfo?.email,
+        imageUrl: trainerInfo?.profile ? `http://127.0.0.1:5001/image/${trainerInfo.profile}` : '/empty.jpg'
     }
 
     const getTrainer = async (e) => {
@@ -33,8 +34,9 @@ function Trainer_Navbar(props) {
                     Authorization: 'Bearer ' + localStorage.getItem('trainerToken')
                 }
             })
-            if (response.data.success) setTrainer(response.data.trainer)
-            console.log(response.data.trainer);
+            if (response.data.success) {
+                setTrainerInfo(response.data.trainer)
+            }
         } catch (error) {
             console.error(error);
         }
