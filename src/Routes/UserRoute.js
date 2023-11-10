@@ -18,6 +18,7 @@ import NotFound from '../Components/NotFound/NotFound'
 import Classes from '../Pages/User/Classes';
 import VideoDetails from '../Pages/User/VideoDetails';
 import Chat from '../Pages/User/Chat';
+import VideoCall from '../Pages/User/videoCall';
 
 function UserRoute() {
     return (
@@ -38,6 +39,7 @@ function UserRoute() {
             <Route path='/classes' element={<ProtectedRoute> <Classes/> </ProtectedRoute>}/>
             <Route path='/classes/:videoId' element={<ProtectedRoute><VideoDetails/></ProtectedRoute>}/>
             <Route path='classes/chat' element={<ProtectedRoute> <Chat/> </ProtectedRoute>}/>
+            <Route path='classes/videocall' element={<ProtectedRoute><VideoCall/></ProtectedRoute>}/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
         <Footer/>
