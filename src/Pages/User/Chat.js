@@ -39,7 +39,7 @@ function Chat() {
   }
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [] ) 
 
   useEffect(() => {
     socket = io.apply(ENDPOINT)
