@@ -53,8 +53,7 @@ function TrainerRoute() {
                 <Route path='/message' element={<TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute>}>
                     <Route path=':userId' element={<TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute>} />
                 </Route>
-                <Route path='/videocall' element={<TrainerProtectedRoute> <TrainerVideoCall /> </TrainerProtectedRoute>} />
-
+                <Route path='/videocall/:userId' element={<TrainerProtectedRoute> <TrainerVideoCall /> </TrainerProtectedRoute>} />
                 <Route path='/*' element={<NotFoundAd />} />
 
             </Routes>
