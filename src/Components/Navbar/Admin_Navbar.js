@@ -26,7 +26,7 @@ function Admin_Navbar(props) {
     { name: 'Dashboard', to: 'home', },
     { name: 'Trainees', to: 'trainees' },
     { name: 'Trainers', to: 'trainers' },
-    { name: 'Media', to: 'media' },
+    { name: 'Inbox', to: 'inbox' },
   ];
 
   const logOut = () => {

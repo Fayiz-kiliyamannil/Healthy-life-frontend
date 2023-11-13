@@ -13,6 +13,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "apexcharts": "^3.44.0",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.2",
     "eslint": "^8.53.0",
@@ -26,6 +27,7 @@
     "react-scripts": "^5.0.1",
     "redux": "^4.2.1",
     "redux-toolkit": "^1.1.2",
+    "simple-peer": "^9.11.1",
     "socket.io-client": "^4.7.2",
     "tw-elements-react": "^1.0.0-alpha1",
     "web-vitals": "^2.1.4"
@@ -60,6 +62,6 @@
     "eslint-auto-fix": "^1.0.4",
     "eslint-plugin-react": "^7.33.2",
     "prettier": "3.0.3",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.5"
   }
 }

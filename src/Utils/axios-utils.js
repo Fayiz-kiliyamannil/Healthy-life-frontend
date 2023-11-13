@@ -1,10 +1,13 @@
 import axios from "axios";
 
+
+
+
 const client = axios.create({
     baseURL: 'http://localhost:3000' //  our api base url
 })
 
-//req interceptor for adding the bearer token
+  //req interceptor for adding the bearer token
 client.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');

@@ -11,6 +11,7 @@ import ProUsers from '../Pages/Admin/ProUsers';
 import New_Trainerdetails from '../Pages/Admin/New_Trainerdetails';
 import TrainersDetails from '../Pages/Admin/TrainersDetails';
 import Footer from '../Components/Footer/Footer';
+import AdminInBox from '../Pages/Admin/Admin_InBox';
 
 
 function AdminRoute() {
@@ -18,7 +19,10 @@ function AdminRoute() {
     <>
      <Admin_Navbar/>
         <Routes>
-            <Route path="/home" element={<AdminProtectedRoute> <AdminHome /> </AdminProtectedRoute>} />
+            <Route path='/' >
+             <Route index element={<AdminProtectedRoute> <AdminHome/> </AdminProtectedRoute>}/>
+            <Route path="home" element={<AdminProtectedRoute> <AdminHome /> </AdminProtectedRoute>} />
+            </Route>
             <Route path="/trainees" element={<AdminProtectedRoute> <AdminTrainee /> </AdminProtectedRoute>} />
             <Route path="/trainees/:userId" element={<AdminProtectedRoute> <User_Details /> </AdminProtectedRoute>} />
             <Route path='/trainees/pro' element={<AdminProtectedRoute> <ProUsers/> </AdminProtectedRoute>}/>
@@ -26,6 +30,7 @@ function AdminRoute() {
             <Route path='/trainers/:id' element={<AdminProtectedRoute><TrainersDetails/></AdminProtectedRoute>}/>
             <Route path='/newtrainers' element={<AdminProtectedRoute> <New_Trainers /> </AdminProtectedRoute>}/>
             <Route path='/newtrainers/:id' element={<AdminProtectedRoute><New_Trainerdetails/></AdminProtectedRoute>}/>
+            <Route path='/inbox' element={<AdminProtectedRoute> <AdminInBox/> </AdminProtectedRoute>}/>
         </Routes>
        <Footer/>
     

@@ -31,7 +31,10 @@ function TrainerRoute() {
         <>
             <TrainerNavbar />
             <Routes>
-                <Route path="/home" element={<TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute>} />
+                <Route path="/"  >
+                    <Route index element={<TrainerProtectedRoute> <TrainerHome/> </TrainerProtectedRoute>} />
+                <Route path="home" element={<TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute>} />
+                </Route>
                 <Route path='/profile' element={<TrainerProtectedRoute> <TrainerProfile /></TrainerProtectedRoute>} />
                 <Route path='/profile/edit/:Id' element={<TrainerProtectedRoute><TrainerProfileEdit /></TrainerProtectedRoute>} />
                 <Route path='/trainees' element={<TrainerProtectedRoute><TrainerTrainees /></TrainerProtectedRoute>} />
