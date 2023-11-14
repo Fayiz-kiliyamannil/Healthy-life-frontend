@@ -20,7 +20,7 @@ function TrainerLogin() {
             if(response.data.success){
                 toast.success(response.data.message, { style: { borderRadius: '10px', background: '#333', color: '#fff' }, });
                 localStorage.setItem('trainerToken',response.data.data)
-                navigate('/trainer')
+                navigate('/trainer/home')
                 dispatch(hideLoading())
             }else{
               setstatus(response.data.message);
