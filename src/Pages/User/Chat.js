@@ -8,6 +8,7 @@ import io from 'socket.io-client';
 import { userContext } from '../../App';
 import { trainerChatinfo } from '../../App';
 import { usersContext } from '../../App';
+import NonProUsers from '../../Components/Common/NonProUsers';
 
 const ENDPOINT = 'http://localhost:5000';
 var socket, selectedChatCompare;
@@ -18,6 +19,7 @@ function Chat() {
   const { trainerChat, setTrainerChat } = useContext(trainerChatinfo);//------
 
   const dispatch = useDispatch();
+  const [pro,setPro]  = useState(false)
   const [isError, setIsError] = useState('');
   const [text, setText] = useState('')
   const [socketConnected, setSocketConnected] = useState(false)
@@ -30,6 +32,7 @@ function Chat() {
       const response = await client.post('/user/get-user-info')
       if (response.data.success) {
         setUserInfo(response.data.user);
+        setPro(response.data.isProUser);
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -98,6 +101,10 @@ function Chat() {
 
   if (isError) {
     return <NotFound error={isError} />
+  }
+
+  if(!pro){
+    return <NonProUsers/>
   }
 
   return (

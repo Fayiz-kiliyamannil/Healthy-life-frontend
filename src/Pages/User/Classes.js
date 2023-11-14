@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
 import NotFound from '../../Components/NotFound/NotFound'
 import { Link } from 'react-router-dom';
+import NonProUsers from '../../Components/Common/NonProUsers'
 
 function Classes() {
     const [video, setVideo] = useState([]);
@@ -37,7 +38,7 @@ function Classes() {
         return <NotFound error={isError} />
     }
     if (!pro) {
-        return <h1 className='text-white '> You are not Pro user </h1> //----------------------
+        return <NonProUsers/> //----------------------
     }
   
 

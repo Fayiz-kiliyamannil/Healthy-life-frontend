@@ -22,6 +22,7 @@ function App() {
   const [trainerChat, setTrainerChat] = useState([]);
   const [userChat, setUserChat] = useState([])
   const [userInfo, setUserInfo] = useState();
+  const [paymentNavigation,setPaymentNavigation] = useState('')
   const [trainerInfo,setTrainerInfo] = useState();
   const { loading } = useSelector(state => state.alerts);
 
@@ -32,7 +33,7 @@ function App() {
 
         <trainerChatinfo.Provider value={{ trainerChat, setTrainerChat }} >
           <userContext.Provider value={{ userChat, setUserChat }} >
-           <usersContext.Provider value={{userInfo,setUserInfo}} >
+           <usersContext.Provider value={{userInfo,setUserInfo,paymentNavigation,setPaymentNavigation}} >
             <trainerContext.Provider value={{trainerInfo,setTrainerInfo}} >
 
             {loading && (<div className="loader-parent"> <Spinner /> </div>)}

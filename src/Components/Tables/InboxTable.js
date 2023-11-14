@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import {showLoading,hideLoading} from '../../Redux/alertSlice'
 import AdminAxios  from '../../Utils/admin-axios'
 import AdminNotFound from '../NotFound/NotfoundAd'
-import EmptyPage from '../Empty/Empty'
+import EmptyPage from '../Common/Empty'
 
 
 function InboxTable() {

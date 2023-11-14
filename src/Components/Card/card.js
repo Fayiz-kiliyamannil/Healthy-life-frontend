@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function card(props) {
   return (
     <>
-      <div className="mx-auto max-w-2xl px-3 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div id='knowMore' className="mx-auto max-w-2xl px-3 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h1 className="text-[#898989] text-xs text-center font-sans">FEATURES</h1>
         <h1 className="text-[#898989] text-4xl text-center font-sans font-bold">{props.tittle}</h1>
         <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

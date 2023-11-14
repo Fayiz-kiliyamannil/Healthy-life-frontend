@@ -6,6 +6,7 @@ import client from '../../Utils/axios-utils';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import toast from 'react-hot-toast';
+import NonProUsers from '../../Components/Common/NonProUsers';
 const socket = io.apply('http://localhost:5000');
 
 
@@ -17,6 +18,7 @@ const VideoCall = () => {
     const [name, setName] = useState('');
     const [call, setCall] = useState({});
     const [me, setMe] = useState('');
+    const [pro,setPro] = useState(false)
     const [user, setUser] = useState()
     const myVideo = useRef();
     const userVideo = useRef();
@@ -29,6 +31,7 @@ const VideoCall = () => {
             const response = await client.post('/user/get-user-into-by-id');
             if (response.data.success) {
                 setUser(response.data.data);
+                setPro(response.data.isProUser)
                 dispatch(hideLoading())
             }
         } catch (error) {
@@ -105,6 +108,11 @@ const VideoCall = () => {
             console.error(error.message);
         }
     };
+
+    if(!pro){
+        return <NonProUsers/>
+    }
+
 
     return (
         <>

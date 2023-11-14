@@ -66,16 +66,16 @@ function PricingSection() {
 
     return (
         <>
-            <div className=" mx-auto max-w-screen-xl border border-gray-500 rounded-lg lg:py-16 lg:px-6">
-                <div className="mx-auto   max-w-screen-md  text-center mb-8 lg:mb-6">
-                    <h1 className='text-[#898989] text-sm text-center font-sans '>Pro</h1>
+            <div   className="  mx-auto max-w-screen-xl border border-gray-500 rounded-lg lg:py-16 lg:px-6">
+                <div id='payment' className="mx-auto   max-w-screen-md  text-center mb-8 lg:mb-6">
+                    <h1  className='text-[#898989] text-sm text-center font-sans '>Pro</h1>
                     <h1 className='text-[#898989] pb-2 mx-10 border-b border-gray-700  text-4xl text-center font-sans font-bold '>Choose your Healthy-Life Pro</h1>
                 </div>
-                <div className="  space-y-8  lg:grid pt-5 lg:grid-cols-3 mx-10 sm:gap-6 xl:gap-20 lg:space-y-0 ">
+                <div  className="  space-y-8  lg:grid pt-5 lg:grid-cols-3 mx-10 sm:gap-6 xl:gap-20 lg:space-y-0 ">
 
                     {
                         pricing.map(obj => (
-                            <div className="flex flex-col p-6 mx-auto max-w-md text-center rounded-lg border border-gray-100 hover:scale-105  transition-transform duration-500  dark:border-gray-700 xl:p-8 bg-zinc-900 dark:text-white">
+                            <div className="flex  flex-col p-6 mx-auto max-w-md text-center rounded-lg border border-gray-100 hover:scale-105  transition-transform duration-500  dark:border-gray-700 xl:p-8 bg-zinc-900 dark:text-white">
                                 {/* <h3 className="mb-4 text-2xl font-semibold">Pro for {obj.month} /h3> */}
                                 <p className="font-light text-gray-500 sm:text-md dark:text-gray-400">Best option for personal</p>
 
