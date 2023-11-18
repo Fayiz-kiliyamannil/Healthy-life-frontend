@@ -5,11 +5,14 @@ import AdminDashboardCard from '../../Components/Card/AdminDashboardCard';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import adminApi from '../../Utils/admin-axios';
+import SalesTable from '../../Components/Tables/SalesTable';
 
 function AdminHome() {
   const [dashboardInfo, setDashboardInfo] = useState({});
   const [orderInfo, setOrderInfo] = useState([]);
+  // const [salesReport ,setSalesReport] = useState([]);
   const dispatch = useDispatch();
+
   const getCardDetails = async () => {
     dispatch(showLoading());
     try {
@@ -17,6 +20,7 @@ function AdminHome() {
       if (response.data.success) {
         setDashboardInfo(response.data.details);
         setOrderInfo(response.data.order);
+        // setSalesReport(response.data.salesReport)
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -30,11 +34,16 @@ function AdminHome() {
   }, []);
 
 
+
+
   return (
     <>
       <AdminDashboardCard data={dashboardInfo} />
       <SalesGraph />
+      {/* <div className='w-[50%]' >
       <TransationTable data={orderInfo} />
+      </div> */}
+      <SalesTable />
     </>
   );
 }
