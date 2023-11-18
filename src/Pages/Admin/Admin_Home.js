@@ -10,7 +10,6 @@ import SalesTable from '../../Components/Tables/SalesTable';
 function AdminHome() {
   const [dashboardInfo, setDashboardInfo] = useState({});
   const [orderInfo, setOrderInfo] = useState([]);
-  // const [salesReport ,setSalesReport] = useState([]);
   const dispatch = useDispatch();
 
   const getCardDetails = async () => {
@@ -19,8 +18,7 @@ function AdminHome() {
       const response = await adminApi.get('/admin/get-dashboard-info');
       if (response.data.success) {
         setDashboardInfo(response.data.details);
-        setOrderInfo(response.data.order);
-        // setSalesReport(response.data.salesReport)
+        setOrderInfo(response.data.order)
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -40,10 +38,8 @@ function AdminHome() {
     <>
       <AdminDashboardCard data={dashboardInfo} />
       <SalesGraph />
-      {/* <div className='w-[50%]' >
-      <TransationTable data={orderInfo} />
-      </div> */}
       <SalesTable />
+      <TransationTable data={orderInfo} />
     </>
   );
 }

@@ -1,11 +1,11 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 function TrainerDashboardCard(props) {
-
+  const navigate = useNavigate();
 
   return (
     <>
-      <div className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
+      <div onClick={() => navigate('/trainer/trainees')} className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
         <div className=" h-32 bg-gradient-to-r m-2 from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
           <div className="flex items-center justify-between p-4">
             <div className="relative w-16 h-16 bg-gradient-to-r from-yellow-800 to-yellow-600 rounded-full flex items-center justify-center">
@@ -14,15 +14,15 @@ function TrainerDashboardCard(props) {
               </svg>
 
             </div>
-            <div className="text-right">
-              <p className="text-lg text-gray-200 font-bold uppercase"> Total Trainee's</p>
-              <h4 className="text-xl text-gray-300  font-bold"> {props.data.totalTrainees} </h4>
+            <div className=" ">
+              <p className="text-lg text-gray-200 border-b border-gray-500 font-bold uppercase"> Total Trainee's</p>
+              <h4 className="text-xl text-gray-300 mt-3 font-bold"> {props.data.totalTrainees} </h4>
             </div>
           </div>
 
         </div>
 
-        <div className=" h-32  bg-gradient-to-r m-2  from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
+        <div onClick={() => navigate('/trainer/media/blog')} className=" h-32  bg-gradient-to-r m-2  from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
           <div className="flex items-center justify-between p-4">
             <div className="relative w-16 h-16 bg-gradient-to-r from-cyan-800 to-cyan-600 rounded-full flex items-center justify-center">
               <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
@@ -30,9 +30,18 @@ function TrainerDashboardCard(props) {
               </svg>
 
             </div>
-            <div className="text-right">
-              <p className="text-lg text-gray-200 font-bold  uppercase">Total Video Uploaded</p>
-              <h4 className="text-xl text-gray-300 font-bold">{props.data.totalVideo} </h4>
+            <div className=" ">
+              <p className="text-lg text-gray-200 border-b border-gray-500  font-bold uppercase">Media</p>
+              <h4 className="text-md mt-2 text-gray-300 font-bold">Total Video :
+                <span className="text-md sm:ml-5 text-cyan-600 font-bold">
+                  {props.data.totalVideo}
+                </span>
+              </h4>
+              <h4 className="text-md text-gray-300 font-bold">Total Blog :
+                <span className="text-md sm:ml-7 text-yellow-600 font-bold">
+                  {props.data.totalBlog}
+                </span>
+              </h4>
             </div>
           </div>
 
@@ -45,9 +54,18 @@ function TrainerDashboardCard(props) {
                 <path d="M9 1.334C7.06.594 1.646-.84.293.653a1.158 1.158 0 0 0-.293.77v13.973c0 .193.046.383.134.55.088.167.214.306.366.403a.932.932 0 0 0 .5.147c.176 0 .348-.05.5-.147 1.059-.32 6.265.851 7.5 1.65V1.334ZM19.707.653C18.353-.84 12.94.593 11 1.333V18c1.234-.799 6.436-1.968 7.5-1.65a.931.931 0 0 0 .5.147.931.931 0 0 0 .5-.148c.152-.096.279-.235.366-.403.088-.167.134-.357.134-.55V1.423a1.158 1.158 0 0 0-.293-.77Z" />
               </svg>
             </div>
-            <div className="text-right">
-              <p className="text-lg text-gray-200 font-bold uppercase">Total blog uploaded</p>
-              <h4 className="text-xl text-gray-300 font-bold">{props.data.totalBlog} </h4>
+            <div className=" ">
+              <p className="text-lg text-gray-200 border-b border-gray-500  font-bold uppercase">Total Sales </p>
+              <h4 className="text-md mt-2 text-gray-300 font-bold">Sales :
+                <span className="text-md ml-5 text-[#1A56DB] font-bold">
+                  &#8377; {props.data.totalSales}
+                </span>
+              </h4>
+              <h4 className="text-md text-gray-300 font-bold">Profit :
+                <span className="text-md ml-5 text-[#7E3BF2] font-bold">
+                  &#8377; {props.data.totalProfit}
+                </span>
+              </h4>
             </div>
           </div>
 
@@ -62,16 +80,16 @@ function TrainerDashboardCard(props) {
                 <path d="M8 13a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm0-4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" />
               </svg>
             </div>
-            <div className="text-right">
-              <p className="text-lg text-gray-200  font-bold uppercase">today Sales</p>
-              <h4 className="text-md mb-2 text-gray-300 font-bold">Sales
-                <span className="text-md text-gray-400 font-bold">
-                  : &#8377;{props.data.totalSales}
+            <div className="  ">
+              <p className="text-lg text-gray-200   border-b border-gray-500  font-bold uppercase">today Sales</p>
+              <h4 className="text-md mt-2 text-gray-300 font-bold">Sales :
+                <span className="text-md  ml-5 text-[#1A56DB] font-bold">
+                  &#8377; {props.data.perDaySales}
                 </span>
               </h4>
-              <h4 className="text-md text-gray-300 font-bold">Profit:
-                <span className="text-md text-gray-400 font-bold">
-                  : &#8377;{props.data.totalProfit}
+              <h4 className="text-md text-gray-300 font-bold">Profit :
+                <span className="text-md ml-5 text-[#7E3BF2] font-bold">
+                  &#8377; {props.data.perDayProfit}
                 </span>
               </h4>
             </div>

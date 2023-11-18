@@ -7,7 +7,6 @@ import User_Details from '../Pages/Admin/User_Details';
 import Admin_Trainers from '../Pages/Admin/Admin_Trainers';
 import New_Trainers from '../Pages/Admin/New_Trainers';
 import AdminProtectedRoute from'../Components/ProtectedRoutes/AdminProtectedRoute';
-import ProUsers from '../Pages/Admin/ProUsers';
 import New_Trainerdetails from '../Pages/Admin/New_Trainerdetails';
 import TrainersDetails from '../Pages/Admin/TrainersDetails';
 import Footer from '../Components/Footer/Footer';
@@ -25,7 +24,6 @@ function AdminRoute() {
             </Route>
             <Route path="/trainees" element={<AdminProtectedRoute> <AdminTrainee /> </AdminProtectedRoute>} />
             <Route path="/trainees/:userId" element={<AdminProtectedRoute> <User_Details /> </AdminProtectedRoute>} />
-            <Route path='/trainees/pro' element={<AdminProtectedRoute> <ProUsers/> </AdminProtectedRoute>}/>
             <Route path="/trainers" element={<AdminProtectedRoute> <Admin_Trainers /> </AdminProtectedRoute>}/>
             <Route path='/trainers/:id' element={<AdminProtectedRoute><TrainersDetails/></AdminProtectedRoute>}/>
             <Route path='/newtrainers' element={<AdminProtectedRoute> <New_Trainers /> </AdminProtectedRoute>}/>

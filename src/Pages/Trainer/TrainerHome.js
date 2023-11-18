@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import SalesGraph from '../../Components/Graph/SalesGraph'
 import TransationTable from '../../Components/Tables/TransationTable'
 import TrainerSalesGraph from '../../Components/Graph/TrainerSalesGraph'
 import TrainerDashboardCard from '../../Components/Card/TrainerDashboardCard';
 import trainerApi from '../../Utils/trainer-axio';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import TrainerSalesTable from '../../Components/Tables/TrainerSalesTable';
 
 
 
@@ -41,7 +41,8 @@ getTransationDetails();
 
 
       <TrainerDashboardCard data={dashboardInfo} />
-      <TrainerSalesGraph />
+      <TrainerSalesGraph/>
+      <TrainerSalesTable/>
       <TransationTable data={orderInfo} />
 
     </div>

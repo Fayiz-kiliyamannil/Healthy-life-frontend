@@ -125,11 +125,6 @@ function SalesGraph() {
     getorderData()
   }, [])
               
-  console.log(date);
-  console.log(salesPerDay);
-  console.log(profitPerDay);
-
-
 
 
   return (

@@ -13,7 +13,7 @@ function Tab(props) {
       props.searchData(props.searchValue);
      
       dispatch(hideLoading());
-    } else {
+    } else { 
       const updatedUser = props.searchValue.filter((item) => {
         return item.firstname.toLowerCase().includes(searchTerm);
       });
@@ -66,32 +66,6 @@ function Tab(props) {
               <h6 className="inline-block p-4 text-md border-transparent text-white">
                 Trainees
               </h6>
-            </li>
-            <li className="mr-2">
-              <NavLink to="/admin/trainees"
-              
-                  className={`inline-block p-4 border-b-2 border-transparent ${
-                    props.all
-                      ? "border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                      : "active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                  }  `}
-                >
-                  All
-           
-              </NavLink>
-            </li>
-            <li className="mr-2">
-              <NavLink to="/admin/trainees/pro "
-            
-                  className={`inline-block p-4 border-b-2 border-transparent ${
-                    props.pro
-                      ? "border-b-2 border-blue-600 dark:text-blue-500 dark:border-blue-500"
-                      : "active:text-red rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                  }  `}
-                >
-                  Pro
-              
-              </NavLink>
             </li>
           </ul>
         ) : props.upload ? (
