@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import TransationTable from '../../Components/Tables/TransationTable'
-import TrainerSalesGraph from '../../Components/Graph/TrainerSalesGraph'
-import TrainerDashboardCard from '../../Components/Card/TrainerDashboardCard';
+import TransationTable from '../../Components/Trainer/TransationTable'
+import TrainerSalesGraph from '../../Components/Trainer/TrainerSalesGraph'
+import TrainerDashboardCard from '../../Components/Trainer/TrainerDashboardCard';
 import trainerApi from '../../Utils/trainer-axio';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import TrainerSalesTable from '../../Components/Tables/TrainerSalesTable';
+import TrainerSalesTable from '../../Components/Trainer/TrainerSalesTable';
 
 
 

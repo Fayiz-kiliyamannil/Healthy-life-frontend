@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import client from "../../Utils/axios-utils";
-import BlogDetail from "../../Components/detailsPage/BlogDetails";
+import BlogDetail from "../../Components/User/BlogDetails";
 
 
 function BlogDetails() {

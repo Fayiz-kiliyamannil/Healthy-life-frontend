@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Profile from '../../Components/Profile/Profile'
-import axios from 'axios'
+import Profile from '../../Components/Admin/Profile'
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { showLoading, hideLoading } from '../../Redux/alertSlice';

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Admin_Navbar from "../../Components/Navbar/Admin_Navbar";
-import CardTrainerTrainee from "../../Components/Card/CardTrainerTrainee";
+import CardTrainee from "../../Components/Admin/CardTrainee";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
-import Tab from "../../Components/Navbar/Tabs";
+import Tab from "../../Components/Admin/Tabs";
 import adminApi from '../../Utils/admin-axios';
 
 
@@ -36,7 +35,7 @@ function New_Trainers() {
         searchValue={search}
         searchData={setNewTrainer}
       />
-      <CardTrainerTrainee data={newtrainer}  />
+      <CardTrainee data={newtrainer}  />
     </>
   );
 }

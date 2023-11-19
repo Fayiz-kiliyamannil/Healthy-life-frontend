@@ -2,13 +2,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { Toaster } from 'react-hot-toast';
-import Spinner from './Components/Spinner/spinner';
+import Spinner from './Components/Common/spinner';
 import AdminRoute from './Routes/AdminRoute';
 import './App.css';
 import UserRoute from './Routes/UserRoute';
 import TrainerRoute from './Routes/TrainerRoute';
 import TrainerSignup from './Pages/Trainer/TrainerSignup';
-import TrainerLogin from './Pages/Trainer/TrainerLogin/TrainerLogin';
+import TrainerLogin from './Pages/Trainer/TrainerLogin';
 import AdminLogin from './Pages/Admin/AdminLogin';
 import React, { useState } from 'react';
 export const userContext = React.createContext();

@@ -1,6 +1,6 @@
 
 import React from 'react'     
-import Navbar from '../../Components/Navbar/Navbar'
+import Navbar from '../../Components/User/Navbar'
 import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux'; 

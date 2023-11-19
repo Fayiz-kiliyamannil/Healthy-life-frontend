@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import VideoUpload from '../../Components/UploadFile/VideoUpload';
+import VideoUpload from '../../Components/Trainer/VideoUpload';
 import toast from 'react-hot-toast';
 import trainerApi from '../../Utils/trainer-axio';
 

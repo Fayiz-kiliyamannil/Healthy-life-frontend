@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Admin_Navbar from "../../Components/Navbar/Admin_Navbar";
 import { useNavigate, useParams } from "react-router-dom";
-import Profile from "../../Components/Profile/Profile";
-import axios from "axios";
+import Profile from "../../Components/Admin/Profile";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import { toast } from "react-hot-toast";

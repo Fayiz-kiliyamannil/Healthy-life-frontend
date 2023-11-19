@@ -1,5 +1,5 @@
 import React from 'react'
-import InboxTable from '../../Components/Tables/InboxTable'
+import InboxTable from '../../Components/Admin/InboxTable'
 
 function AdminInBox() {
     

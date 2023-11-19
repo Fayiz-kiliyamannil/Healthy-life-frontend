@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Profile from "../../Components/Profile/Profile";
+import Profile from "../../Components/User/Profile";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";

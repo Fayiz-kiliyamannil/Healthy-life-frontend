@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Signin from '../../../Components/Login/Login';
+import Signin from '../../Components/Trainer/Login';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { hideLoading, showLoading } from '../../../Redux/alertSlice';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 function TrainerLogin() {
     const dispatch = useDispatch()

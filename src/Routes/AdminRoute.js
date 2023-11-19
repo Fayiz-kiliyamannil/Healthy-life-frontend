@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom';
-import Admin_Navbar from '../Components/Navbar/Admin_Navbar';
+import Admin_Navbar from '../Components/Admin/Admin_Navbar';
 import AdminHome from '../Pages/Admin/Admin_Home';
 import AdminTrainee from '../Pages/Admin/AdminTrainee';
 import User_Details from '../Pages/Admin/User_Details';
@@ -9,7 +9,7 @@ import New_Trainers from '../Pages/Admin/New_Trainers';
 import AdminProtectedRoute from'../Components/ProtectedRoutes/AdminProtectedRoute';
 import New_Trainerdetails from '../Pages/Admin/New_Trainerdetails';
 import TrainersDetails from '../Pages/Admin/TrainersDetails';
-import Footer from '../Components/Footer/Footer';
+import Footer from '../Components/Common/Footer/Footer';
 import AdminInBox from '../Pages/Admin/Admin_InBox';
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BlogDetails from '../../Components/detailsPage/BlogDetails';
+import BlogDetails from '../../Components/Trainer/BlogDetails';
 import { useParams } from 'react-router-dom';
 import trainerApi from '../../Utils/trainer-axio';
 import { useDispatch } from 'react-redux';

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import TrainerChatpage from '../../Components/Chat/TrainerChatpage'
+import TrainerChatpage from '../../Components/Trainer/TrainerChatpage'
 import { useDispatch } from 'react-redux'
 import trainerApi from '../../Utils/trainer-axio'
 import { hideLoading, showLoading } from '../../Redux/alertSlice';

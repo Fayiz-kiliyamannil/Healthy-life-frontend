@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import trainerApi from '../../Utils/trainer-axio';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import BlogUpload from '../../Components/UploadFile/BlogUpload';
+import BlogUpload from '../../Components/Trainer/BlogUpload';
 import NotFound from '../../Components/NotFound/NotFound';
 import toast from 'react-hot-toast';
 
 function EditBlog() {
 
-    const { blogId } = useParams()
+    const { blogId } = useParams()   
     const dispatch = useDispatch();
     const [blog, setBlog] = useState({
         header: "",

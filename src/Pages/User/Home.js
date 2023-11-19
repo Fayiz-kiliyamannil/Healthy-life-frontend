@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Banner from "../../Components/Banner/Banner";
+import Banner from "../../Components/User/Banner";
 import axios from "axios";
-import Card from "../../Components/Card/card";
-import CardTrainer from "../../Components/Card/CardTrainerTrainee";
-import PricingSection from "../../Components/PricingSection/PricingSection";
+import Card from "../../Components/User/card";
+import CardTrainer from "../../Components/User/CardTrainer&Trainee";
+import PricingSection from "../../Components/User/PricingSection";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 

@@ -80,7 +80,6 @@ function VideoUpload(props) {
                             </button>
                         </div>
                     </div>
-                    
                 </form>
             </div>
         </>

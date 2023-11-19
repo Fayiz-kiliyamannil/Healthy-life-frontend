@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import VideoDetails  from '../../Components/detailsPage/videoDetails'
+import VideoDetails  from '../../Components/Trainer/videoDetails'
 import { useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
 import trainerApi from '../../Utils/trainer-axio';

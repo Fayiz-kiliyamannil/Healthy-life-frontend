@@ -1,5 +1,5 @@
 import React from 'react'
-import Tab from '../../Components/Navbar/Tabs';
+import Tab from '../../Components/Trainer/Tabs';
 
 function TrainerMedia() {
 

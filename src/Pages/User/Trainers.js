@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import CardTrainer from '../../Components/Card/CardTrainerTrainee';
+import CardTrainer from '../../Components/User/CardTrainer&Trainee';
 import client from '../../Utils/axios-utils'
 import toast from 'react-hot-toast';
  

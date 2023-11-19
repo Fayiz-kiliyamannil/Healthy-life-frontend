@@ -12,8 +12,8 @@ import Contact from '../Pages/User/Contact';
 import Blog from '../Pages/User/Blog';
 import BlogDetails from '../Pages/User/BlogDetails';
 import TrainerDetails from '../Pages/User/TrainerDetails';
-import Navbar from '../Components/Navbar/Navbar';
-import Footer from '../Components/Footer/Footer';
+import Navbar from '../Components/User/Navbar';
+import Footer from '../Components/Common/Footer/Footer';
 import NotFound from '../Components/NotFound/NotFound'
 import Classes from '../Pages/User/Classes';
 import VideoDetails from '../Pages/User/VideoDetails';

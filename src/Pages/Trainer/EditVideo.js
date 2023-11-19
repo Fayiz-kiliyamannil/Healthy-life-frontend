@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import VideoUpload from '../../Components/UploadFile/VideoUpload'
+import VideoUpload from '../../Components/Trainer/VideoUpload'
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import trainerApi from '../../Utils/trainer-axio';
 import { useDispatch } from 'react-redux';

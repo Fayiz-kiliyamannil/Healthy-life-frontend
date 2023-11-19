@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Profile from "../../Components/Profile/Profile";
+import Profile from "../../Components/Trainer/Profile";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import trainerApi from "../../Utils/trainer-axio";

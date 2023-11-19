@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import BlogCard from '../../Components/Card/BlogCard';
+import BlogCard from '../../Components/User/BlogCard';
 import client from '../../Utils/axios-utils';
 import { useQuery } from 'react-query';
-import SpinnerColors from '../../Components/Spinner/spinner';
+import SpinnerColors from '../../Components/Common/spinner';
 import NotFound from '../../Components/NotFound/NotFound';
 
 

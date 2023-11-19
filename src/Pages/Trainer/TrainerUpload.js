@@ -1,6 +1,6 @@
 import React from 'react'
-import Trainer_Navbar from '../../Components/Navbar/Trainer_Navbar';
-import Tab from '../../Components/Navbar/Tabs';
+import Trainer_Navbar from '../../Components/Trainer/Trainer_Navbar';
+import Tab from '../../Components/Trainer/Tabs';
 
 
 

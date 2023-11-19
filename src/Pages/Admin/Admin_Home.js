@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import TransationTable from '../../Components/Tables/TransationTable';
-import SalesGraph from '../../Components/Graph/SalesGraph';
-import AdminDashboardCard from '../../Components/Card/AdminDashboardCard';
+import TransationTable from '../../Components/Admin/TransationTable';
+import SalesGraph from '../../Components/Admin/SalesGraph';
+import AdminDashboardCard from '../../Components/Admin/AdminDashboardCard';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import adminApi from '../../Utils/admin-axios';
-import SalesTable from '../../Components/Tables/SalesTable';
+import SalesTable from '../../Components/Admin/SalesTable';
 
 function AdminHome() {
   const [dashboardInfo, setDashboardInfo] = useState({});

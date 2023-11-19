@@ -4,7 +4,7 @@ import client from '../../Utils/axios-utils';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import NotFound from '../../Components/NotFound/NotFound';
-import VideoDetail from '../../Components/detailsPage/videoDetails';
+import VideoDetail from '../../Components/User/videoDetails';
 
 
 function VideoDetails() {

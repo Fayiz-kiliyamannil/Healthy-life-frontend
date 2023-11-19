@@ -1,5 +1,5 @@
 import React from 'react'
-import Otp from '../../Components/Otp/Otp'
+import Otp from '../../Components/User/Otp'
 function h() {
   return (
   <Otp/>

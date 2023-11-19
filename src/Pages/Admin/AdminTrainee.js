@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Tabs from '../../Components/Navbar/Tabs';
+import Tabs from '../../Components/Admin/Tabs';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import CardTrainerTrainee  from '../../Components/Card/CardTrainerTrainee'
+import CardTrainee  from '../../Components/Admin/CardTrainee'
 import adminApi from '../../Utils/admin-axios';
 function AdminTrainee() {
     const dispatch = useDispatch()
@@ -25,12 +25,12 @@ function AdminTrainee() {
         userdata();
       }, []);
 
-     
+
 
     return (
         <>
            <Tabs trainees={true} all={true} searchValue={search} searchData={setUserData} />
-            <CardTrainerTrainee admin data={userData} />
+            <CardTrainee admin data={userData} />
         </>
     )
 }

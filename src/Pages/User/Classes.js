@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import VideoCard from '../../Components/Card/VideoCard'
+import VideoCard from '../../Components/User/VideoCard'
 import client from '../../Utils/axios-utils'
 import { useDispatch } from 'react-redux'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
 import NotFound from '../../Components/NotFound/NotFound'
 import { Link } from 'react-router-dom';
-import NonProUsers from '../../Components/Common/NonProUsers'
+import NonProUsers from '../../Components/User/NonProUsers'
 
 function Classes() {
     const [video, setVideo] = useState([]);

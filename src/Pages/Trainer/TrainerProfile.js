@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import Profile from '../../Components/Profile/Profile';
+import Profile from '../../Components/Trainer/Profile';
 import trainerApi from '../../Utils/trainer-axio';
 
 function TrainerProfile() {

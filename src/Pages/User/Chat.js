@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Chatpage from '../../Components/Chat/Chatpage'
+import Chatpage from '../../Components/User/Chatpage'
 import client from '../../Utils/axios-utils';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
@@ -8,7 +8,7 @@ import io from 'socket.io-client';
 import { userContext } from '../../App';
 import { trainerChatinfo } from '../../App';
 import { usersContext } from '../../App';
-import NonProUsers from '../../Components/Common/NonProUsers';
+import NonProUsers from '../../Components/User/NonProUsers';
 
 const ENDPOINT = 'http://localhost:5000';
 var socket, selectedChatCompare;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import trainerApi from '../../Utils/trainer-axio'
-import Spinner from '../../Components/Spinner/spinner'
-import VideoCard from '../../Components/Card/VideoCard';
+import Spinner from '../../Components/Common/spinner'
+import VideoCard from '../../Components/Trainer/VideoCard';
 import toast from 'react-hot-toast';
 
 function TrainerVideo() {

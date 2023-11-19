@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-import CardTrainerTrainee from '../../Components/Card/CardTrainerTrainee';
+import CardTrainee from '../../Components/Trainer/CardTrainee';
 import trainerApi from '../../Utils/trainer-axio';
 
 
@@ -34,7 +34,7 @@ function TrainerTrainees() {
 
   return (
     <>
-       <CardTrainerTrainee  data={trainee} tittle={'Trainees'} />
+       <CardTrainee  data={trainee} tittle={'Trainees'} />
     </>
   )
 }

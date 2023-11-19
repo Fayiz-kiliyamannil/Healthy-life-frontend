@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {  useParams } from 'react-router-dom'
 import trainerApi from '../../Utils/trainer-axio';
-import BlogCard from '../../Components/Card/BlogCard';
+import BlogCard from '../../Components/Trainer/BlogCard';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';

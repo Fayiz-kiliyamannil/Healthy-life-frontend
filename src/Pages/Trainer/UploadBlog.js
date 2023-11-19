@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
-import BlogUpload from "../../Components/UploadFile/BlogUpload";
+import BlogUpload from "../../Components/Trainer/BlogUpload";
 import trainerApi from "../../Utils/trainer-axio";
 
 function UploadBlog() {
