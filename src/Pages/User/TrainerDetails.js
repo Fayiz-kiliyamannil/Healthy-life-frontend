@@ -8,9 +8,12 @@ import toast from "react-hot-toast";
 
 
 
+
 function TrainerDetails() {
   const { id } = useParams();
   const [trainer, setTrainer] = useState([]);
+  const [rating,setRating] = useState(0);
+  const [noOfRating,setNoOfRating] = useState(0);
   const dispatch = useDispatch();
 
   const getTrainer = async () => {
@@ -22,6 +25,8 @@ function TrainerDetails() {
    
       if (response.data.success) {
         setTrainer(response.data.trainer);
+        setRating(parseInt(response.data.rating));
+        setNoOfRating(response.data.countRating);
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -35,7 +40,7 @@ function TrainerDetails() {
 
   return (
     <>
-      <Profile data={trainer} trainer />
+      <Profile data={trainer} rating={rating} trainer noOfRating={noOfRating} />
     </>
   );
 }

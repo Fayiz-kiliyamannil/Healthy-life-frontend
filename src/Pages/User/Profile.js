@@ -3,17 +3,22 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import client from "../../Utils/axios-utils";
+import Login from "./Login";
 function Profile() {
   const [userData, setUserData] = useState([]);
   const [image, setImage] = useState(null);
+  const [trainerImage, setTrainerImage] = useState(null);
   const dispatch = useDispatch();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isPopoverVisible, setPopoverVisible] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [trainerId, setTrainerId] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
+
 
   const handlePopoverToggle = () => {
     setPopoverVisible(!isPopoverVisible);
   };
-
 
   const openForm = () => {
     setIsFormOpen(true);
@@ -30,6 +35,10 @@ function Profile() {
       if (response.data.success) {
         setUserData(response.data.user);
         setImage(response.data.user.profile);
+        setTrainerImage(response.data.user.trainer.profile);
+        setTrainerId(response.data.user.trainer._id);
+        setRating(parseInt(response.data.rating.rating))
+
         dispatch(hideLoading());
       }
     } catch (error) {
@@ -38,9 +47,37 @@ function Profile() {
     }
   };
 
+
+
+
+  const handleRatingChange = (value) => {
+    setRating(value);
+  };
+
+  const ratingSubmit = async (event) => {
+    event.preventDefault();
+    const trainerRating = { rating: rating, trainerId: trainerId };
+    setIsLoading(true)
+    try {
+      const response = await client.post('/user/trainer-rating', { trainerRating })
+      if (response.data.success) {
+        setRating(parseInt(response.data.trainerRating.rating));
+        setTimeout(() => {
+          setIsLoading(false)
+        }, 1000)
+      }
+    } catch (error) {
+      console.error(error.message);
+      setIsLoading(false)
+    }
+  };
+
+
+
   useEffect(() => {
     getProfile();
   }, []);
+
 
   return (
     <>
@@ -51,12 +88,12 @@ function Profile() {
               <div className="bg-[#202123] shadow rounded-lg p-6">
                 <div className="flex flex-col items-center">
                   <img
-                    src={`http://127.0.0.1:5001/image/${image}`}
+                    src={image ? (`http://127.0.0.1:5001/image/${image}`):'/empty.png'}
                     className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                     alt="User Avatar"
                   />
                   <h1 className="text-xl text-white  font-bold">
-                    {userData.firstname}.{userData.lastname}
+                    {userData.firstname} {userData.lastname}
                   </h1>
                   <p className="text-gray-400">{userData.email}</p>
                 </div>
@@ -226,7 +263,7 @@ function Profile() {
                       {userData.trainer ? userData.trainer.specilized : ""} )
                     </p>
 
-                    {isPopoverVisible && (
+                    {isPopoverVisible  &&  userData.trainer && (
                       <div
                         data-popover
                         id="popover-user-profile"
@@ -240,44 +277,53 @@ function Profile() {
 
                             <img
                               className="w-10 h-10 border rounded-full"
-                              src="/docs/images/people/profile-picture-1.jpg"
+                              src={`http://127.0.0.1:5001/image/${trainerImage}`}
                               alt="Jese Leos"
                             />
                           </div>
                           <p className="text-base font-semibold leading-none text-gray-900 dark:text-white">
-                            nqml4l4l4ll4 kf
+                            {userData.trainer?.firstname} {userData.trainer?.lastname}
                           </p>
                           <p className="mb-3 text-sm font-normal">
-                            <a href="#" className="hover:underline">
-                              @jeseleos
-                            </a>
+                            <p  className="hover:underline">
+                              ({userData.trainer?.specilized})
+                            </p>
                           </p>
 
 
-                          <div class="flex items-center">
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                            </svg>
-                            <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                            </svg>
-                            <svg class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-                              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                            </svg>
-                          </div>
+                          <h2 className="text-2xl font-semibold mb-2">Rate this Trainer</h2>
+                          <form onSubmit={ratingSubmit}>
+                            <div className="flex">
+                              {[1, 2, 3, 4, 5].map((value) => (
+                                <label key={value} className="flex items-center mr-4">
+                                  <input
+                                    type="radio"
+                                    name="rating"
+                                    value={value}
+                                    checked={rating === value}
+                                    onChange={() => handleRatingChange(value)}
+                                    className="hidden"
+                                  />
+                                  <span className="cursor-pointer text-2xl" role="img" aria-label="star">
+                                    {rating >= value ? '⭐' : '☆'}
+                                  </span>
+                                </label>
+                              ))}
+                            </div>
+                            <button type="submit"
+                              className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2 mt-3 text-center me-2 mb-2"
+                            >
+                              {isLoading ? (
+                                <div className="border-t-transparent   border-solid animate-spin  rounded-full border-[#FA2A55] border-4  mx-10  w-[20px] h-[20px] " >
 
+                                </div>
+                              ) : (' Submit Rating')}
 
-
-
-
+                            </button>
+                          </form>
                         </div>
-                        <div data-popper-arrow></div>
+
+
                       </div>
 
                     )}
