@@ -46,23 +46,18 @@ function Signin(props) {
               <div>
                 <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Email address</label>
                 <div className="mt-1">
-                  <input id="email" name="email" value={data.email} onChange={handleEvent} type="email" autoComplete="email" required className="block w-full rounded-full  py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5  " />
+                  <input id="email" name="email" value={data.email} onChange={handleEvent} type="email"  required className="block w-full rounded-full  py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5  " />
                 </div>
               </div>
 
               <div>
                 <div className="flex items-center justify-between">
                   <label htmlFor="password" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Password</label>
-                  <div className="text-sm">
-                    {
-                      (props.admin)? <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500"></a>
-                      :  <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>
-                    }
-                   
+                  <div className="text-sm">  
                   </div>
                 </div>
                 <div className="mt-1">
-                  <input id="password" name="password" type="password" value={data.password} onChange={handleEvent} autoComplete="current-password" required className="block w-full rounded-full  py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5 " />
+                  <input id="password" name="password" type="password" value={data.password} onChange={handleEvent}  required className="block w-full rounded-full  py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5 " />
                   <div className="text-xs text-right mt-1 mr-3 ">
                   <label  className='text-[#C2C2C2]' > Show password </label>
                 
@@ -75,24 +70,11 @@ function Signin(props) {
               </p>
 
               <div>
-                <button type="submit" className="mt-6 flex w-full justify-center rounded-full bg-[#FA2A55] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#BA0C2F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Sign in</button>
+                <button type="submit" className="mt-6 mb-7 flex w-full justify-center rounded-full bg-[#FA2A55] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#BA0C2F] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Sign in</button>
               </div>
 
             </form>
-            {
-              (props.admin) ?  <p className="mt-7 text-sm text-[#C2C2C2]">
            
-              <a href="#" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> </a>
-            </p> 
-            : (props.trainer) ? <p className="mt-7 text-sm text-[#C2C2C2]">
-            Not a member?
-            <a href="/trainer/register" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> Signup now</a>
-          </p> 
-          : <p className="mt-7 text-sm text-[#C2C2C2]">
-            Not a member?
-            <a href="/register" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> Signup now</a>
-          </p>
-            }
 
             
           </div>

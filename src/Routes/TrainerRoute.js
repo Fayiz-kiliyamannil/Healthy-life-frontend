@@ -1,27 +1,29 @@
 
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import TrainerHome from '../Pages/Trainer/TrainerHome'
-import TrainerProtectedRoute from '../Components/ProtectedRoutes/TrainerProtectedRoute';
-import TrainerProfile from '../Pages/Trainer/TrainerProfile';
-import TrainerProfileEdit from '../Pages/Trainer/TrainerProfileEdit';
-import TrainerTrainees from '../Pages/Trainer/TrainerTrainees';
-import TrainerUpload from '../Pages/Trainer/TrainerUpload';
-import UploadBlog from '../Pages/Trainer/UploadBlog';
-import UploadVideo from '../Pages/Trainer/UploadVideo';
-import TraineesDetails from '../Pages/Trainer/TraineesDetails';
-import TrainerNavbar from '../Components/Trainer/Trainer_Navbar';
+import TrainerProtectedRoute from '../Components/ProtectedRoutes/TrainerProtectedRoute'
 import Footer from '../Components/Common/Footer/Footer';
 import NotFoundAd from '../Components/NotFound/NotfoundAd';
-import TrainerMedia from '../Pages/Trainer/TrainerMedia';
-import TrainerBlog from '../Pages/Trainer/TrainerBlog';
-import TrainerVideo from '../Pages/Trainer/TrainerVideo';
-import EditBlog from '../Pages/Trainer/EditBlog';
-import EditVideo from '../Pages/Trainer/EditVideo';
-import TrainerBlogDetails from '../Pages/Trainer/TrainerBlogDetails';
-import TrainerVideoDetails from '../Pages/Trainer/TrainerVideoDetails';
-import TrainerChat from '../Pages/Trainer/TrainerChat';
-import TrainerVideoCall from '../Pages/Trainer/TrainerVideoCall';
+
+
+const TrainerHome = React.lazy(() => import('../Pages/Trainer/TrainerHome'));
+const TrainerProfile = React.lazy(() => import('../Pages/Trainer/TrainerProfile'))
+const TrainerProfileEdit = React.lazy(() => import('../Pages/Trainer/TrainerProfileEdit'))
+const TrainerTrainees = React.lazy(() => import('../Pages/Trainer/TrainerTrainees'))
+const TrainerUpload = React.lazy(() => import('../Pages/Trainer/TrainerUpload'))
+const UploadBlog = React.lazy(() => import('../Pages/Trainer/UploadBlog'))
+const UploadVideo = React.lazy(() => import('../Pages/Trainer/UploadVideo'))
+const TraineesDetails = React.lazy(() => import('../Pages/Trainer/TraineesDetails'))
+const TrainerNavbar = React.lazy(() => import('../Components/Trainer/Trainer_Navbar'))
+const TrainerMedia = React.lazy(() => import('../Pages/Trainer/TrainerMedia'))
+const TrainerBlog = React.lazy(() => import('../Pages/Trainer/TrainerBlog'))
+const TrainerVideo = React.lazy(() => import('../Pages/Trainer/TrainerVideo'))
+const EditBlog = React.lazy(() => import('../Pages/Trainer/EditBlog'))
+const EditVideo = React.lazy(() => import('../Pages/Trainer/EditVideo'))
+const TrainerBlogDetails = React.lazy(() => import('../Pages/Trainer/TrainerBlogDetails'))
+const TrainerVideoDetails = React.lazy(() => import('../Pages/Trainer/TrainerVideoDetails'))
+const TrainerChat = React.lazy(() => import('../Pages/Trainer/TrainerChat'))
+const TrainerVideoCall = React.lazy(() => import('../Pages/Trainer/TrainerVideoCall'))
 
 
 
@@ -32,31 +34,31 @@ function TrainerRoute() {
             <TrainerNavbar />
             <Routes>
                 <Route path="/"  >
-                    <Route index element={<TrainerProtectedRoute> <TrainerHome/> </TrainerProtectedRoute>} />
-                <Route path="home" element={<TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute>} />
+                    <Route index element={<React.Suspense> <TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute> </React.Suspense>} />
+                    <Route path="home" element={<React.Suspense> <TrainerProtectedRoute> <TrainerHome /> </TrainerProtectedRoute> </React.Suspense>} />
                 </Route>
-                <Route path='/profile' element={<TrainerProtectedRoute> <TrainerProfile /></TrainerProtectedRoute>} />
-                <Route path='/profile/edit/:Id' element={<TrainerProtectedRoute><TrainerProfileEdit /></TrainerProtectedRoute>} />
-                <Route path='/trainees' element={<TrainerProtectedRoute><TrainerTrainees /></TrainerProtectedRoute>} />
-                <Route path='/trainees/:traineeId' element={<TraineesDetails />} />
-                <Route path='/upload' element={<TrainerProtectedRoute><TrainerUpload /></TrainerProtectedRoute>}>
-                    <Route index element={<UploadBlog />} />
-                    <Route path='blog' element={<UploadBlog />} />
-                    <Route path='video' element={<UploadVideo />} />
+                <Route path='/profile' element={<React.Suspense> <TrainerProtectedRoute> <TrainerProfile /></TrainerProtectedRoute> </React.Suspense>} />
+                <Route path='/profile/edit/:Id' element={<React.Suspense>  <TrainerProtectedRoute><TrainerProfileEdit /></TrainerProtectedRoute> </React.Suspense>} />
+                <Route path='/trainees' element={<React.Suspense> <TrainerProtectedRoute><TrainerTrainees /></TrainerProtectedRoute> </React.Suspense>} />
+                <Route path='/trainees/:traineeId' element={<React.Suspense> <TraineesDetails /> </React.Suspense>} />
+                <Route path='/upload' element={<React.Suspense> <TrainerProtectedRoute><TrainerUpload /></TrainerProtectedRoute> </React.Suspense>}>
+                    <Route index element={<React.Suspense> <UploadBlog /> </React.Suspense>} />
+                    <Route path='blog' element={<React.Suspense> <UploadBlog /> </React.Suspense>} />
+                    <Route path='video' element={<React.Suspense><UploadVideo /></React.Suspense>} />
                 </Route>
-                <Route path='/media' element={<TrainerProtectedRoute><TrainerMedia /></TrainerProtectedRoute>}>
-                    <Route index element={<TrainerBlog />} />
-                    <Route path='blog' element={<TrainerBlog />} />
-                    <Route path='video' element={<TrainerVideo />} />
+                <Route path='/media' element={<React.Suspense><TrainerProtectedRoute><TrainerMedia /></TrainerProtectedRoute></React.Suspense>}>
+                    <Route index element={<React.Suspense><TrainerBlog /> </React.Suspense>} />
+                    <Route path='blog' element={<React.Suspense><TrainerBlog /></React.Suspense>} />
+                    <Route path='video' element={<React.Suspense> <TrainerVideo /> </React.Suspense>} />
                 </Route>
-                <Route path='/blog/edit/:blogId' element={<TrainerProtectedRoute> <EditBlog /> </TrainerProtectedRoute>} />
-                <Route path='/video/edit/:videoId' element={<TrainerProtectedRoute><EditVideo /></TrainerProtectedRoute>} />
-                <Route path='/media/blog/:blogId' element={<TrainerProtectedRoute><TrainerBlogDetails /></TrainerProtectedRoute>} />
+                <Route path='/blog/edit/:blogId' element={<React.Suspense> <TrainerProtectedRoute> <EditBlog /> </TrainerProtectedRoute> </React.Suspense>} />
+                <Route path='/video/edit/:videoId' element={<React.Suspense> <TrainerProtectedRoute><EditVideo /></TrainerProtectedRoute> </React.Suspense>} />
+                <Route path='/media/blog/:blogId' element={<React.Suspense> <TrainerProtectedRoute><TrainerBlogDetails /></TrainerProtectedRoute> </React.Suspense>} />
                 <Route path='/media/video/:videoId' element={<TrainerProtectedRoute><TrainerVideoDetails /></TrainerProtectedRoute>} />
-                <Route path='/message' element={<TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute>}>
-                    <Route path=':userId' element={<TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute>} />
+                <Route path='/message' element={<React.Suspense> <TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute> </React.Suspense>}>
+                    <Route path=':userId' element={<React.Suspense> <TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute> </React.Suspense>} />
                 </Route>
-                <Route path='/videocall/:userId' element={<TrainerProtectedRoute> <TrainerVideoCall /> </TrainerProtectedRoute>} />
+                <Route path='/videocall/:userId' element={<React.Suspense> <TrainerProtectedRoute> <TrainerVideoCall /> </TrainerProtectedRoute> </React.Suspense>} />
                 <Route path='/*' element={<NotFoundAd />} />
 
             </Routes>

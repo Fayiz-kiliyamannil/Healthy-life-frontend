@@ -57,7 +57,7 @@ function Otp() {
     return (
         <>
             <div className="min-h-screen bg-[#191919] flex justify-center items-center">
-                <div className="relative">
+                <div className="">
                     <div className="bg-[] p-7 rounded-md shadow-lg text-center">
                         <h6 className="text-lg text-white">
                             Please enter the one-time password<br />to verify your account 
@@ -91,9 +91,9 @@ function Otp() {
                     </div>
                     <div className="mt-4 text-center text-sm text-[#C2C2C2]">
                         <span>Didn't get the code -</span>
-                        <a onClick={resend} className=" p-1 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F]">
+                        <button onClick={resend} className=" p-1 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F]">
                             Resend
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -54,10 +54,6 @@ function Signin(props) {
                 <div className="flex items-center justify-between">
                   <label htmlFor="password" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Password</label>
                   <div className="text-sm">
-                    {
-                      (props.admin)? <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500"></a>
-                      :  <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>
-                    }
                    
                   </div>
                 </div>

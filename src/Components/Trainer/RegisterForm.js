@@ -45,7 +45,7 @@ function RegisterForm(props) {
             <div>
               <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Email address</label>
               <div className="mt-1">
-                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle} autoComplete="email" required className="block w-full border-b  rounded-full py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5" />
+                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle}  required className="block w-full border-b  rounded-full py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5" />
                
               </div>
             </div>
@@ -63,16 +63,13 @@ function RegisterForm(props) {
                 
               </div>
               <div className="mt-1">
-                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}   required className="block w-full   rounded-full py-2 bg-[#898989] border-b  bg-opacity-20 text-[#C2C2C2] pl-5" />
+                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle} className="block w-full   rounded-full py-2 bg-[#898989] border-b  bg-opacity-20 text-[#C2C2C2] pl-5" />
                 <div className="text-xs text-right mt-1 mr-3 ">
                   <label  className='text-[#C2C2C2]' > Show password </label>
                 
                  <input  onClick={()=>hidePassword()} type='checkbox'/>
                 </div>
               </div>
-              <div className="text-sm text-right mt-1">
-                  <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>
-                </div>
               
       
               <p className="text-sm text-[#FA2A55]">

@@ -1,45 +1,45 @@
 import React from 'react'
 import { Routes,Route } from 'react-router-dom';
-import Login from '../Pages/User/Login';
-import Signup from '../Pages/User/Signup'
-import Otp from '../Pages/User/Otp'
-import Home from '../Pages/User/Home'
 import ProtectedRoute from '../Components/ProtectedRoutes/ProtectedRoute';
-import Trainers from '../Pages/User/Trainers';
-import Profile from '../Pages/User/Profile';
-import EditProfile from '../Pages/User/EditProfile';
-import Contact from '../Pages/User/Contact';
-import Blog from '../Pages/User/Blog';
-import BlogDetails from '../Pages/User/BlogDetails';
-import TrainerDetails from '../Pages/User/TrainerDetails';
 import Navbar from '../Components/User/Navbar';
 import Footer from '../Components/Common/Footer/Footer';
 import NotFound from '../Components/NotFound/NotFound'
-import Classes from '../Pages/User/Classes';
-import VideoDetails from '../Pages/User/VideoDetails';
-import Chat from '../Pages/User/Chat';
-import VideoCall from '../Pages/User/videoCall';
+const Login = React.lazy(()=>import('../Pages/User/Login'))
+const Signup = React.lazy(()=> import('../Pages/User/Signup'))
+const Blog = React.lazy(()=>import('../Pages/User/Blog'))
+const Otp = React.lazy(()=>import('../Pages/User/Otp'))
+const Home = React.lazy(()=>import('../Pages/User/Home'))
+const Profile = React.lazy(()=>import('../Pages/User/Profile'))
+const EditProfile =  React.lazy(()=>import('../Pages/User/EditProfile'))
+const Contact = React.lazy(()=>import('../Pages/User/Contact'))
+const BlogDetails = React.lazy(()=> import('../Pages/User/BlogDetails'))
+const TrainerDetails = React.lazy(()=> import('../Pages/User/TrainerDetails'))
+const Classes  = React.lazy(()=>import('../Pages/User/Classes'))
+const VideoDetails =  React.lazy(()=>import('../Pages/User/VideoDetails'))
+const Chat = React.lazy(()=>import('../Pages/User/Chat'))
+const VideoCall = React.lazy(()=> import('../Pages/User/videoCall'))
+const Trainers  = React.lazy(()=> import('../Pages/User/Trainers') )
 
 function UserRoute() {
     return (
       <>
       <Navbar/>
         <Routes>
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Signup />} />
-            <Route path="/otp" element={<Otp />} />
-            <Route path='/' element={<Home />} />
-            <Route path='/trainers' element={<ProtectedRoute><Trainers/></ProtectedRoute>} />
-            <Route path='/trainers/:id' element={<ProtectedRoute><TrainerDetails/></ProtectedRoute>}/>
-            <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
-            <Route path='/profile/edit/:userId'  element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
-            <Route path='/contact' element={<Contact/>}/>
-            <Route path='/blog' element={<ProtectedRoute><Blog/></ProtectedRoute>}/>
-            <Route path='/blog/:blogId'  element={<ProtectedRoute><BlogDetails/></ProtectedRoute>}/>
-            <Route path='/classes' element={<ProtectedRoute> <Classes/> </ProtectedRoute>}/>
-            <Route path='/classes/:videoId' element={<ProtectedRoute><VideoDetails/></ProtectedRoute>}/>
-            <Route path='classes/chat' element={<ProtectedRoute> <Chat/> </ProtectedRoute>}/>
-            <Route path='classes/videocall' element={<ProtectedRoute><VideoCall/></ProtectedRoute>}/>
+            <Route path='/login' element={<React.Suspense> <Login /> </React.Suspense>} /> 
+            <Route path='/register' element={<React.Suspense> <Signup /> </React.Suspense>} />
+            <Route path="/otp" element={<React.Suspense> <Otp /> </React.Suspense>} />
+            <Route path='/' element={<React.Suspense> <Home /> </React.Suspense>} />
+            <Route path='/trainers' element={<React.Suspense > <ProtectedRoute><Trainers/></ProtectedRoute>  </React.Suspense>} />
+            <Route path='/trainers/:id' element={<React.Suspense> <ProtectedRoute><TrainerDetails/></ProtectedRoute> </React.Suspense>}/>
+            <Route path='/profile' element={<React.Suspense> <ProtectedRoute><Profile/></ProtectedRoute> </React.Suspense>}/>
+            <Route path='/profile/edit/:userId'  element={<React.Suspense> <ProtectedRoute><EditProfile/></ProtectedRoute> </React.Suspense>}/>
+            <Route path='/contact' element={<React.Suspense> <Contact/> </React.Suspense>}/>
+            <Route path='/blog' element={<React.Suspense> <ProtectedRoute><Blog/></ProtectedRoute> </React.Suspense>}/>
+            <Route path='/blog/:blogId'  element={<React.Suspense> <ProtectedRoute><BlogDetails/></ProtectedRoute> </React.Suspense>}/>
+            <Route path='/classes' element={<React.Suspense> <ProtectedRoute> <Classes/> </ProtectedRoute> </React.Suspense>}/>
+            <Route path='/classes/:videoId' element={<React.Suspense> <ProtectedRoute><VideoDetails/></ProtectedRoute> </React.Suspense>}/>
+            <Route path='classes/chat' element={<React.Suspense> <ProtectedRoute> <Chat/> </ProtectedRoute> </React.Suspense>}/>
+            <Route path='classes/videocall' element={<React.Suspense> <ProtectedRoute><VideoCall/></ProtectedRoute> </React.Suspense>}/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
         <Footer/>

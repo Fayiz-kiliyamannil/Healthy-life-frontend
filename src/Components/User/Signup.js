@@ -51,7 +51,7 @@ function Signup(props) {
             <div>
               <label htmlFor="email" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]">Email address</label>
               <div className="mt-1">
-                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle} autoComplete="email" required className="block w-full  rounded-full py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5" />
+                <input id="email" name="email" type="email" value={data.email} onChange={eventHandle}  required className="block w-full  rounded-full py-2 bg-[#898989] bg-opacity-20  text-[#C2C2C2] pl-5" />
                
               </div>
             </div>
@@ -62,30 +62,20 @@ function Signup(props) {
                 
               </div>
               <div className="mt-1">
-                <input id="password" name="password" type="password" value={data.password} onChange={eventHandle}  required className="block w-full   rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
+                <input id="password" name="password" type="password" value={data.password}  autoComplete="new-password"  onChange={eventHandle}   className="block w-full   rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
               </div>
               <div className="flex items-center justify-between">
                 <label htmlFor="repassword" className="block text-sm text-left font-medium leading-6 text-[#C2C2C2]"> Re-Password</label>
                 
               </div>
               <div className="mt-1">
-                <input id="repassword" name="repassword" type="password" value={data.repassword} onChange={eventHandle}  required className="block w-full   rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
+                <input id="repassword" name="repassword" type="password" autoComplete="re-password"  value={data.repassword} onChange={eventHandle}  className="block w-full   rounded-full py-2 bg-[#898989] bg-opacity-20 text-[#C2C2C2] pl-5" />
                 <div className="text-xs text-right mt-1 mr-3 ">
                   <label className='text-[#C2C2C2]' > Show password </label>
                 
                  <input onClick={()=>hidePassword()} type='checkbox'/>
                 </div>
-              </div>
-            
-              
-              
-              <div className="text-sm text-right mt-1">
-                  <a href="#" className="font-semibold text-[#FA2A55] hover:text-red-500">Forgot password?</a>
-                </div>
-
-                
-              
-      
+              </div>      
               <p className="text-sm text-[#FA2A55]">
                 {props.userStatus}
               </p>

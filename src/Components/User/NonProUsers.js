@@ -6,7 +6,10 @@ function NonProUsers() {
      const {setPaymentNavigation} = useContext(usersContext);
      const navigate =  useNavigate();
      function pro(){
-        setPaymentNavigation('payment')
+        setPaymentNavigation('payment');
+        setTimeout(()=>{
+         setPaymentNavigation('')
+        },1000)
         navigate('/')
      }
  

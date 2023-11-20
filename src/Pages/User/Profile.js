@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
 import client from "../../Utils/axios-utils";
-import Login from "./Login";
+
 function Profile() {
+
   const [userData, setUserData] = useState([]);
   const [image, setImage] = useState(null);
   const [trainerImage, setTrainerImage] = useState(null);
@@ -13,7 +14,8 @@ function Profile() {
   const [isPopoverVisible, setPopoverVisible] = useState(false);
   const [rating, setRating] = useState(0);
   const [trainerId, setTrainerId] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [order, setOrder] = useState()
 
 
   const handlePopoverToggle = () => {
@@ -37,16 +39,15 @@ function Profile() {
         setImage(response.data.user.profile);
         setTrainerImage(response.data.user.trainer.profile);
         setTrainerId(response.data.user.trainer._id);
-        setRating(parseInt(response.data.rating.rating))
-
+        setRating(parseInt(response.data.rating.rating));
+        setOrder(response.data.order)
         dispatch(hideLoading());
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.error(error);
+      console.error(error.message);
     }
   };
-
 
 
 
@@ -73,7 +74,6 @@ function Profile() {
   };
 
 
-
   useEffect(() => {
     getProfile();
   }, []);
@@ -84,11 +84,11 @@ function Profile() {
       <div className="mt-20 mb-10">
         <div className="container mx-auto py-8">
           <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
-            <div className="col-span-4 sm:col-span-3">
-              <div className="bg-[#202123] shadow rounded-lg p-6">
+            <div className="col-span-4  sm:col-span-3">
+              <div className="bg-[#202123]  rounded-lg p-6">
                 <div className="flex flex-col items-center">
                   <img
-                    src={image ? (`http://127.0.0.1:5001/image/${image}`):'/empty.png'}
+                    src={image ? (`http://127.0.0.1:5001/image/${image}`) : '/empty.png'}
                     className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                     alt="User Avatar"
                   />
@@ -97,8 +97,47 @@ function Profile() {
                   </h1>
                   <p className="text-gray-400">{userData.email}</p>
                 </div>
+
+                <div className=" h-40 bg-gradient-to-r  mt-5 mb-3  from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
+                  <p className="text-md mt-2 ml-2 text-gray-200 mt-3   border-gray-50  text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm  text-center me-2 mb-2  font-medium uppercase">pro</p>
+                 
+                 {
+                  order ? (
+                    <div className=" mt-4   mx-4 " >
+                    <h4 className="text-sm  text-gray-300 font-medium"> Price :
+                      <span className="text-sm  ml-2 text-[#7E3BF2] font-bold">
+                        &#8377; {order?.price}
+                      </span>
+                    </h4>
+
+                    <h4 className="text-sm text-gray-300 mb-2 font-medium"> plan Start In :
+                      <span className="text-sm  ml-2 text-green-400 font-bold">
+                        {order?.proStartIn.slice(4, 16)}
+                      </span>
+                    </h4>
+                    <h4 className="text-sm text-gray-300 mb-2 font-medium"> Plan End In :
+                      <span className="text-sm ml-2  text-red-500 font-bold">
+                        {order?.proEndIn.slice(4, 16)}
+                      </span>
+                    </h4>
+                    <h4 className="text-sm text-gray-300 font-medium"> No. of Month :
+                      <span className="text-sm ml-2 text-[#7E3BF2] font-bold">
+                        {order?.noOfMonth}
+                      </span>
+                    </h4>
+                  </div>
+                  ):(
+                    <div className=" mt-8 text-red-400 text-center  mx-4 " >
+                      No Plan
+                      </div>
+                  )
+                 }
+                
+                </div>
+
               </div>
             </div>
+
             <div className="col-span-4  sm:col-span-9">
               <div className="bg-[#202123] h-200px shadow   rounded-lg p-6">
                 <div className="text-lg font-medium  text-white mb-4 flex items-center justify-between">
@@ -263,7 +302,7 @@ function Profile() {
                       {userData.trainer ? userData.trainer.specilized : ""} )
                     </p>
 
-                    {isPopoverVisible  &&  userData.trainer && (
+                    {isPopoverVisible && userData.trainer && (
                       <div
                         data-popover
                         id="popover-user-profile"
@@ -285,7 +324,7 @@ function Profile() {
                             {userData.trainer?.firstname} {userData.trainer?.lastname}
                           </p>
                           <p className="mb-3 text-sm font-normal">
-                            <p  className="hover:underline">
+                            <p className="hover:underline">
                               ({userData.trainer?.specilized})
                             </p>
                           </p>

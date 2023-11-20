@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast'
 
 function PricingSection() {
     const navigate = useNavigate();
+    
     const showRazorpay = (order) => {
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
