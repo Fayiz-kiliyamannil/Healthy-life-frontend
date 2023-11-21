@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clientApi from '../../Utils/axios-utils'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast'
 
 function PricingSection() {
     const navigate = useNavigate();
-    
+
+
+
+
     const showRazorpay = (order) => {
         const script = document.createElement('script');
         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -26,7 +29,7 @@ function PricingSection() {
                     image: "/logo.png",
                     order_id: undefined, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                     handler: async function (response) {
-                           await  clientApi.post('/user/payment-success',{order_id:order_id})
+                        await clientApi.post('/user/payment-success', { order_id: order_id })
                     },
                     prefill: { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
                         name: "Gaurav Kumar", //your customer's name
@@ -56,8 +59,6 @@ function PricingSection() {
 
 
 
-
-
     const pricing = [
         { id: 1, month: 'One', price: 3999 },
         { id: 2, month: 'Two', price: 5999 },
@@ -65,14 +66,29 @@ function PricingSection() {
     ]
 
 
+    const [time, setTime] = useState(300);
+
+    useEffect(() => {
+        const timerInterval = setInterval(() => {
+            setTime((prevTime) => prevTime - 1);
+        }, 1000);
+
+        return () => clearInterval(timerInterval);
+
+    }, []);
+
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+
+
     return (
         <>
-            <div   className="  mx-auto max-w-screen-xl border border-gray-500 rounded-lg lg:py-16 lg:px-6">
+            <div className="  mx-auto max-w-screen-xl border border-gray-500 rounded-lg lg:py-16 lg:px-6">
                 <div id='payment' className="mx-auto   max-w-screen-md  text-center mb-8 lg:mb-6">
-                    <h1  className='text-[#898989] text-sm text-center font-sans '>Pro</h1>
+                    <h1 className='text-[#898989] text-sm text-center font-sans '>Pro</h1>
                     <h1 className='text-[#898989] pb-2 mx-10 border-b border-gray-700  text-4xl text-center font-sans font-bold '>Choose your Healthy-Life Pro</h1>
                 </div>
-                <div  className="  space-y-8  lg:grid pt-5 lg:grid-cols-3 mx-10 sm:gap-6 xl:gap-20 lg:space-y-0 ">
+                <div className="  space-y-8  lg:grid pt-5 lg:grid-cols-3 mx-10 sm:gap-6 xl:gap-20 lg:space-y-0 ">
 
                     {
                         pricing.map(obj => (
@@ -111,8 +127,13 @@ function PricingSection() {
                                 <button onClick={() => showRazorpay(obj)} className="text-white bg-[#FA2A55]  hover:bg-white hover:text-black focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">buy</button>
                             </div>
 
+
                         ))
                     }
+
+                    <div className="text-4xl border text-white font-bold">
+                        {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+                    </div>
 
                 </div>
             </div>

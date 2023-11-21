@@ -9,6 +9,7 @@ import store from './Redux/store';
 import * as process from 'process';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
