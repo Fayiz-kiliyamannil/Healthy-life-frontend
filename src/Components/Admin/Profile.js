@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+
 
 function Profile(props) {
  
@@ -25,10 +25,45 @@ function Profile(props) {
                       className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" alt="user"
                     />
                   )}
-                  <h1 className="text-xl text-white  font-bold">
-                    {props.data.firstname}.{props.data.lastname}
+                <h1 className="text-xl text-white  font-bold">
+                    {props.data.firstname} {props.data.lastname}
                   </h1>
-                  <p className="text-gray-400">{props.data.email}</p>
+                {props.trainer &&(
+                    <span className="text-sm my-1 text-gray-400  font-medium">
+                    ({props.data.specilized} )
+                 </span>
+                )}
+                  <p className="text-gray-300 font-medium "> Mail : <span className="text-sm my-1 text-gray-400  font-medium">
+                  {props.data.email}
+                  </span> </p>
+
+                  { props.trainer ?
+                  props.rating ? (
+                    <div className="flex mt-3 items-center">
+                   
+                    <div className="flex">
+                                {[1, 2, 3, 4, 5].map((value) => (
+                                  <label key={value} className="flex items-center mr-1">
+                                    <input
+                                      type="radio"
+                                      name="rating"
+                                      value={value}
+                                      checked={props.rating === value}
+                                      className="hidden"
+                                    />
+                                    <span className="cursor-pointer text-md" role="img" aria-label="star">
+                                      {props.rating >= value ? '⭐' : '☆'}
+                                    </span>
+                                  </label>
+                                ))}
+                              </div>
+  
+                      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{props.noOfRating}</p>
+                      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> ratings</p>
+                    </div>
+                  ):(<p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">0 ratings</p>):''
+                 }
+
                 </div>
               </div>
             </div>

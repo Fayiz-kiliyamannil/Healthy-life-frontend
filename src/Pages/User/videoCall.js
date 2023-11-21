@@ -10,6 +10,7 @@ import NonProUsers from '../../Components/User/NonProUsers';
 const socket = io.apply('http://localhost:5000');
 
 
+
 const VideoCall = () => {
     const { userInfo } = useContext(usersContext);
     const [callAccepted, setCallAccepted] = useState(false);
@@ -63,6 +64,7 @@ const VideoCall = () => {
 
 
     const answerCall = () => {
+       try {
         toast.remove();
         setCallAccepted(true);
         const peer = new Peer({ initiator: false, trickle: false, stream });
@@ -76,9 +78,14 @@ const VideoCall = () => {
             peer.signal(call.signal);
             connectionRef.current = peer;
         }
+        
+       } catch (error) {
+         console.error(error.message);
+       }
     };
 
     const callUser = (id) => {
+     try {
         const peer = new Peer({ initiator: true, trickle: false, stream });
         peer.on('signal', (data) => {
             socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
@@ -91,23 +98,34 @@ const VideoCall = () => {
             peer.signal(signal);
         });
         connectionRef.current = peer;
+     } catch (error) {
+        console.error(error.message);
+
+     }
     };
+
+
 
 
     const leaveCall = () => {
-        try {
-            setCallEnded(true);
-            window.history.back()
-            window.location.reload();
-            if (connectionRef.current) {
-                connectionRef.current = null;
-                window.location.reload();
-                window.history.back();
-            }
-        } catch (error) {
-            console.error(error.message);
+        // Close the connection and stop the stream
+        if (connectionRef.current) {
+            connectionRef.current = '';
         }
+
+        if (stream) {
+            stream.getTracks().forEach((track) => {
+                track.stop();
+            });
+        }
+        // Reset the state
+        setCall({});
+        setCallAccepted(false);
+        window.history.back();
     };
+
+
+
 
     if (!pro) {
         return <NonProUsers />
@@ -127,7 +145,7 @@ const VideoCall = () => {
             </div>
 
             <div className='flex mt-4 justify-center' >
-                <button onClick={leaveCall} className=" border border-transparent rounded-full w-14 h-14  mr-3 flex items-center justify-center text-sm font-medium bg-red-500 hover:bg-red-700 "
+                <button onClick={()=>leaveCall()} className=" border border-transparent rounded-full w-14 h-14  mr-3 flex items-center justify-center text-sm font-medium bg-red-500 hover:bg-red-700 "
                 >
                     <svg class="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="m16.344 12.168-1.4-1.4a1.98 1.98 0 0 0-2.8 0l-.7.7a1.98 1.98 0 0 1-2.8 0l-2.1-2.1a1.98 1.98 0 0 1 0-2.8l.7-.7a1.981 1.981 0 0 0 0-2.8l-1.4-1.4a1.828 1.828 0 0 0-2.8 0C-.638 5.323 1.1 9.542 4.78 13.22c3.68 3.678 7.9 5.418 11.564 1.752a1.828 1.828 0 0 0 0-2.804Z" />

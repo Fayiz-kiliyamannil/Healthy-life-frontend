@@ -11,6 +11,8 @@ function TrainersDetails() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const [trainer, setTrainer] = useState([]);
+    const [rating,setRating] = useState(0);
+    const [noOfRating,setNoOfRating] = useState(0);
 
 
     const getTrainerInfo = async () => {
@@ -19,6 +21,8 @@ function TrainersDetails() {
             const response = await  adminApi.post("/admin/get-trainer-info", { id: id });
             if (response.data.success) {
                 setTrainer(response.data.trainer);
+                setNoOfRating(response.data.noOfRating);
+                setRating(response.data.rating)
                 dispatch(hideLoading());
             }
         } catch (error) {
@@ -55,7 +59,7 @@ function TrainersDetails() {
     return (
         <>
 
-            <Profile data={trainer}  action={action}  trainer admin  />
+            <Profile data={trainer}  action={action} rating={rating} noOfRating={noOfRating}  trainer admin  />
         </>
     )
 }

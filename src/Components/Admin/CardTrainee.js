@@ -31,6 +31,8 @@ function CardTrainee(props) {
                     <h4 className="mt-1 text-sm  text-gray-200">{obj.specilized}</h4>
                     <h4 className="mt-1 text-sm  text-gray-500">{obj.email}</h4>
                   </NavLink>
+
+                  
                 </div>
                 {
                   props.admin ? (

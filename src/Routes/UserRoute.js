@@ -42,7 +42,7 @@ function UserRoute() {
             <Route path='classes/videocall' element={<React.Suspense> <ProtectedRoute><VideoCall/></ProtectedRoute> </React.Suspense>}/>
             <Route path='*' element={<NotFound/>}/>
         </Routes>
-        <Footer/>
+        <Footer trainee />
       </>
     )
 }

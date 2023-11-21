@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+
 
 function Profile(props) {
 
@@ -26,7 +25,7 @@ function Profile(props) {
                     />
                   )}
                   <h1 className="text-xl text-white  font-bold">
-                    {props.data.firstname}.{props.data.lastname}
+                    {props.data.firstname} {props.data.lastname}
                   </h1>
                   <span className="text-sm my-1 text-gray-400  font-medium">
                      ({props.data.specilized} )
