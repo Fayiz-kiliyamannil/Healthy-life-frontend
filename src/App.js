@@ -12,12 +12,14 @@ import './App.css';
 const TrainerSignup = React.lazy(()=>import('./Pages/Trainer/TrainerSignup'))
 const TrainerLogin = React.lazy(()=>import('./Pages/Trainer/TrainerLogin'))
 const AdminLogin = React.lazy(()=>import('./Pages/Admin/AdminLogin'))
+ 
 
 export const userContext = React.createContext();
 export const trainerChatinfo = React.createContext();
 export const usersContext = React.createContext();
 export const trainerContext = React.createContext();
 const queryClient = new QueryClient()
+
 
 function App() {
 

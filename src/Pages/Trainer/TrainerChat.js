@@ -40,7 +40,7 @@ function TrainerChat() {
                 dispatch(hideLoading());
             }
         } catch (error) {
-            setIsError(error.message)
+            // setIsError(error.message)
             console.error(error);
             dispatch(hideLoading())
         }
