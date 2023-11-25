@@ -8,8 +8,8 @@ const navigate = useNavigate()
 
     return (
         <>
-            <div onClick={()=>navigate('/admin/trainees') } className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
-                <div className=" h-32 bg-gradient-to-r m-2 from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
+            <div className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
+                <div  onClick={()=>navigate('/admin/trainees') } className=" h-32 bg-gradient-to-r m-2 from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
                     <div className="flex items-center justify-between p-4">
                         <div className="relative w-16 h-16 bg-gradient-to-r from-yellow-800 to-yellow-600 rounded-full flex items-center justify-center">
                             <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">

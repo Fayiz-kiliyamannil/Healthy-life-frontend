@@ -5,7 +5,7 @@ function CardTrainee(props) {
   
   return (
     <>
-      <div className={`mx-auto max-w-2xl px-4   sm:px-6  lg:max-w-7xl lg:px-8`}>
+      <div className={`mx-auto max-w-2xl px-4 pb-10   sm:px-6  lg:max-w-7xl lg:px-8`}>
         <h2 className="text-2xl text-center  border-gray-700 pb-5 font-bold tracking-tight text-gray-500">{props.tittle}</h2>
 
         <div className=" mt-5 grid grid-cols-1   gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

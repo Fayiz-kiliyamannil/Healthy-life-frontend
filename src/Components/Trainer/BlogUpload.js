@@ -5,7 +5,7 @@ import React from 'react'
 function BlogUpload(props) {
     return (
         <>
-                <div className="mx-auto w-[70%]  pb-10 ">
+                <div className="mx-auto w-[70%] mt-4 pb-10 ">
                     <h1 className="text-white  text-center font-sans">
                         Upload Bolg's
                     </h1>
@@ -16,7 +16,7 @@ function BlogUpload(props) {
                                     for="dropzone-file"
                                     className="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                                     style={{
-                                        backgroundImage: `url(${ props.blog.blogImg ? `http://127.0.0.1:5001/image/${props.blog.blogImg}` : '/emptyImg.jpeg'})`,
+                                        backgroundImage: `url(${ props.blog.blogImg ? `http://127.0.0.1:5001/image/${props.blog.blogImg}` : ' '})`,
                                         backgroundSize: 'cover', // You can adjust this as needed
                                     }}
                                 >
@@ -86,7 +86,7 @@ function BlogUpload(props) {
                                 </div>
                                 <button
                                     type="submit"
-                                    class="focus:outline-none mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                                    class="focus:outline-none mt-4 w-full text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-400 dark:hover:bg-yellow-500 dark:focus:ring-yellow-700"
  >
                                     Post
                                 </button>

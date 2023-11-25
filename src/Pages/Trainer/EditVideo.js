@@ -47,7 +47,7 @@ function EditVideo() {
                         },
                     })
                     dispatch(hideLoading());
-                    navigate(`/trainer/media/${videoEdit.trainerId}/video`)
+                    navigate(`/trainer/media/video`)
 
                 }
             }

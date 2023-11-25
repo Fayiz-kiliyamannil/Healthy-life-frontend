@@ -5,8 +5,8 @@ function TrainerDashboardCard(props) {
 
   return (
     <>
-      <div onClick={() => navigate('/trainer/trainees')} className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
-        <div className=" h-32 bg-gradient-to-r m-2 from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
+      <div  className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
+        <div onClick={() => navigate('/trainer/trainees')} className=" h-32 bg-gradient-to-r m-2 from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
           <div className="flex items-center justify-between p-4">
             <div className="relative w-16 h-16 bg-gradient-to-r from-yellow-800 to-yellow-600 rounded-full flex items-center justify-center">
               <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -19,10 +19,9 @@ function TrainerDashboardCard(props) {
               <h4 className="text-xl text-gray-300 mt-3 font-bold"> {props.data.totalTrainees} </h4>
             </div>
           </div>
-
         </div>
 
-        <div onClick={() => navigate('/trainer/media/blog')} className=" h-32  bg-gradient-to-r m-2  from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
+        <div onClick={() => navigate('/trainer/media/blog')} className=" h-32 bg-gradient-to-r m-2  from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
           <div className="flex items-center justify-between p-4">
             <div className="relative w-16 h-16 bg-gradient-to-r from-cyan-800 to-cyan-600 rounded-full flex items-center justify-center">
               <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">

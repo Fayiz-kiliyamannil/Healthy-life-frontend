@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-
+import Empty from '../Common/Empty'
 
 
 function BlogCard(props) {
@@ -11,6 +11,11 @@ function BlogCard(props) {
       setIsOpen((prev)=> ({
         [id]:!prev[id]}))
   }
+
+  if(props.blog.length <= 0 ){
+    return <Empty/>
+  }
+
   return (
     <div className=" py-20   sm:py-20">
       <div className="mx-auto  max-w-7xl px-6 lg:px-8">
@@ -79,10 +84,10 @@ function BlogCard(props) {
                         <div className="origin-top-right  absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#15171C] ring-1 ring-black ring-opacity-5">
                           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                            
-                            <Link to={`/trainer/blog/edit/${post._id}`} className="block px-4 py-2 text-sm text-gray-100" role="menuitem">
+                            <Link to={`/trainer/blog/edit/${post._id}`} className="block px-4 py-2 text-sm  hover:bg-gray-600 text-gray-100" role="menuitem">
                              Edit
                             </Link>
-                            <button onClick={()=> props.deleteBlog(post._id)} className="block px-4 py-2 text-sm text-gray-100" role="menuitem">
+                            <button onClick={()=> props.deleteBlog(post._id)} className="block px-4 py-2 w-full text-left hover:bg-gray-600 text-sm text-gray-100" role="menuitem">
                              Delete
                             </button>
                           </div>

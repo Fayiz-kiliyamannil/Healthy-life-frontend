@@ -33,7 +33,7 @@ function TrainerChat() {
     const fetchUserInfo = async () => { //---------- TO FETCTH USER INFO -
         dispatch(showLoading())
         try {
-            const response = await trainerApi.post('/trainer/get-trainee-info')
+            const response = await trainerApi.get('/trainer/get-trainee-info')
             if (response.data.success) {
                 setUserInfo(response.data.trainee);
                 setSearch(response.data.trainee);

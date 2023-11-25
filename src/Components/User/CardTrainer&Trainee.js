@@ -1,12 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import EmptyPage from '../Common/Empty';
 
 function CardTrainer(props) {
+
+  if(props.data.length <= 0){
+    return <EmptyPage/>
+  }
   
   return (
     <>
-      <div className={`mx-auto max-w-2xl px-4  py-16 sm:px-6  lg:max-w-7xl lg:px-8`}>
-        <h2 className="text-2xl text-center  border-b border-gray-700 pb-5 font-bold tracking-tight text-gray-500">{props.tittle}</h2>
+      <div className={`mx-auto   mt-5 py-16 px-5 sm:px-10`}>
+        <h2 className="text-lg   border-b border-gray-700 pb-3 font-medium  text-gray-400">{props.tittle}</h2>
 
         <div className="mt-8 grid grid-cols-1   gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {props.data.map((obj) => (
@@ -24,12 +29,12 @@ function CardTrainer(props) {
                 <div>
                   <NavLink to={`${obj._id}`} >
 
-                    <h3 className="text-lg font-bold   text-gray-100">
+                    <h3 className="text-lg text-left font-bold   text-gray-100">
                       {obj.firstname} {obj.lastname}
 
                     </h3>
-                    <h4 className="mt-1 text-sm  text-gray-200">{obj.specilized}</h4>
-                    <h4 className="mt-1 text-sm  text-gray-500">{obj.email}</h4>
+                    <h4 className="mt-1 text-sm text-left  text-gray-200">{obj.specilized}</h4>
+                    <h4 className="mt-1 text-sm  text-left text-gray-500">{obj.email}</h4>
                   </NavLink>
                 </div>
                 {

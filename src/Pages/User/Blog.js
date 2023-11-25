@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import BlogCard from '../../Components/User/BlogCard';
 import client from '../../Utils/axios-utils';
 import { useQuery } from 'react-query';

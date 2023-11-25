@@ -23,7 +23,7 @@ function Banner() {
   return (
    <>
 
-  < div className="bg-cover h-[600px]  text-white py-24  object-fill " style={{backgroundImage: 'url(/pexels-victor-freitas-703016.jpg)'}}>
+  < div className="bg-cover h-[600px] text-white py-24  object-fill " style={{backgroundImage: 'url(/pexels-victor-freitas-703016.jpg)'}}>
    
        <div className="md:w-1/2  items-center mt-[200px]  ">
         <p className="font-bold ml-10 text-sm uppercase">Meet</p>
@@ -33,7 +33,7 @@ function Banner() {
         <button onClick={toKnow} className="bg-transprant border py-4 mx-4 px-8 text-white font-bold uppercase text-xs rounded-md hover:bg-gray-200 hover:text-gray-800">Know more</button>
        
         </div>  
-        <div className=" w-screen h-14.5 bg-gradient-to-b from-transparent via-rgba(37, 37, 37, 0.61) to-black h-[100px] mt-[60px]  "  >
+        <div className=" w-screen   bg-gradient-to-b from-transparent via-rgba(37, 37, 37, 0.61) to-black h-[100px] mt-[30px]  "  >
     </div>
     </div>
     

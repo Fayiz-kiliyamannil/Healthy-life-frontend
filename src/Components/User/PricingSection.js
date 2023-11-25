@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React  from 'react';
 import clientApi from '../../Utils/axios-utils'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast'
 
 function PricingSection() {
     const navigate = useNavigate();
-
-
-
 
     const showRazorpay = (order) => {
         const script = document.createElement('script');
@@ -66,19 +63,6 @@ function PricingSection() {
     ]
 
 
-    const [time, setTime] = useState(300);
-
-    useEffect(() => {
-        const timerInterval = setInterval(() => {
-            setTime((prevTime) => prevTime - 1);
-        }, 1000);
-
-        return () => clearInterval(timerInterval);
-
-    }, []);
-
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
 
 
     return (
@@ -130,10 +114,6 @@ function PricingSection() {
 
                         ))
                     }
-
-                    <div className="text-4xl border text-white font-bold">
-                        {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
-                    </div>
 
                 </div>
             </div>

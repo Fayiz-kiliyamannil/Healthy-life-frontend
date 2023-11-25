@@ -42,10 +42,10 @@ function Home() {
     dispatch(showLoading());
     try {
       const response = await axios.get("/user/get-home-info");
-     if(response.data.success){
-      setTrainers(response.data.trainer);
-      dispatch(hideLoading())
-     }
+      if (response.data.success) {
+        setTrainers(response.data.trainer);
+        dispatch(hideLoading())
+      }
     } catch (error) {
       dispatch(hideLoading());
       console.error(error);
@@ -68,11 +68,13 @@ function Home() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         ></iframe>
       </div>
-      <CardTrainer
-         home
-        data={trainers} 
-        tittle={"Healthy-Life Coaches at your Service"}
-      />
+      <div className=" text-center   mx-auto  lg:max-w-7xl" >
+        <CardTrainer
+          home
+          data={trainers}
+          tittle={"Healthy-Life Coaches at your Service"}
+        />
+      </div>
       <PricingSection />
 
     </>
