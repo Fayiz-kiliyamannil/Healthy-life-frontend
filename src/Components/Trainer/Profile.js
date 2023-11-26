@@ -38,7 +38,7 @@ function Profile(props) {
                   ) : (
                     <img
                       src="/empty.jpg"
-                      className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
+                      className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" alt="img"
                     />
                   )}
                   <h1 className="text-xl text-white  font-bold">
@@ -53,7 +53,7 @@ function Profile(props) {
                 <div className="text-lg font-medium  text-white mb-4 flex items-center justify-between">
                   About Me
                   {
-                    props.trainer ? (
+                    ! props.trainer ? (
                       <div className="relative">
                         <button
                           className=" border-b  text-gray-400 hover:text-gray-100 mr-2 "
@@ -256,42 +256,7 @@ function Profile(props) {
                       ""
                     )}
 
-                    {props.admin ? (
-
-                      props.data.is_block ? (
-                        <a 
-                          onClick={() => props.action(props.data._id)}
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-md hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover-bg-green-700 dark:focus:ring-blue-800"
-                        >
-                          unBlock
-                        </a>
-
-                      ) : (
-
-                        <a
-                          onClick={() => props.action(props.data._id)}
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-md focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800"
-                        >
-                          Block
-                        </a>
-                      )
-                    ) : props.confirm ? (
-                      <a
-                        onClick={() => props.confirm(props.data._id)}
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Confirm
-                      </a>
-                    ) : ''
-                    }
-                    {
-                      props.delete ? (
-                        <a onClick={() => props.delete(props.data._id)} className="inline-flex ml-3 items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#FA2A55] rounded-md hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  dark:hover:bg-red-700 dark:focus:ring-red-800">
-                          Delete
-
-                        </a>
-                      ) : ''
-                    }
+                  
                   </div>
                 </div>
               </div>

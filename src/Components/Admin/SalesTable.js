@@ -125,6 +125,21 @@ function SalesTable() {
                         </tr>
                     </thead>
                     <tbody>
+                    {
+                                (salesReport.length <= 0 && (
+
+                                    <tr className="   h-32 dark:bg-gray-800 dark:border-gray-700 " >
+                                        <th> </th>
+                                        <th> </th>
+                                        <th className='text-right ' > Empty..!</th>
+                                        <th>  </th>
+                                        <th> </th>
+                                        <th> </th>
+                                    </tr>
+
+                                ))
+                            }
+
                      {
                         salesReport.map((obj)=>(
                             <tr key={obj._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">

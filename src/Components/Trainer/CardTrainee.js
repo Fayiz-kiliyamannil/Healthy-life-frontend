@@ -1,7 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import EmptyPage from '../Common/Empty';
 
 function CardTrainee(props) {
+
+  if(props.data.length <= 0){
+    return <EmptyPage/>
+  }
   
   return (
     <>

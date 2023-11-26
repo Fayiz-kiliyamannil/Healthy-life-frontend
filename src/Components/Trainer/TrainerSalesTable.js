@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import trainerApi from '../../Utils/trainer-axio';
-import {useReactToPrint} from 'react-to-print';
+import { useReactToPrint } from 'react-to-print';
 import toast from 'react-hot-toast'
+import EmptyPage from '../Common/Empty';
 
 function TrainerSalesTable() {
 
@@ -17,9 +18,9 @@ function TrainerSalesTable() {
 
     const fetchSalesReport = async (days) => {
         try {
-    
-            const response = await trainerApi.post("/trainer/sales-report",{days})
-            if(response.data.success){
+
+            const response = await trainerApi.post("/trainer/sales-report", { days })
+            if (response.data.success) {
                 setSalesReport(response.data.salesReport)
             }
 
@@ -31,18 +32,20 @@ function TrainerSalesTable() {
         fetchSalesReport(7);
     }, [])
 
-    const generatePdf=useReactToPrint({
-        content:()=>componentPdf.current,
-        documentTitle:'Sales Report',
-        onAfterPrint: ()=> toast.success('PDF Downloaded',{
+    const generatePdf = useReactToPrint({
+        content: () => componentPdf.current,
+        documentTitle: 'Sales Report',
+        onAfterPrint: () => toast.success('PDF Downloaded', {
             style: {
                 borderRadius: '10px',
                 background: '#333',
                 color: '#fff',
-              },
+            },
         })
 
     })
+
+
 
 
     return (
@@ -50,6 +53,7 @@ function TrainerSalesTable() {
         <>
             <div className=" relative  mt-5  shadow-md sm:rounded-lg">
                 <div className="flex flex-column sm:flex-row flex-wrap  space-y-4 sm:space-y-0 items-center justify-between pb-4">
+
                     <div>
                         <button onClick={() => setIsOpen(!isOpen)} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex ml-3 items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                             <svg className="w-3 h-3 text-gray-500 dark:text-gray-400 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -96,7 +100,7 @@ function TrainerSalesTable() {
 
                     </div>
 
-                    <button type="button" onClick={generatePdf}  className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-6  mr-5  text-center me-2 mb-2">Download</button>
+                    <button type="button" onClick={generatePdf} className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-6  mr-5  text-center me-2 mb-2">Download</button>
 
 
                 </div>
@@ -127,6 +131,21 @@ function TrainerSalesTable() {
                             </tr>
                         </thead>
                         <tbody>
+                            {
+                                (salesReport.length <= 0 && (
+
+                                    <tr className="   h-32 dark:bg-gray-800 dark:border-gray-700 " >
+                                        <th> </th>
+                                        <th> </th>
+                                        <th className='text-right ' > Empty..!</th>
+                                        <th>  </th>
+                                        <th> </th>
+                                        <th> </th>
+                                    </tr>
+
+                                ))
+                            }
+
                             {
                                 salesReport.map((obj) => (
                                     <tr key={obj._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">

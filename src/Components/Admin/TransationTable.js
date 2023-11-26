@@ -36,9 +36,21 @@ function TransationTable(props) {
                             </th>
                         </tr>
                     </thead>
-
-                    
                         <tbody >
+                        {
+                                (props.data.length <= 0 && (
+
+                                    <tr className="  h-32 dark:bg-gray-800 dark:border-gray-800 " >
+                                        <th> </th>
+                                        <th> </th>
+                                        <th  > Empty..!</th>
+                                        <th>  </th>
+                                        <th> </th>
+                                        <th> </th>
+                                    </tr>
+
+                                ))
+                            }
                        {
                             props.data.map((obj) => (
                                 <tr key={obj._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">

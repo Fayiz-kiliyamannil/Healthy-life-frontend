@@ -38,8 +38,6 @@ getTransationDetails();
   return (
     <div>
 
-
-
       <TrainerDashboardCard data={dashboardInfo} />
       <TrainerSalesGraph/>
       <TrainerSalesTable/>

@@ -15,6 +15,7 @@ function TrainerProfileEdit() {
     const submitChange = async (e) => {
         e.preventDefault();
         const newError = {};
+
         try {
             if (!formData.firstname.trim()) {
                 newError.firstname = 'Name Required'
@@ -54,6 +55,7 @@ function TrainerProfileEdit() {
             console.error(error);
         }
     }
+    
 
     const handlechange = (e) => {
         const { name, value } = e.target;
@@ -89,7 +91,7 @@ function TrainerProfileEdit() {
 
     return (
         <>
-            <div className="col-span-4  p-20 sm:col-span-9">
+            <div className="col-span-4 md:px-20 py-10 sm:col-span-9">
                 <div className="bg-[#202123] h-200px  shadow   rounded-lg p-6">
                     <form onSubmit={submitChange}>
                         <div className="grid gap-6 mb-6 p-5 md:grid-cols-2">

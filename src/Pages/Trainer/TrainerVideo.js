@@ -50,6 +50,7 @@ function TrainerVideo() {
   useEffect(() => {
     fetchTrainerVideo();
   }, [page])
+  
   if (isLoding) {
     return <Spinner />
   }

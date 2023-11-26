@@ -22,7 +22,7 @@ function TrainerSignup() {
             if(response.data.success){
                 dispatch(hideLoading())
                 toast.success(response.data.message, { style: { borderRadius: '10px', background: '#333', color: '#fff' }, });
-                navigate('/trainer/varify')
+                navigate('/trainer/verify')
             }else{
                 dispatch(hideLoading())
                 setStatus(response.data.message)
