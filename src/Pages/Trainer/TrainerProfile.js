@@ -8,6 +8,8 @@ import trainerApi from '../../Utils/trainer-axio';
 function TrainerProfile() {
     const dispatch = useDispatch();
     const [trainer,setTrainer] = useState([]);
+    const [rating,setRating] = useState(0);
+    const [noOfRating,setNoOfRating] = useState(0);
 
     const getTrainer = async () => {
         try {
@@ -24,6 +26,8 @@ function TrainerProfile() {
                 );
                 dispatch(hideLoading());      
             }else{
+                setRating(parseInt(response.data.rating));
+                setNoOfRating(response.data.countRating);
                 setTrainer(response.data.trainer)
                  dispatch(hideLoading());
             }
@@ -40,7 +44,7 @@ function TrainerProfile() {
 
     return (
         <>
-        <Profile data={trainer} edit trainer />
+        <Profile data={trainer} rating={rating} noOfRating={noOfRating} edit trainer />
         </>
 
     )

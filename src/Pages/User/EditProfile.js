@@ -11,7 +11,8 @@ function EditProfile() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { userId } = useParams()
-    const [trainerInfo, setTrainerInfo] = useState([])
+    const [trainerInfo, setTrainerInfo] = useState([]);
+    const [error, setError] = useState({});
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -26,12 +27,8 @@ function EditProfile() {
             firstname: '',
             lastname: '',
             specilized: '',
-        }
-    })
-    const [error, setError] = useState({});
-
-
-
+        },
+    });
 
     const handlechange = (e) => {
         const { name, value } = e.target;
@@ -46,18 +43,28 @@ function EditProfile() {
         e.preventDefault();
         const newError = {};
         try {
-
-            if (!formData.firstname.trim()) {
+         
+            if (!formData?.firstname?.trim()) {
                 newError.firstname = 'Name is Required'
             }
-            if (!formData.gender.trim()) {
+            if (!formData?.gender?.trim()) {
                 newError.gender = 'Select the Gender'
             }
-            if (!formData.phone.trim()) {
+            if (!formData.profile) {
+                newError.profile = "Photo is Required...";
+            }
+
+            if (!formData?.phone?.trim()) {
                 newError.phone = 'Phone Number is Required'
             }
+            if(!formData.trainer ){
+                newError.trainer = ' Please select the Trainer'
+            }
+            
             setError(newError);
-            if (Object.keys(newError).length === 0 ) {
+
+            if (Object.keys(newError).length === 0) {
+
                 dispatch(showLoading())
                 const reponse = await axios.post('/user/user-profile-update-info', formData, {
                     headers: {
@@ -123,13 +130,14 @@ function EditProfile() {
 
     return (
         <>
-            <div className="col-span-4  sm:col-span-9">
+            <div className="col-span-4 mt-20 md:px-20  sm:col-span-9">
                 <div className="bg-[#202123] h-200px  shadow   rounded-lg p-6">
-                    <form onSubmit={submitChange} enctype="multipart/form-data">
+                    <form onSubmit={submitChange} encType="multipart/form-data">
                         <div className="grid gap-6 mb-6 p-5 md:grid-cols-2">
                             <div>
                                 <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
                                 <input type="text" id="firstName" name='firstname' value={formData?.firstname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
                                 <span className="text-xs text-center m text-[#FA2A55]">{error.firstname}</span>
                             </div>
                             <div>
@@ -151,7 +159,7 @@ function EditProfile() {
                             <div>
 
                                 <label htmlFor="trainers" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose your Trainer </label>
-                                <select id="trainers" name='trainer' value={formData.trainer?.firstname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <select id="trainers" name='trainer' value={formData.trainer ? formData.trainer.firstname : ''} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                                     <option>Select</option>
 
@@ -192,8 +200,8 @@ function EditProfile() {
                                 <input type="number" id="height" value={formData.height} name='height' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age" />
                             </div>
                         </div>
+                        <button type="submit" className="text-white ml-5 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2 text-center  mb-2">Submit</button>
 
-                        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
 
 

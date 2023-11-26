@@ -56,7 +56,7 @@ function TraineesDetails() {
 
   return (
     <>
-      <Profile data={trainee} trainer submitDietPlan={submitDietPlan} setData={setTrainee}  />
+      <Profile data={trainee}  submitDietPlan={submitDietPlan} setData={setTrainee}  />
     </>
   );
 }

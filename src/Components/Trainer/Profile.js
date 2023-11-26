@@ -45,6 +45,34 @@ function Profile(props) {
                     {props.data.firstname}.{props.data.lastname}
                   </h1>
                   <p className="text-gray-400">{props.data.email}</p>
+
+                  {props.trainer ?
+                  props.rating ? (
+                    <div className="flex mt-3 items-center">
+                   
+                    <div className="flex">
+                                {[1, 2, 3, 4, 5].map((value) => (
+                                  <label key={value} className="flex items-center mr-1">
+                                    <input
+                                      type="radio"
+                                      name="rating"
+                                      value={value}
+                                      checked={props.rating === value}
+                                      className="hidden"
+                                    />
+                                    <span className="cursor-pointer text-md" role="img" aria-label="star">
+                                      {props.rating >= value ? '⭐' : '☆'}
+                                    </span>
+                                  </label>
+                                ))}
+                              </div>
+  
+                      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{props.noOfRating}</p>
+                      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400"> ratings</p>
+                    </div>
+                  ):(<p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">0 ratings</p>):''
+                 }
+
                 </div>
               </div>
             </div>

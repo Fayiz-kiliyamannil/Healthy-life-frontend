@@ -12,60 +12,6 @@ function TrainerProfileEdit() {
     const [formData, setFormData] = useState({ firstname: '', lastname: '', profile: null, specilized: '', phone: '', trainer: '', about: '', gender: '', age: '', weight: '', height: '' });
     const { Id } = useParams();
 
-    const submitChange = async (e) => {
-        e.preventDefault();
-        const newError = {};
-
-        try {
-            if (!formData.firstname.trim()) {
-                newError.firstname = 'Name Required'
-            }
-            if (!formData.specilized.trim()) {
-                newError.specilized = "Trainer Specialization Required"
-            }
-            if (!formData.phone.trim()) {
-                newError.phone = 'Phone Number Required'
-            }
-
-            if (!formData.gender.trim()) {
-                newError.gender = 'Select your Gender'
-            }
-
-                dispatch(showLoading());
-                const response = await axios.post('/trainer/trainer-profile-edit', formData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    }
-                })
-                if (response.data.success) {
-                    dispatch(hideLoading());
-                    toast.success(response.data.message);
-                    navigate('/trainer/profile');
-                
-            }else{
-                newError.profile  = (response.data.message)
-                dispatch(hideLoading());
-            }
-            setError(newError);
-            setTimeout(() => {
-                setError('')
-            }, 3000);
-        } catch (error) {
-            dispatch(hideLoading());
-            console.error(error);
-        }
-    }
-    
-
-    const handlechange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value })
-    }
-
-    const handleImage = (e) => {
-        const file = e.target.files[0]
-        setFormData({ ...formData, profile: file });
-    }
 
 
     const getTrainer = async () => {
@@ -89,6 +35,76 @@ function TrainerProfileEdit() {
     }, [])
 
 
+    const handlechange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value })
+    }
+
+    const handleImage = (e) => {
+        const file = e.target.files[0]
+        setFormData({ ...formData, profile: file });
+    }
+
+
+    const submitChange = async (e) => {
+        e.preventDefault();
+        const newError = {};
+
+        try {
+            if (!formData?.firstname?.trim()) {
+                newError.firstname = 'Name Required'
+            }
+            if (!formData?.specilized?.trim()) {
+                newError.specilized = "Trainer Specialization Required"
+            }
+
+            if (!formData.profile) {
+                newError.profile = "Photo is Required...";
+            }
+
+            if (!formData?.phone?.trim()) {
+                newError.phone = 'Phone Number Required'
+            }
+
+            if (!formData?.gender?.trim()) {
+                newError.gender = 'Select your Gender'
+            }
+
+            setError(newError);
+
+            if (Object.keys(newError).length === 0) {
+                dispatch(showLoading());
+                const response = await axios.post('/trainer/trainer-profile-edit', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                })
+
+                if (response.data.success) {
+                    dispatch(hideLoading());
+                    toast.success(response.data.message);
+                    navigate('/trainer/profile');
+
+                } else {
+                    newError.profile = (response.data.message)
+                    dispatch(hideLoading());
+                }
+            }
+            setError(newError);
+            setTimeout(() => {
+                setError('')
+            }, 3000);
+        } catch (error) {
+            dispatch(hideLoading());
+            console.error(error);
+        }
+    }
+
+
+
+
+
+
     return (
         <>
             <div className="col-span-4 md:px-20 py-10 sm:col-span-9">
@@ -96,8 +112,8 @@ function TrainerProfileEdit() {
                     <form onSubmit={submitChange}>
                         <div className="grid gap-6 mb-6 p-5 md:grid-cols-2">
                             <div>
-                                <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name  </label> 
-                                <input type="text" id="firstName" name='firstname' value={formData.firstname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder='first name'  />
+                                <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name  </label>
+                                <input type="text" id="firstName" name='firstname' value={formData.firstname} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder='first name' />
                                 <span className="text-xs text-center m text-[#FA2A55]">{error.firstname}</span>
                             </div>
                             <div>
@@ -115,7 +131,7 @@ function TrainerProfileEdit() {
                             </div>
                             <div>
                                 <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
-                                <input type="phone" id="phone" name='phone' maxLength='10' value={formData.phone} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[9-0]"  />
+                                <input type="phone" id="phone" name='phone' maxLength='10' value={formData.phone} onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" pattern="[9-0]" />
                                 <span className="text-xs text-center m text-[#FA2A55]">{error.phone}</span>
                             </div>
                             <div>
@@ -132,24 +148,26 @@ function TrainerProfileEdit() {
                             <div>
                                 <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
                                 <select id="gender" value={formData.gender} name='gender' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <span className="text-xs text-center m text-[#FA2A55]">{error.gender}</span>
+                                    <span className="text-xs text-center m text-[#FA2A55]">{error.gender}</span>
                                     <option >Select</option>
                                     <option value="male">Male</option>
                                     <option value="Female">Female</option>
 
                                 </select>
+                                <span className="text-xs text-center m text-[#FA2A55]">{error.gender}</span>
+
                             </div>
                             <div>
                                 <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                                <input type="number" id="age" value={formData.age} name='age' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age"/>
+                                <input type="number" id="age" value={formData.age} name='age' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="age" />
                             </div>
                             <div>
                                 <label htmlFor="weight" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Weight (Kg) </label>
-                                <input type="number" id="weight" value={formData.weight} name='weight' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="weight"  />
+                                <input type="number" id="weight" value={formData.weight} name='weight' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="weight" />
                             </div>
                             <div>
                                 <label htmlFor="height" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Height (Cm) </label>
-                                <input type="number" id="height" value={formData.height} name='height' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="height"/>
+                                <input type="number" id="height" value={formData.height} name='height' onChange={handlechange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="height" />
                             </div>
                         </div>
                         <button type="submit" className="text-white bg-blue-700 ml-5 hover:bg-blue-800 focus:ring-4  focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
