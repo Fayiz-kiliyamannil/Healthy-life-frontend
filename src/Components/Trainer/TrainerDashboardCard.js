@@ -5,7 +5,7 @@ function TrainerDashboardCard(props) {
 
   return (
     <>
-      <div  className="grid  grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
+      <div  className="grid px-2 grid-cols-2  sm:grid-cols-2 xl:grid-cols-4 flex ">
         <div onClick={() => navigate('/trainer/trainees')} className=" h-32 bg-gradient-to-r m-2 from-gray-900 to-gray-800 shadow-lg rounded-xl overflow-hidden">
           <div className="flex items-center justify-between p-4">
             <div className="relative w-16 h-16 bg-gradient-to-r from-yellow-800 to-yellow-600 rounded-full flex items-center justify-center">

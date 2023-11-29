@@ -129,7 +129,8 @@ function SalesGraph() {
 
   return (
     <>
-      <div className="  w-full  bg-white  shadow  dark:bg-gray-900">
+      <div className='px-4  ' >
+      <div className="  w-full  rounded-lg bg-white  shadow  dark:bg-gray-900">
         <div className="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
           <div>
             <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2"> ₹ {salesPerweek}</h5>
@@ -141,6 +142,7 @@ function SalesGraph() {
         <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5 p-4 md:p-6 pt-0 md:pt-0">
         
         </div>
+      </div>
       </div>
     </>
   )

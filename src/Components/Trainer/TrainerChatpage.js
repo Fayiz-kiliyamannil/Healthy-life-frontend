@@ -38,7 +38,7 @@ function TrainerChatpage(props) {
                                     <input type="text" className="w-full px-2 py-2 rounded-lg text-sm" onChange={handleSearch} placeholder="Search or start new chat" />
 
                                 </div>
-                                <div className="bg-grey-lighter mt-4 flex-1 overflow-auto">
+                                <div className="bg-grey-lighter mt-4  flex-1 overflow-auto">
 
                                     {
                                         props.data?.map((obj) => (

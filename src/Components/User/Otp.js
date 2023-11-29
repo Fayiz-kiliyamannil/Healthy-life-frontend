@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import { toast } from 'react-hot-toast'
 
 function Otp() {
     const dispatch = useDispatch();
@@ -20,6 +21,15 @@ function Otp() {
             if (response.data.success) {
                 setOtpStatus(response.data.message)
                 dispatch(hideLoading());
+                toast(response.data.message,
+                    {
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
+                    }
+                );
                 navigate('/login')
             } else {
                 dispatch(hideLoading());
@@ -60,7 +70,7 @@ function Otp() {
                 <div className="">
                     <div className="bg-[] p-7 rounded-md shadow-lg text-center">
                         <h6 className="text-lg text-white">
-                            Please enter the one-time password<br />to verify your account 
+                            Please enter the one-time password<br />to verify your account
                         </h6>
                         <div className="mt-1 text-white ">
                             <small className=" text-[#C2C2C2]">A code has been sent to Gmail Account</small>

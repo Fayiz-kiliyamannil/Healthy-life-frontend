@@ -42,7 +42,7 @@ function Profile(props) {
                     />
                   )}
                   <h1 className="text-xl text-white  font-bold">
-                    {props.data.firstname}.{props.data.lastname}
+                    {props.data.firstname} {props.data.lastname}
                   </h1>
                   <p className="text-gray-400">{props.data.email}</p>
 
