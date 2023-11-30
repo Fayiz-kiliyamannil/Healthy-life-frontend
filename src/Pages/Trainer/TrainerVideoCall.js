@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
-const socket = io.apply('http://localhost:5000');
+const socket = io.apply('https://healthylife-srpz.onrender.com');
 
 
 

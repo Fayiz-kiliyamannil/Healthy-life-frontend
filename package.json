@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:5001",
+  "proxy": "https://healthylife-srpz.onrender.com",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -70,6 +70,5 @@
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
-}
-  
+  }
 }

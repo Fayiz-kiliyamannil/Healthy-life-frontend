@@ -10,7 +10,7 @@ import { userContext } from '../../App';
 import { trainerContext } from '../../App';
 
 import io from 'socket.io-client';
-const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = 'https://healthylife-srpz.onrender.com';
 var socket;
 
 

@@ -10,7 +10,7 @@ import { trainerChatinfo } from '../../App';
 import { usersContext } from '../../App';
 import NonProUsers from '../../Components/User/NonProUsers';
 
-const ENDPOINT = 'http://localhost:5000';
+const ENDPOINT = 'https://healthylife-srpz.onrender.com';
 var socket, selectedChatCompare;
 
 function Chat() {
