@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import {url} from '../../Utils/url'
 
 function AdminLogin() {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function AdminLogin() {
         event.preventDefault();
         try {
             dispatch(showLoading());
-            const response = await axios.post('/admin/login', adminData)
+            const response = await axios.post(url+'/admin/login', adminData)
             if (response.data.success) {
                   localStorage.setItem('adminToken',response.data.token.token);
                   dispatch(hideLoading())

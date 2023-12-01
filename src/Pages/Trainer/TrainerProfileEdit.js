@@ -74,7 +74,7 @@ function TrainerProfileEdit() {
 
             if (Object.keys(newError).length === 0) {
                 dispatch(showLoading());
-                const response = await axios.post('/trainer/trainer-profile-edit', formData, {
+                const response = await trainerApi.post('/trainer/trainer-profile-edit', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     }

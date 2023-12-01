@@ -14,7 +14,7 @@ function Profile(props) {
                 <div className="flex   flex-col items-center">
                   {props.data.profile ? (
                     <img
-                      src={`http://127.0.0.1:5001/image/${props.data.profile}`}
+                      src={props.data.profile}
                       className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                       alt="User Avatar"
                     />

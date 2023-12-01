@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import trainerApi from '../../Utils/trainer-axio';
 import { trainerContext } from '../../App';
 
 
@@ -24,12 +24,12 @@ function Trainer_Navbar(props) {
     const user = {
         name: trainerInfo?.firstname,
         email: trainerInfo?.email,
-        imageUrl: trainerInfo?.profile ? `http://127.0.0.1:5001/image/${trainerInfo.profile}` : '/empty.jpg'
+        imageUrl: trainerInfo?.profile ? trainerInfo.profile : '/empty.jpg'
     }
 
     const getTrainer = async (e) => {
         try {
-            const response = await axios.post('/trainer/get-trainer-info', {}, {
+            const response = await trainerApi.post('/trainer/get-trainer-info', {}, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('trainerToken')
                 }

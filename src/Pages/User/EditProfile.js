@@ -66,7 +66,7 @@ function EditProfile() {
             if (Object.keys(newError).length === 0) {
 
                 dispatch(showLoading())
-                const reponse = await axios.post('/user/user-profile-update-info', formData, {
+                const reponse = await client.post('/user/user-profile-update-info', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },

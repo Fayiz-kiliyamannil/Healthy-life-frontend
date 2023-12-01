@@ -88,7 +88,7 @@ function Profile() {
               <div className="bg-[#202123]  rounded-lg p-6">
                 <div className="flex flex-col items-center">
                   <img
-                    src={image ? (`http://127.0.0.1:5001/image/${image}`) : '/empty.png'}
+                    src={image ? image : '/empty.png'}
                     className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
                     alt="User Avatar"
                   />
@@ -316,7 +316,7 @@ function Profile() {
 
                             <img
                               className="w-10 h-10 border rounded-full"
-                              src={`http://127.0.0.1:5001/image/${trainerImage}`}
+                              src={trainerImage}
                               alt="Jese Leos"
                             />
                           </div>

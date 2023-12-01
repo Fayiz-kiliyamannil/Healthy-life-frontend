@@ -22,7 +22,7 @@ function VideoCard(props) {
               <Link to={`${post._id}`} >
               <video className='rounded-lg' muted  onMouseOut={(e)=>e.target.pause()} 
                 onMouseOver={(e)=>e.target.play()} >
-                  <source src={`http://127.0.0.1:5001/video/${post.video}`} />
+                  <source src={post.video} />
                 </video>
               </Link>
                 <div className="group  ">

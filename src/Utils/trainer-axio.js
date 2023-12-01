@@ -1,6 +1,9 @@
 import axios from "axios";
+import { url } from "./url";
 
-const trainerApi = axios.create({baseURL:'http://localhost:3000' //  our api base url
+
+const trainerApi = axios.create({
+    baseURL:url //  our api base url
 })
 
 

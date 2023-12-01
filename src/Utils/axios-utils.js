@@ -1,10 +1,10 @@
 import axios from "axios";
-
+import { url } from "./url";
 
 
 
 const client = axios.create({
-    baseURL: 'http://localhost:3000' //  our api base url
+    baseURL: url //  our api base url
 })
 
   //req interceptor for adding the bearer token

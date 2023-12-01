@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import {url} from '../../Utils/url'
 
 function TrainerLogin() {
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ function TrainerLogin() {
          dispatch(showLoading())
          event.preventDefault();
         try {
-            const response = await axios.post('/trainer/login',trainerData);
+            const response = await axios.post(url+'/trainer/login',trainerData);
             if(response.data.success){
                 toast.success(response.data.message, { style: { borderRadius: '10px', background: '#333', color: '#fff' }, });
                 localStorage.setItem('trainerToken',response.data.data)

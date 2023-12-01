@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import {url} from '../../Utils/url'
 
 function TrainerSignup() {
     
@@ -18,7 +19,7 @@ function TrainerSignup() {
         event.preventDefault();
         try {
             dispatch(showLoading())
-            const response =  await axios.post('/trainer/register',trainerData);
+            const response =  await axios.post(url+'/trainer/register',trainerData);
             if(response.data.success){
                 dispatch(hideLoading())
                 toast.success(response.data.message, { style: { borderRadius: '10px', background: '#333', color: '#fff' }, });

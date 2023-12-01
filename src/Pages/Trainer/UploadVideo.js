@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import VideoUpload from '../../Components/Trainer/VideoUpload';
 import toast from 'react-hot-toast';
 import trainerApi from '../../Utils/trainer-axio';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 function UploadVideo() {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ function UploadVideo() {
     header: '',
     note: '',
   });
+  const dispatch = useDispatch()
 
 
   
@@ -41,6 +44,7 @@ function UploadVideo() {
      }
 
       if(Object.keys(newError).length === 0){
+      dispatch(showLoading())
       const response = await trainerApi.post('/trainer/trainer-upload-video',
         videoUpload,
         {
@@ -49,6 +53,7 @@ function UploadVideo() {
         }
       })
       if(response.data.success){
+        dispatch(hideLoading())
         toast.success(response.data.message,{
           style: {
             borderRadius: '10px',

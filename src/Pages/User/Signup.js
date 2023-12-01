@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import Register from '../../Components/User/Signup'
-
+import {url} from '../../Utils/url'
 
 
 function Signup() {
@@ -19,7 +19,7 @@ function Signup() {
     event.preventDefault();
     try {
       dispatch(showLoading())
-      const response = await axios.post('/user/register',UserData); 
+      const response = await axios.post(url+'/user/register',UserData); 
      if(response.data.success){
       Navigate("/otp")
       dispatch(hideLoading())

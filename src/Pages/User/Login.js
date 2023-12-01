@@ -6,7 +6,7 @@ import axios from 'axios';
 import toast from "react-hot-toast"
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
-
+import {url} from '../../Utils/url'
 function Login() {
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function Login() {
     event.preventDefault();
     try {
       dispatch(showLoading());
-      const response = await axios.post('/user/login', userData);
+      const response = await axios.post(url+'/user/login', userData);
       if (response.data.success) {
         toast.success(response.data.message,{
           style:{ background:'#333',color:'#fff'}})

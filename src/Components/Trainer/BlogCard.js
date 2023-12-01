@@ -35,7 +35,7 @@ function BlogCard(props) {
 
               <div className="   rounded-xl mb-3 ">
                 <NavLink to={`${post._id}`}>
-                  <img className="rounded-lg " src={`http://127.0.0.1:5001/image/${post.blogImg}`} alt="img" />
+                  <img className="rounded-lg " src={post.blogImg}alt="img" />
                 </NavLink>
               </div>
 
@@ -50,7 +50,7 @@ function BlogCard(props) {
               </div>
               <div className=" mt-8 flex items-center gap-x-4">
                 {
-                  !props.trainer ? (<img src={`http://127.0.0.1:5001/image/${post.trainerId.profile}`} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
+                  !props.trainer ? (<img src={post.trainerId.profile} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
                   ) : ''
                 }
                 <div className="text-sm  leading-6">

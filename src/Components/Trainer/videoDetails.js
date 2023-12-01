@@ -6,7 +6,7 @@ function videoDetails(props) {
         <div className="mx-auto grid  gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none">
           <article key={props.data._id} className="flex flex-col  justify-between">
             <div className="p-4 rounded-xl mb-3">
-              <video className="h-full w-full rounded-md" src={`http://127.0.0.1:5001/video/${props.data.video}`} type="video/mp4" controls></video>
+              <video className="h-full w-full rounded-md" src={props.data.video} type="video/mp4" controls></video>
             </div>
             <div className="relative flex justify-between gap-x-4">
               <div className="flex pl-6 text-xs">

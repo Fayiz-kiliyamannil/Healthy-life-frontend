@@ -14,7 +14,7 @@ function VideoUpload(props) {
                                 {
                                     props.edit ? (
                                              <div onClick={(e)=> e.target.play()}  >
-                                                <video  className=' border border-gray-500 rounded-lg'  controls  src={`http://127.0.0.1:5001/video/${props.videoEdit.video}`}  playsInline  >
+                                                <video  className=' border border-gray-500 rounded-lg'  controls  src={props.videoEdit.video}  playsInline  >
                                               </video>
                                              </div>
                                        

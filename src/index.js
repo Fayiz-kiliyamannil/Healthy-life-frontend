@@ -6,7 +6,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import store from './Redux/store';
-import * as process from 'process';
+
 
 
 

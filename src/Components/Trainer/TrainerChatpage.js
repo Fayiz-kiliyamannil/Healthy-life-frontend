@@ -46,7 +46,7 @@ function TrainerChatpage(props) {
                                                 <div className="bg-gray-200 border border-gray-400 rounded px-3 flex items-center hover:bg-gray-300 cursor-pointer">
                                                     <div>
                                                         <img className="h-12 w-12 rounded-full"
-                                                            src={`http://127.0.0.1:5001/image/${obj.profile}`} alt='profile' />
+                                                            src={obj.profile} alt='profile' />
                                                     </div>
                                                     <div className="ml-4 flex-1 border-b border-grey-lighter py-4">
                                                         <div className="flex items-bottom justify-between">
@@ -73,7 +73,7 @@ function TrainerChatpage(props) {
                                             <div className="flex items-center">
                                                 <div>
                                                     <img className="w-10 h-10 rounded-full"
-                                                        src={`http://127.0.0.1:5001/image/${userInfo.profile}`} alt='userProfile' />
+                                                        src={userInfo.profile} alt='userProfile' />
                                                 </div>
                                                 <div className="ml-4">
                                                     <p className="text-white">

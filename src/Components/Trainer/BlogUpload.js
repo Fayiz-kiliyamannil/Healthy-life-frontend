@@ -16,7 +16,7 @@ function BlogUpload(props) {
                                     for="dropzone-file"
                                     className="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-300 border rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                                     style={{
-                                        backgroundImage: `url(${ props.blog.blogImg ? `http://127.0.0.1:5001/image/${props.blog.blogImg}` : ' '})`,
+                                        backgroundImage: `url(${ props.blog.blogImg ? props.blog.blogImg : ' '})`,
                                         backgroundSize: 'cover', // You can adjust this as needed
                                     }}
                                 >

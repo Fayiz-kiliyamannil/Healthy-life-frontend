@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Dialog,  Popover,  } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
 import {  useNavigate, NavLink, Link } from 'react-router-dom'
-import axios from 'axios'
+import client from '../../Utils/axios-utils'
 import { hideLoading, showLoading } from '../../Redux/alertSlice'
 import { useDispatch } from 'react-redux';
 import { usersContext } from '../../App'
@@ -25,7 +25,7 @@ function Navbar() {
 
     const getData = async () => {
         try {
-          const response = await axios.post('/user/get-user-into-by-id', {}, {
+          const response = await client.post('/user/get-user-into-by-id', {}, {
             headers: {
               Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -107,7 +107,7 @@ function Navbar() {
                 <div className='text-white top-0 hidden lg:flex ml-6 '>
                     <NavLink to={`/profile`} >
                         {
-                            userInfo?.profile  ?   <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src={`http://127.0.0.1:5001/image/${userId.profile}`} alt="Rounded avatar" />
+                            userInfo?.profile  ?   <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src={userId.profile} alt="Rounded avatar" />
                             :    <img className="w-6 h-6  hover:border border-grey-400  rounded-full" src="/empty.jpg" alt="Rounded avatar" />
                         }
                     </NavLink>

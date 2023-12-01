@@ -19,7 +19,7 @@ function CardTrainee(props) {
               <div className="aspect-h-1 aspect-w-1 w-full  overflow-hidden rounded-lg bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <NavLink to={ props.home ? 'trainers' : `${obj._id}`} >
                   <img
-                    src={obj.profile ? `http://127.0.0.1:5001/image/${obj.profile}` : '/empty.jpg'}
+                    src={obj.profile ? obj.profile: '/empty.jpg'}
                     alt={obj.profile}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />

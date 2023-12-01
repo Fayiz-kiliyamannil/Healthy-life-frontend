@@ -41,7 +41,7 @@ function Home() {
   const getData = async () => {
     dispatch(showLoading());
     try {
-      const response = await axios.get("/user/get-home-info");
+      const response = await axios.get(`https://healthylife-srpz.onrender.com/user/get-home-info`);
       if (response.data.success) {
         setTrainers(response.data.trainer);
         dispatch(hideLoading())
