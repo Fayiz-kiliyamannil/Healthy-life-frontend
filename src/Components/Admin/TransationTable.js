@@ -58,7 +58,7 @@ function TransationTable(props) {
                             props.data.map((obj) => (
                                 <tr key={obj._id} className="bg-white     border-b  dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <th scope="row" className="flex items-center px-2 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                        <img className="  h-10 w-10 rounded-full" src={`http://127.0.0.1:5001/image/${obj.userId.profile}`} alt="images" />
+                                        <img className="  h-10 w-10 rounded-full" src={obj.userId.profile} alt="images" />
                                         <div className="ps-3">
                                             <div className="text-base font-semibold">{obj.userId?.firstname} {obj.userId?.lastname} </div>
                                             <div className="font-normal text-gray-500">{obj.userId?.email}</div>

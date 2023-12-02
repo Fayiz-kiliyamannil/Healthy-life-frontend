@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import toast from 'react-hot-toast';
 import NonProUsers from '../../Components/User/NonProUsers';
-const socket = io.apply('https://healthylife-srpz.onrender.com');
+import { url } from '../../Utils/url';
+const socket = io.apply(url);
 
 
 

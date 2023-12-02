@@ -9,8 +9,9 @@ import { userContext } from '../../App';
 import { trainerChatinfo } from '../../App';
 import { usersContext } from '../../App';
 import NonProUsers from '../../Components/User/NonProUsers';
+import { url } from '../../Utils/url';
 
-const ENDPOINT = 'https://healthylife-srpz.onrender.com';
+const ENDPOINT = url;
 var socket, selectedChatCompare;
 
 function Chat() {

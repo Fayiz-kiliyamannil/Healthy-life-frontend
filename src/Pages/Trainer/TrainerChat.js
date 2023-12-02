@@ -8,9 +8,10 @@ import { useParams } from 'react-router-dom';
 import { trainerChatinfo } from '../../App';
 import { userContext } from '../../App';
 import { trainerContext } from '../../App';
+import { url } from '../../Utils/url';
 
 import io from 'socket.io-client';
-const ENDPOINT = 'https://healthylife-srpz.onrender.com';
+const ENDPOINT = url;
 var socket;
 
 
