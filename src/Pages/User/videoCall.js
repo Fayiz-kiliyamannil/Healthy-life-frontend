@@ -8,7 +8,7 @@ import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import toast from 'react-hot-toast';
 import NonProUsers from '../../Components/User/NonProUsers';
 import { url } from '../../Utils/url';
-const socket = io.apply(url);
+const socket = io(url);
 
 
 

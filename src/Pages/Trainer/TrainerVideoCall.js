@@ -5,8 +5,7 @@ import Peer from 'simple-peer';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { url } from '../../Utils/url';
-const socket = io.apply(url);
-
+const socket = io(url);
 
 
 function TrainerVideoCall() {
