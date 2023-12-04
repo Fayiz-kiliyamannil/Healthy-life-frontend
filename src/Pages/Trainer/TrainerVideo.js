@@ -1,33 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import trainerApi from '../../Utils/trainer-axio'
-import Spinner from '../../Components/Common/spinner'
 import VideoCard from '../../Components/Trainer/VideoCard';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
+import NotFound from '../../Components/NotFound/NotFound';
+
+
 
 function TrainerVideo() {
   const [video, setVideo] = useState([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState('');
   const [page, setPage] = useState(1);
   const [noOfPage,setNoOfPage] = useState()
-  const [isLoding, setLoding] = useState(true)
+  const  dispatch = useDispatch()
+
 
   const fetchTrainerVideo = async () => {
+    dispatch(showLoading())
     try {
       const response = await trainerApi.get(`/trainer/fetch-trainer-video?_limit=8&_page=${page}`)
       if (response.data.success) {
         setVideo(response.data.videoData);
         setNoOfPage(response.data.noOfPage)
-        setLoding(false);
+        dispatch(hideLoading())
       }
     } catch (error) {
-      console.error(error);
-      setLoding(false)
+      console.error(error.message);
+      setError(error.message)
+      dispatch(hideLoading());
     }
   }
+  
+  useEffect(() => {
+    fetchTrainerVideo();
+  }, [])
+
 
   const deleteVideo = async (videoId) => {
+    dispatch(showLoading())
     try {
-      setLoding(true);
       const response = await trainerApi.post('/trainer/trainer-video-delete', { videoId: videoId })
       if (response.data.success) {
         setVideo(response.data.videoData);
@@ -38,22 +50,21 @@ function TrainerVideo() {
             color: '#fff',
           },
         })
-        setLoding(false)
+        dispatch(hideLoading());  
       }
 
     } catch (error) {
       console.error(error);
-      setLoding(false)
+     dispatch(hideLoading())
     }
   }
 
-  useEffect(() => {
-    fetchTrainerVideo();
-  }, [page])
   
-  if (isLoding) {
-    return <Spinner />
+
+  if(error){
+    return <NotFound error={error} />
   }
+
 
   return (
     <>

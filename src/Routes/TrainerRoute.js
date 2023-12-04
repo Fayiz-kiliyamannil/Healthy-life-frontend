@@ -54,7 +54,7 @@ function TrainerRoute() {
                 <Route path='/blog/edit/:blogId' element={<React.Suspense> <TrainerProtectedRoute> <EditBlog /> </TrainerProtectedRoute> </React.Suspense>} />
                 <Route path='/video/edit/:videoId' element={<React.Suspense> <TrainerProtectedRoute><EditVideo /></TrainerProtectedRoute> </React.Suspense>} />
                 <Route path='/media/blog/:blogId' element={<React.Suspense> <TrainerProtectedRoute><TrainerBlogDetails /></TrainerProtectedRoute> </React.Suspense>} />
-                <Route path='/media/video/:videoId' element={<TrainerProtectedRoute><TrainerVideoDetails /></TrainerProtectedRoute>} />
+                <Route path='/media/video/:videoId' element={<React.Suspense> <TrainerProtectedRoute><TrainerVideoDetails /></TrainerProtectedRoute> </React.Suspense>} />
                 <Route path='/message' element={<React.Suspense> <TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute> </React.Suspense>}>
                     <Route path=':userId' element={<React.Suspense> <TrainerProtectedRoute> <TrainerChat /> </TrainerProtectedRoute> </React.Suspense>} />
                 </Route>

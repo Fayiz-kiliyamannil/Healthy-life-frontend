@@ -21,11 +21,11 @@ function VideoCard(props) {
       <div className=" mt-5 ">
         <div className="mx-auto   px-6">
           <div className="mx-auto  grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10  sm:max-w-none lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-            {props.data.map((post) => (
+            {props.data?.map((post) => (
               <article key={post._id} className="flex  max-w-xl   pb-7 transition-transform flex-col items-start justify-between">
               <Link to={`${post._id}`} >
-              <video className='rounded-lg' muted  onMouseOut={(e)=>e.target.pause()} 
-                onMouseOver={(e)=>e.target.play()} >
+              <video className='rounded-lg' muted  onMouseOut={(e)=>e.target?.pause()} 
+                onMouseOver={(e)=>e.target?.play()} >
                   <source src={post.video} />
                 </video>
               </Link>

@@ -8,7 +8,7 @@ initialState:{
 },
 reducers:{
     showLoading:(state)=>{
-        state.loading = true;
+     state.loading = true;
     },
     hideLoading:(state)=>{
         state.loading = false;

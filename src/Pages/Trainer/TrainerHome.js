@@ -17,7 +17,7 @@ function TrainerHome() {
 
 
   const getTransationDetails = async () => {
-    dispatch(showLoading())
+   dispatch(showLoading())
     try {
       const response = await trainerApi.get('/trainer/get-dashboard-info')
       if (response.data.success) {

@@ -14,6 +14,8 @@ function TrainerVideoDetails() {
   const {videoId} = useParams();
   const [isError,setError] = useState();
 
+
+
     const fetchVideoDetails = async () => {
         dispatch(showLoading())
         try {
@@ -28,9 +30,11 @@ function TrainerVideoDetails() {
             dispatch(hideLoading())
         }
     }
+
     useEffect(() => {
         fetchVideoDetails();
     }, [])
+
 
 if(isError){
     return <NotFound error={isError} />
@@ -39,6 +43,7 @@ if(isError){
   return (
   <>
   <VideoDetails data={videoInfo} />
+
   </>
   )
 }
