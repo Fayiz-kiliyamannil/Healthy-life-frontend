@@ -28,7 +28,7 @@ function Signin(props) {
   return (
     <>
       <div className='w-screen h-screen pt-[10%] bg-black  bg-cover ' style={{ backgroundImage: 'url("/gym-with-treadmills-light-wall.jpg")' }} >
-        <div className="w-[400px] rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
+        <div className="w-[400px] max-sm:mt-10 rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <div className="items-center">
               <img className="h-12 pl-[40%]" src="/logo.png" alt="Your Logo" />

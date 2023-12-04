@@ -3,7 +3,7 @@ import React from 'react'
 function TransationTable(props) {
     return (
         <>
-             <div className=" pl-4   rounded-lg  pr-1 w-full   shadow-md">
+             <div className=" px-4 mt-4   rounded-lg   w-full   shadow-md">
                 <div className="flex items-center  rounded-lg  justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
                     <div>
                         <h1 className="text-base text-gray-100 text-xl px-3 mt-2  font-semibold" >

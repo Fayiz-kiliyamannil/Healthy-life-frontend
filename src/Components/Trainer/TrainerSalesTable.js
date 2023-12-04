@@ -51,8 +51,8 @@ function TrainerSalesTable() {
     return (
 
         <>
-            <div className=' pl-2 pr-4  w-full ' >
-            <div className=" bg-gray-900   pt-4 shadow-md rounded-lg ">
+            <div className='px-4 mt-4 w-full' >
+            <div className="bg-gray-900 pt-4 shadow-md rounded-lg">
                 <div className="flex  mb-4 flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-3">
 
                     <div >

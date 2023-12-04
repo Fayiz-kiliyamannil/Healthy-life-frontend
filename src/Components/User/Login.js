@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Signin(props) {
@@ -27,8 +28,8 @@ function Signin(props) {
 
   return (
     <>
-      <div className='w-screen h-screen pt-[10%] bg-black  bg-cover ' style={{ backgroundImage: 'url("/gym-with-treadmills-light-wall.jpg")' }} >
-        <div className="w-[400px] rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
+      <div className='w-screen flex h-screen justify-center items-center   bg-black  bg-cover ' style={{ backgroundImage: 'url("/gym-with-treadmills-light-wall.jpg")' }} >
+        <div className="  rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <div className="items-center">
               <img className="h-12 pl-[40%]" src="/logo.png" alt="Your Logo" />
@@ -76,21 +77,12 @@ function Signin(props) {
               </div>
 
             </form>
-            {
-              (props.admin) ?  <p className="mt-7 text-sm text-[#C2C2C2]">
-           
-              <a href="#" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> </a>
-            </p> 
-            : (props.trainer) ? <p className="mt-7 text-sm text-[#C2C2C2]">
+       
+          <p className="mt-7 text-sm text-[#C2C2C2]">
             Not a member?
-            <a href="/trainer/register" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> Signup now</a>
-          </p> 
-          : <p className="mt-7 text-sm text-[#C2C2C2]">
-            Not a member?
-            <a href="/register" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> Signup now</a>
+            <Link to="/register" className="font-semibold p-1 leading-6 text-[#FA2A55] hover:text-[#BA0C2F] hover:border-b hover:border-[#BA0C2F] "> Signup now</Link>
           </p>
-            }
-
+          
             
           </div>
         </div>

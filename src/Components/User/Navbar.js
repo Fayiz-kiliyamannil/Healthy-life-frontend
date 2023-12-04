@@ -167,12 +167,12 @@ function Navbar() {
 
                                 {
                                     log ? <Link
-                                        onClick={logOut}
+                                        onClick={logOut}  
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]"
                                     >
                                         Logout
                                     </Link> : <Link
-                                        href="/login"
+                                      to="/login" onClick={() => setMobileMenuOpen(false)}
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-[#cfd1d1] hover:text-[#FA2A55]"
                                     >
                                         Log in

@@ -3,13 +3,13 @@ import React from 'react'
 function TransationTable(props) {
     return (
         <>
-            <div className=" pl-4   rounded-lg  pr-1 w-full   shadow-md">
-                <div className="flex items-center  rounded-lg  justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+            <div className=" px-4 mt-4 rounded-lg w-full shadow-md">
+                <div className="flex items-center rounded-lg justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
                     <div>
-                        <h1 className="text-base text-gray-100 text-xl px-3 mt-2  font-semibold" >
+                        <h1 className="text-base text-gray-100 text-xl px-3 mt-2 font-semibold" >
                             Transactions
                         </h1>
-                        <h4 className='text-base text-gray-100  text-gray-400 px-3' >
+                        <h4 className='text-base text-gray-100 text-gray-400 px-3' >
                             This is a list of latest transactions
                         </h4>
                     </div>
@@ -17,7 +17,7 @@ function TransationTable(props) {
                 <div className="h-[500px] bg-gray-800  rounded-b-lg  overflow-auto"> 
                 <table className="w-full  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
-                    <thead className="text-xs sticky top-0  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead className="text-xs sticky top-0 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
 
                             <th scope="col" className="px-7 upper-case py-3">

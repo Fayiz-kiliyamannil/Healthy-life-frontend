@@ -46,8 +46,8 @@ function SalesTable() {
 
     return (
         <>
-        <div className=' pl-2 pr-4  w-full ' >
-        <div className=" bg-gray-900   pt-5 shadow-md rounded-lg ">
+        <div className=' px-4 mt-4 w-full' >
+        <div className=" bg-gray-900 pt-5 shadow-md rounded-lg ">
                 <div className="flex mb-1.5 flex-column sm:flex-row flex-wrap  space-y-4 sm:space-y-0 items-center justify-between pb-4">
                     <div>
                         <button onClick={() => setIsOpen(!isOpen)} id="dropdownRadioButton"  data-dropdown-toggle="dropdownRadio" className="inline-flex ml-3 items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">

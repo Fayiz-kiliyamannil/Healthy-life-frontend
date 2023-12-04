@@ -38,12 +38,8 @@ function AdminHome() {
     <>
       <AdminDashboardCard data={dashboardInfo} />
       <SalesGraph />
-      <div className=' m-4    rounded-lg  grid  lg:grid-cols-2   mx-auto   '  >
       <TransationTable data={orderInfo} />
       <SalesTable />
-     
-      </div>
-
     </>
   );
 }

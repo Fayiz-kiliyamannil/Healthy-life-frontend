@@ -26,7 +26,7 @@ function RegisterForm(props) {
 
   return (
     <div className='w-screen h-screen bg-cover pt-[10%] ' style={{ backgroundImage: 'url("/gym-with-treadmills-light-wall.jpg")'}}  >
-      <div className="w-[400px] rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
+      <div className="w-[400px] max-sm:mt-10 rounded-md bg-black bg-opacity-80 shadow-custom text-center p-[20px] mx-auto ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="flex items-center ">
             <img className="h-12 pl-[40%]" src="/logo.png" alt="Your Logo" />

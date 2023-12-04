@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import { toast } from 'react-hot-toast'
-
+import { url } from '../../Utils/url';
 function Otp() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Otp() {
         event.preventDefault();
         try {
             dispatch(showLoading())
-            const response = await axios.post('/user/otp', { Otp: otp });
+            const response = await axios.post(url+'/user/otp', { Otp: otp });
             if (response.data.success) {
                 setOtpStatus(response.data.message)
                 dispatch(hideLoading());
@@ -49,7 +49,7 @@ function Otp() {
         console.log("resend");
         try {
             dispatch(showLoading());
-            const response = await axios.post('/user/register', {});
+            const response = await axios.post(url+'/user/register', {});
             if (response.data.success) {
                 dispatch(hideLoading());
                 setOtpStatus(response.data.message)
