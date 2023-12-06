@@ -2,23 +2,24 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
+import adminApi from '../../Utils/admin-axios'
+
+
 
 function Tab(props) {
   const dispatch = useDispatch();
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     dispatch(showLoading());
     const searchTerm = e.target.value.toLowerCase();
     if (searchTerm === '') {
-      props.searchData(props.searchValue);
-     
+       props.fetchApi();
       dispatch(hideLoading());
     } else { 
-      const updatedUser = props.searchValue.filter((item) => {
-        return item.firstname.toLowerCase().includes(searchTerm);
-      });
-      props.searchData(updatedUser);
-    
+      const updatedUser = await adminApi.post(`/admin/${props.callApi}`,{searchValue:searchTerm});
+      props.page(1)
+      props.searchData(updatedUser.data.value);
+
       dispatch(hideLoading());
     }
   };

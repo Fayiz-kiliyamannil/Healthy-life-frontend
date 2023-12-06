@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
@@ -16,6 +15,7 @@ function UploadBlog() {
   const [error, setError] = useState([]);
   const dispatch = useDispatch();
   const handleEvent = (e) => {
+
     const { name, value } = e.target;
     setBlog({ ...blog, [name]: value,});
   };
@@ -34,6 +34,9 @@ function UploadBlog() {
       }
       if (!blog.note.trim()) {
         newError.note = "Content is Require";
+      }
+      if(!blog.blogImg){
+        newError.image  = 'upload image'
       }
       setError(newError);
       if (Object.keys(newError).length === 0) {

@@ -38,8 +38,9 @@ function AdminHome() {
     <>
       <AdminDashboardCard data={dashboardInfo} />
       <SalesGraph />
-      <TransationTable data={orderInfo} />
       <SalesTable />
+      <TransationTable data={orderInfo} />
+     
     </>
   );
 }

@@ -52,8 +52,9 @@ function TrainerSalesTable() {
 
         <>
             <div className='px-4 mt-4 w-full' >
-            <div className="bg-gray-900 pt-4 shadow-md rounded-lg">
-                <div className="flex  mb-4 flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-3">
+            <div className="bg-gray-900 pt-2 shadow-md rounded-lg">
+            <h1 className='text-xl font-medium ml-3 text-gray-100 pb-3'> Sales report</h1>
+                <div className="flex  flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-3">
 
                     <div >
                         <button onClick={() => setIsOpen(!isOpen)} id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex ml-2  items-center text-gray-500 bg-white   border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">

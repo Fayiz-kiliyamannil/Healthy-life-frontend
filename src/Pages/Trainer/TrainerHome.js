@@ -39,8 +39,8 @@ getTransationDetails();
     <>
       <TrainerDashboardCard data={dashboardInfo} />
       <TrainerSalesGraph/>
-      <TransationTable data={orderInfo} />
       <TrainerSalesTable/>
+      <TransationTable data={orderInfo} />
     </>
   )
 }

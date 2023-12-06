@@ -7,8 +7,7 @@ import adminApi from '../../Utils/admin-axios'
 
 function Admin_Trainers() {
   const dispatch = useDispatch();
-  const [allTrainer, setAllTrainer] = useState([]);
-  const [search, setSearch] = useState([]);
+  const [allTrainer, setAllTrainer] = useState([]);;
   const [page,setPage] = useState(1)
   const [noOfPage ,setNoOfPage ] = useState()
 
@@ -16,10 +15,8 @@ function Admin_Trainers() {
   const allTainerDetails = async () => {
     dispatch(showLoading())
     try {
-
-      const response = await adminApi.get(`/admin/trainers?_limit=8&_page=${page}`);
-      setAllTrainer(response.data.trainer);
-      setSearch(response.data.trainer);
+      const response = await adminApi.post(`/admin/trainers?_limit=8&_page=${page}`);
+      setAllTrainer(response.data.value);
       setNoOfPage(response.data.noOfPage);
       dispatch(hideLoading())
     } catch (error) {
@@ -34,9 +31,9 @@ function Admin_Trainers() {
 
   return (
     <>
-      <Tab trainer={true} all={true} searchValue={search} searchData={setAllTrainer} />
+      <Tab trainer={true} callApi={"trainers"} fetchApi={allTainerDetails} page={setNoOfPage}  all={true}  searchData={setAllTrainer} />
       <CardTrainee data={allTrainer}  admin />
-      {(noOfPage) && (
+      {(noOfPage > 1) && (
                 <div className='justify-center   flex'>
                     <nav aria-label="Page navigation example">
                         <ul className="inline-flex -space-x-px text-sm">

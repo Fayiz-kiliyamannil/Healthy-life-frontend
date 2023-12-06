@@ -7,16 +7,14 @@ import adminApi from '../../Utils/admin-axios';
 function AdminTrainee() {
     const dispatch = useDispatch()
     const [userData,setUserData] =  useState([])
-    const [search, setSearch] = useState([]);
     const [page,setPage] = useState(1);
     const [noOfPage,setNoOfPage] =  useState();
 
     const userdata = async () => {
       dispatch(showLoading())
         try {
-          const response = await adminApi.get(`/admin/trainees?_limit=8&_page=${page}`);
-            setUserData(response.data.userData);
-            setSearch(response.data.userData);
+          const response = await adminApi.post(`/admin/trainees?_limit=8&_page=${page}`);
+            setUserData(response.data.value);
             setNoOfPage(response.data.noOfPage)
             dispatch(hideLoading())
         } catch (error) {
@@ -29,10 +27,9 @@ function AdminTrainee() {
       }, [page]);
 
 
-
     return (
         <>
-           <Tabs trainees={true} all={true} searchValue={search} searchData={setUserData} />
+           <Tabs trainees={true} page={setNoOfPage} callApi={'trainees'} all={true} fetchApi={userdata} searchData={setUserData} />
             <CardTrainee admin data={userData} />
             {(noOfPage > 1) && (
                 <div className='justify-center  flex'>

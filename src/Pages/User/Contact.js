@@ -1,13 +1,12 @@
 
 import React from 'react'     
-import Navbar from '../../Components/User/Navbar'
 import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux'; 
 import toast from 'react-hot-toast';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import { useNavigate } from 'react-router-dom';
-
+import {url} from '../../Utils/url'
 
 function Contact() {
   const navigate = useNavigate()
@@ -51,7 +50,7 @@ function Contact() {
     setError(newError)
      if(Object.keys(newError).length === 0){
       dispatch(showLoading())
-      const response = await axios.post('/user/contact-info',form);
+      const response = await axios.post(url+'/user/contact-info',form);
       if(response.data.success){
         toast.success(response.data.message,{
           style:{
