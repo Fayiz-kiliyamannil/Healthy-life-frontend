@@ -34,7 +34,7 @@ function TrainerVideo() {
   
   useEffect(() => {
     fetchTrainerVideo();
-  }, [])
+  }, [page])
 
 
   const deleteVideo = async (videoId) => {
