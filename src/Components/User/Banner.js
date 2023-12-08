@@ -5,7 +5,6 @@ import { usersContext } from '../../App';
 function Banner() {
  const {paymentNavigation} = useContext(usersContext)
   useEffect(()=>{
-    console.log(paymentNavigation);
     const targetElement = document.getElementById(paymentNavigation);
     if(targetElement){
       targetElement.scrollIntoView({block:'start'})

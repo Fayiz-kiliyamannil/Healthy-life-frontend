@@ -9,9 +9,11 @@ initialState:{
 reducers:{
     showLoading:(state)=>{
      state.loading = true;
+     document.body.style.overflow = 'hidden'
     },
     hideLoading:(state)=>{
         state.loading = false;
+        document.body.style.overflow = 'auto';
     }
 }
 
