@@ -18,7 +18,7 @@ function Classes() {
     const fetchVideo = async () => {
         dispatch(showLoading());
         try {
-            const response = await client.get(`/user/get-videos?_limit=4&_page=${page}`)
+            const response = await client.get(`/user/get-videos?_limit=8&_page=${page}`)
             if (response.data.success) {
                 setVideo(response.data.getVideos);
                 setNoOfPage(response.data.noOfpage);
