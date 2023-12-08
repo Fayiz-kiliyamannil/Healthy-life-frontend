@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import { hideLoading, showLoading } from '../../Redux/alertSlice';
 import CardTrainee  from '../../Components/Admin/CardTrainee'
 import adminApi from '../../Utils/admin-axios';
+import NotFoundAd from '../../Components/NotFound/NotfoundAd';
 function AdminTrainee() {
     const dispatch = useDispatch()
     const [userData,setUserData] =  useState([])
     const [page,setPage] = useState(1);
     const [noOfPage,setNoOfPage] =  useState();
+    const [isError,setError] = useState('')
 
     const userdata = async () => {
       dispatch(showLoading())
@@ -19,6 +21,7 @@ function AdminTrainee() {
             dispatch(hideLoading())
         } catch (error) {
           console.error('Error:', error);
+          setError(error.message)
           dispatch(hideLoading())
         }
       }
@@ -26,10 +29,14 @@ function AdminTrainee() {
         userdata();
       }, [page]);
 
+      if(isError){
+        return <NotFoundAd/>
+      }
+
 
     return (
         <>
-           <Tabs trainees={true} page={setNoOfPage} callApi={'trainees'} all={true} fetchApi={userdata} searchData={setUserData} />
+           <Tabs trainees={true} page={setNoOfPage} setError={setError} callApi={'trainees'} all={true} fetchApi={userdata} searchData={setUserData} />
             <CardTrainee admin data={userData} />
             {(noOfPage > 1) && (
                 <div className='justify-center  flex'>

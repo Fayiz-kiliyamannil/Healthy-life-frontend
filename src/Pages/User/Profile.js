@@ -159,51 +159,51 @@ function Profile() {
                             onClick={closeForm}
                           >
                             <svg className="w-5  h-5 text-gray-800 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                           </button>
                           <h2 className="text-2xl text-center mb-6  font-semibold text-gray-400 ">NutriFit Tracker</h2>
 
-                          <div class="grid sm:grid-cols-3 mx-2  md:gap-3">
-                            <div class="relative z-0 w-64  mb-10 group">
+                          <div className="grid sm:grid-cols-3 mx-2  md:gap-3">
+                            <div className="relative z-0 w-64  mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.targetWeight ? (userData.targetWeight) : '0'}</p>
-                              <label for="targetweight" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Target Weight</label>
+                              <label htmlFor="targetweight" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Target Weight</label>
                             </div>
-                            <div class="relative z-0    mb-10 group">
+                            <div className="relative z-0    mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.dailyCaloriegoal ? (userData.dailyCaloriegoal) : '0'}</p>
-                              <label for="dailycaloriegoal" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Daily Calorie Goal</label>
+                              <label htmlFor="dailycaloriegoal" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Daily Calorie Goal</label>
                             </div>
-                            <div class="relative z-0 w-full  mb-10 group">
+                            <div className="relative z-0 w-full  mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.proteinIntake ? (userData.proteinIntake) : '0'}</p>
-                              <label for="proteinintake" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Protein Intake</label>
+                              <label htmlFor="proteinintake" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Protein Intake</label>
                             </div>
                           </div>
-                          <div class="grid sm:grid-cols-3 mx-2 md:gap-3">
-                            <div class="relative z-0 w-full mb-6 group">
+                          <div className="grid sm:grid-cols-3 mx-2 md:gap-3">
+                            <div className="relative z-0 w-full mb-6 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.waterIntake ? (userData.waterIntake) : '0'}</p>
-                              <label for="waterintake" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Water Intake</label>
+                              <label htmlFor="waterintake" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Water Intake</label>
                             </div>
-                            <div class="relative z-0 w-full  mb-10 group">
+                            <div className="relative z-0 w-full  mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.carbohydrateAndTatintake ? (userData.carbohydrateAndTatintake) : '0'}</p>
-                              <label for="carbohydrateandtatintake" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Carbo & Fat Intake</label>
+                              <label htmlFor="carbohydrateandtatintake" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Carbo & Fat Intake</label>
                             </div>
-                            <div class="relative z-0 w-full  mb-10 group">
+                            <div className="relative z-0 w-full  mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.mealPlanCreation ? (userData.mealPlanCreation) : '0'}</p>
-                              <label for="mealplancreation" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Meal Plan Creation</label>
+                              <label htmlFor="mealplancreation" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Meal Plan Creation</label>
                             </div>
                           </div>
-                          <div class="grid sm:grid-cols-3 mx-2 md:gap-3">
-                            <div class="relative z-0 w-full mb-10 group">
+                          <div className="grid sm:grid-cols-3 mx-2 md:gap-3">
+                            <div className="relative z-0 w-full mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.dietaryGoals ? (userData.dietaryGoals) : '0'}</p>
-                              <label for="dietarygoals" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Dietary Goals</label>
+                              <label htmlFor="dietarygoals" className="peer-focus:font-medium absolute  text-sm  dark:text-gray-400 duration-300 transform -translate-y-6  scale-75 top-3 -z-10 origin-[0] ">Dietary Goals</label>
                             </div>
-                            <div class="relative z-0 w-full  mb-10 group">
+                            <div className="relative z-0 w-full  mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.nutritionalAnalysis ? (userData.nutritionalAnalysis) : '0'}</p>
-                              <label for="nutritionalanalysis" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Nutritional Analysis</label>
+                              <label htmlFor="nutritionalanalysis" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Nutritional Analysis</label>
                             </div>
-                            <div class="relative z-0 w-full  mb-10 group">
+                            <div className="relative z-0 w-full  mb-10 group">
                               <p className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 appearance-none dark:text-white dark:border-gray-600  focus:outline-none focus:ring-0 focus:border-[#bf697a] peer">{userData.supplementTracking ? (userData.supplementTracking) : '0'}</p>
-                              <label for="supplementtracking" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Supplement Tracking</label>
+                              <label htmlFor="supplementtracking" className="peer-focus:font-medium absolute text-sm  dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] ">Supplement Tracking</label>
                             </div>
                           </div>
 

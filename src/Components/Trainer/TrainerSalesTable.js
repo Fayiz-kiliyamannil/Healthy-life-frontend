@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import trainerApi from '../../Utils/trainer-axio';
 import { useReactToPrint } from 'react-to-print';
 import toast from 'react-hot-toast'
-import EmptyPage from '../Common/Empty';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 function TrainerSalesTable() {
 
@@ -10,6 +11,7 @@ function TrainerSalesTable() {
     const [isOpen, setIsOpen] = useState(false);
     const [dateSelector, setDateSelector] = useState('Last 7 days');
     const [salesReport, setSalesReport] = useState([]);
+    const dispatch = useDispatch();
     const selector = (e) => {
         setDateSelector(e.name)
         fetchSalesReport(e.value);
@@ -17,15 +19,17 @@ function TrainerSalesTable() {
     }
 
     const fetchSalesReport = async (days) => {
+        dispatch(showLoading())
         try {
-
             const response = await trainerApi.post("/trainer/sales-report", { days })
             if (response.data.success) {
                 setSalesReport(response.data.salesReport)
+                dispatch(hideLoading())
             }
 
         } catch (error) {
             console.error(error.message);
+            dispatch(hideLoading())
         }
     }
     useEffect(() => {
@@ -107,9 +111,9 @@ function TrainerSalesTable() {
 
                 </div>
                 <div ref={componentPdf} style={{ width: '100%' }} >
-                <div className='h-[500px] bg-gray-800  rounded-b-lg overflow-auto ' >
+                <div className='h-[500px] bg-gray-800  rounded-b-lg  overflow-auto ' >
                 <table className="w-full  text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs sticky top-0 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <thead className="text-xs sticky  top-0 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
 
                                 <th scope="col" className="px-6 py-3">

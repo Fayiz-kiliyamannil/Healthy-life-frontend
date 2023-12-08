@@ -46,6 +46,7 @@ function Profile(props) {
                                       name="rating"
                                       value={value}
                                       checked={props.rating === value}
+                                      onChange={() => {}}
                                       className="hidden"
                                     />
                                     <span className="cursor-pointer text-md" role="img" aria-label="star">

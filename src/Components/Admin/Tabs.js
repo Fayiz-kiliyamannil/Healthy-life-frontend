@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
 import { hideLoading, showLoading } from "../../Redux/alertSlice";
@@ -9,7 +9,9 @@ import adminApi from '../../Utils/admin-axios'
 function Tab(props) {
   const dispatch = useDispatch();
 
+
   const handleSearch = async (e) => {
+   try {
     dispatch(showLoading());
     const searchTerm = e.target.value.toLowerCase();
     if (searchTerm === '') {
@@ -17,12 +19,18 @@ function Tab(props) {
       dispatch(hideLoading());
     } else { 
       const updatedUser = await adminApi.post(`/admin/${props.callApi}`,{searchValue:searchTerm});
-      props.page(1)
+      if(props.page) props.page(1)
       props.searchData(updatedUser.data.value);
-
       dispatch(hideLoading());
     }
+   } catch (error) {
+   console.error(error.message);
+   props.setError(error.message);
+   dispatch(hideLoading())
+   }
   };
+
+
 
   return (
     <>

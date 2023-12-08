@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import AdminNavbar from '../Components/Admin/Admin_Navbar';
 import AdminProtectedRoute from '../Components/ProtectedRoutes/AdminProtectedRoute';
 import Footer from '../Components/Common/Footer/Footer';
+import NotFound from '../Components/NotFound/NotFound';
 const AdminHome = React.lazy(() => import('../Pages/Admin/Admin_Home'))
 const AdminTrainee = React.lazy(() => import('../Pages/Admin/AdminTrainee'))
 const UserDetails = React.lazy(() => import('../Pages/Admin/User_Details'))
@@ -28,6 +29,7 @@ function AdminRoute() {
         <Route path='/newtrainers' element={<React.Suspense> <AdminProtectedRoute> <NewTrainers /> </AdminProtectedRoute> </React.Suspense>} />
         <Route path='/newtrainers/:id' element={<React.Suspense> <AdminProtectedRoute><NewTrainerdetails /></AdminProtectedRoute> </React.Suspense>} />
         <Route path='/inbox' element={<React.Suspense> <AdminProtectedRoute> <AdminInBox /> </AdminProtectedRoute> </React.Suspense>} />
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
       <Footer />
 

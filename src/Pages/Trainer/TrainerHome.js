@@ -12,12 +12,12 @@ import TrainerSalesTable from '../../Components/Trainer/TrainerSalesTable';
 function TrainerHome() {
 
   const [orderInfo, setOrderInfo] = useState([]);
-  const [dashboardInfo,setDashboardInfo] = useState({})
+  const [dashboardInfo, setDashboardInfo] = useState({})
   const dispatch = useDispatch();
 
 
   const getTransationDetails = async () => {
-   dispatch(showLoading())
+    dispatch(showLoading())
     try {
       const response = await trainerApi.get('/trainer/get-dashboard-info')
       if (response.data.success) {
@@ -30,16 +30,16 @@ function TrainerHome() {
       dispatch(hideLoading());
     }
   }
-  useEffect(()=>{
-getTransationDetails();
-  },[])
+  useEffect(() => {
+    getTransationDetails();
+  }, [])
 
 
   return (
     <>
       <TrainerDashboardCard data={dashboardInfo} />
-      <TrainerSalesGraph/>
-      <TrainerSalesTable/>
+      <TrainerSalesGraph />
+      <TrainerSalesTable />
       <TransationTable data={orderInfo} />
     </>
   )

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ApexCharts from 'apexcharts';
 import trainerApi from '../../Utils/trainer-axio';
+import { useDispatch } from 'react-redux';
+import { hideLoading, showLoading } from '../../Redux/alertSlice';
 
 
 function TrainerSalesGraph() {
@@ -8,9 +10,10 @@ function TrainerSalesGraph() {
     const [salesPerDay, setSalesPerDay] = useState([]);
     const [profitPerDay, setProfitPerDay] = useState([]);
     const [salesPerweek, setSalesPerWeek] = useState()
-
+    const dispatch = useDispatch()
 
     const fecthGraphData = async () => {
+        dispatch(showLoading())
         try {
             const response = await trainerApi.get('/trainer/get-sales-info');
             if (response.data.success) {
@@ -54,12 +57,12 @@ function TrainerSalesGraph() {
                     series: [
                         {
                             name: "Sales",
-                            data:  response.data.totalSalesPerDay || salesPerDay,
+                            data: response.data.totalSalesPerDay || salesPerDay,
                             color: "#1A56DB",
                         },
                         {
                             name: "Profit",
-                            data: response.data.totalProfitPerDay ||  profitPerDay,
+                            data: response.data.totalProfitPerDay || profitPerDay,
                             color: "#7E3BF2",
                         },
                     ],
@@ -111,14 +114,16 @@ function TrainerSalesGraph() {
                     const chart = new ApexCharts(document.getElementById("labels-chart"), options);
                     chart.render();
                 }
+                dispatch(hideLoading())
 
             }
 
         } catch (error) {
             console.error(error.message);
+            dispatch(hideLoading())
         }
     }
-    
+
     useEffect(() => {
         fecthGraphData();
     }, []);
@@ -127,20 +132,20 @@ function TrainerSalesGraph() {
     return (
         <>
             <div className='px-4' >
-            <div className="  w-full   rounded-lg  shadow  dark:bg-gray-900">
-                <div className="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
-                    <div>
-                        <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">₹ {salesPerweek}</h5>
-                        <p className="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
+                <div className="  w-full   rounded-lg  shadow  dark:bg-gray-900">
+                    <div className="flex justify-between p-4 md:p-6 pb-0 md:pb-0">
+                        <div>
+                            <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">₹ {salesPerweek}</h5>
+                            <p className="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
+                        </div>
+                    </div>
+                    <div id="labels-chart" className="px-2.5"></div>
+                    <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5 p-4 md:p-6 pt-0 md:pt-0">
+                        <div className="flex justify-between items-center pt-5">
+
+                        </div>
                     </div>
                 </div>
-                <div id="labels-chart" className="px-2.5"></div>
-                <div className="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5 p-4 md:p-6 pt-0 md:pt-0">
-                    <div className="flex justify-between items-center pt-5">
-                
-                    </div>
-                </div>
-            </div>
             </div>
         </>
 

@@ -40,12 +40,12 @@ function BlogCard(props) {
               <div className=" mt-8 flex items-center gap-x-4">
                 <img src={post.trainerId.profile} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
                 <div className="text-sm  leading-6">
-                  <p className="font-semibold text-gray-900">
+                  <div className="font-semibold  text-gray-900">
                     <NavLink to={`${post._id}`}>
                       <span className=" inset-0" />
                       <p className="text-gray-400">{post.trainerId.firstname} {post.trainerId.lastname} </p>
                     </NavLink>
-                  </p>
+                  </div>
                   <div className="flex  items-center gap-x-4 text-xs">
                     <time className="text-gray-500">
                       {post.uploadDate}
